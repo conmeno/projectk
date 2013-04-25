@@ -25,11 +25,11 @@ namespace projectk.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<ProjectkEntity>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    using (var context = new ProjectkEntity())
                     {
                         if (!context.Database.Exists())
                         {

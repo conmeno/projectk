@@ -9,24 +9,29 @@ using System.Web.Security;
 
 namespace projectk.Models
 {
-    public class UsersContext : DbContext
-    {
-        public UsersContext()
-            : base("DefaultConnection")
-        {
-        }
+    //public class UsersContext : DbContext
+    //{
+    //    public UsersContext()
+    //        : base("DefaultConnection")
+    //    {
+    //    }
 
-        public DbSet<UserProfile> UserProfiles { get; set; }
-    }
+    //    public DbSet<UserProfile> UserProfiles { get; set; }
+    //}
 
-    [Table("UserProfile")]
-    public class UserProfile
-    {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-    }
+    //[Table("UserProfile")]
+    //public class UserProfile
+    //{
+    //    [Key]
+    //    [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+    //    public int UserId { get; set; }
+    //    public string UserName { get; set; }
+    //    public string DisplayName { get; set; }
+    //    public string Email { get; set; }
+    //    public string Description { get; set; }
+    //    public int TotalLike { get; set; }
+
+    //}
 
     public class RegisterExternalLoginModel
     {
@@ -89,11 +94,11 @@ namespace projectk.Models
         public string ConfirmPassword { get; set; }
 
 
-        [Display(Name = "ten")]
-        public string Ten { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
-        [Display(Name = "dia chi")]
-        public string DiaChi{ get; set; }
+        [Display(Name = "Display Name")]
+        public string DisplayName{ get; set; }
     }
 
     public class ExternalLogin

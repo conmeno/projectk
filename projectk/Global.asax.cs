@@ -16,6 +16,11 @@ namespace projectk
     {
         protected void Application_Start()
         {
+            //var db = new projectk.Models.ProjectkEntity();
+
+            //db.test1s.Add(new Models.Test1() { ID = 3, value = "xxx" });
+            //db.SaveChanges();
+            //System.Data.Entity.Database.SetInitializer(System.Data.Entity.DropCreateDatabaseIfModelChanges<projectk.Models.ProjectkEntity>);
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

@@ -78,11 +78,8 @@ namespace projectk.Controllers
             {
                 // Attempt to register the user
                 try
-                {
-                    testhang th = new testhang();
-                    th.ten = model.Ten;
-                    th.diachi = model.DiaChi;
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password,th);
+                { 
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password,new {TotalLike=0,Email=model.Email,DisplayName=model.DisplayName});
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");
                 }
@@ -266,7 +263,7 @@ namespace projectk.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (UsersContext db = new UsersContext())
+                using (ProjectkEntity db = new ProjectkEntity())
                 {
                     UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists
