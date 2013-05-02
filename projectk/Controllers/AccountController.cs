@@ -263,7 +263,7 @@ namespace projectk.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (ProjectkEntity db = new ProjectkEntity())
+                using (ProjectkContext db = new ProjectkContext())
                 {
                     UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists
