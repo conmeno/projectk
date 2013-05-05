@@ -62,16 +62,7 @@ namespace projectk.Controllers
                 IOAuth1ServiceProvider<IDropbox> dropboxProvider =
          new DropboxServiceProvider(Variable.ApiKey,Variable.ApiSecret, AccessLevel.Full);
 
-                IDropbox _client = dropboxProvider.GetApi(Variable.UserToken,Variable.UserSecret);
-
-
-
-
-
-
-
-
-
+                IDropbox _client = dropboxProvider.GetApi(Variable.UserToken,Variable.UserSecret); 
 
                 
                 var uniqueID = Variable.GetRandomInteger();

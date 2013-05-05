@@ -130,7 +130,6 @@ D:\projectk\projectk\bin\System.Web.WebPages.Razor.dll
 D:\projectk\projectk\bin\WebGrease.dll
 D:\projectk\projectk\bin\WebMatrix.Data.dll
 D:\projectk\projectk\bin\WebMatrix.WebData.dll
-D:\projectk\projectk\bin\Common.Logging.dll
 D:\projectk\projectk\bin\EntityFramework.xml
 D:\projectk\projectk\bin\Newtonsoft.Json.xml
 D:\projectk\projectk\bin\System.Net.Http.xml
@@ -153,6 +152,5 @@ D:\projectk\projectk\bin\DotNetOpenAuth.OAuth.Consumer.xml
 D:\projectk\projectk\bin\DotNetOpenAuth.OAuth.xml
 D:\projectk\projectk\bin\DotNetOpenAuth.OpenId.xml
 D:\projectk\projectk\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
-D:\projectk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache
 D:\projectk\projectk\obj\Debug\projectk.dll
 D:\projectk\projectk\obj\Debug\projectk.pdb

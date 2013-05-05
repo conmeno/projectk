@@ -6,6 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using projectk.Models;
+using Spring.Social.OAuth1;
+using Spring.Social.Dropbox.Api;
+using Spring.Social.Dropbox.Connect;
+using Projectk;
 
 namespace projectk.Controllers
 {
@@ -18,8 +22,26 @@ namespace projectk.Controllers
 
         public ActionResult Index()
         {
-            var articles = db.Articles.Include(a => a.Category).Include(a => a.UserProfile);
-            return View(articles.ToList());
+            IOAuth1ServiceProvider<IDropbox> dropboxProvider =
+        new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
+
+            IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
+
+
+
+            List<Article> articles = db.Articles.Include(a => a.Category).Include(a => a.UserProfile).ToList();
+            foreach (Article item in articles)
+            {
+                //if (item.DropboxShareLinkExpire != null )
+                //{
+                //    int a = 3;
+                //}
+                var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
+                item.DropboxShareLink = media.Url;
+                item.DropboxShareLinkExpire = media.ExpireDate;
+
+            }
+            return View(articles);
         }
 
         //
