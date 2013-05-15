@@ -1,0 +1,212 @@
+header {
+    background: none repeat scroll 0 0 white;
+    border-bottom: 1px solid #D6D6D6;
+    height: 103px !important;
+    left: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition-duration: 1000ms, 200ms;
+    transition-property: opacity, height;
+    transition-timing-function: cubic-bezier(0, 0, 0.25, 1);
+    z-index: 9;
+}
+header nav.desktop {
+    display: none;
+}
+header.upgrade-browser {
+    height: 223px !important;
+}
+header.upgrade-browser section#upgrade-browser {
+    display: block;
+}
+header.upgrade-browser div.barcolors {
+    top: 120px;
+}
+header.small {
+    height: 65px !important;
+}
+header.small div.wrapper {
+    height: 65px !important;
+}
+header.small div.wrapper nav.desktop {
+    top: 7px;
+}
+header.small div.wrapper h2.big {
+    display: none;
+}
+header.small div.wrapper h2.small {
+    display: block;
+}
+header.small.upgrade-browser {
+    height: 185px !important;
+}
+header.small.upgrade-browser section#upgrade-browser {
+    display: block;
+}
+header.small.upgrade-browser div.barcolors {
+    top: 120px;
+}
+header div.wrapper {
+    background: none repeat scroll 0 0 white;
+    display: block;
+    height: 103px;
+    margin: auto;
+    position: relative;
+    width: 1280px;
+}
+header div.wrapper {
+    width: 768px;
+}
+header div.wrapper {
+    width: 100%;
+}
+header div.wrapper {
+    width: 1280px;
+}
+header div.wrapper.gallery {
+    border-bottom: 1px solid #D6D6D6;
+    height: 126px;
+}
+header div.wrapper h2 {
+    transition: opacity 360ms ease-in-out 0s;
+}
+header div.wrapper h2:hover {
+    opacity: 0.7;
+}
+header nav.desktop {
+    display: block;
+    height: 60px;
+    left: 50%;
+    margin: 0 0 0 -172px;
+    position: absolute;
+    top: 26px;
+    transition: top 220ms cubic-bezier(0, 0, 0.25, 1) 0s;
+    
+}
+header nav.desktop {
+    left: 60%;
+}
+header nav.desktop {
+    left: 59%;
+}
+header nav.desktop {
+    left: 50%;
+}
+header nav.desktop a {
+    color: #555555;
+    display: inline-block;
+    float: left;
+    font-family: "Camphor W01 Heavy";
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 18px;
+    padding: 20px 22px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 220ms ease-in-out 0s;
+}
+header nav.desktop a span {
+    background: none repeat scroll 0 0 #3595AA;
+    bottom: -5px;
+    display: block;
+    height: 3px;
+    left: 0;
+    opacity: 0;
+    position: relative;
+    transition: opacity 220ms ease-in-out 0s;
+    width: 100%;
+}
+header nav.desktop a.l {
+    margin: 0;
+}
+header nav.desktop a:hover, header nav.desktop a.current {
+    color: #3595AA;
+}
+header nav.desktop a:hover span, header nav.desktop a.current span {
+    opacity: 1;
+}
+header div.barcolors {
+    background: url("images/bar.png") repeat-x scroll 0 0 transparent;
+    bottom: auto;
+    height: 7px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+}
+header h2.big {
+    background: url("images/logo.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    display: block;
+    height: 52px;
+    left: 29px;
+    margin: -21px 0 0;
+    position: absolute;
+    text-indent: -9999px;
+    top: 50%;
+    width: 146px;
+}
+header h2.big.retina {
+    background: url("../images/portraits-logo-big-retina.png") no-repeat scroll left top / 146px 52px transparent;
+}
+header h2.small {
+    background: url("images/small-logo.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    display: none;
+    height: 36px;
+    left: 29px;
+    margin: -15px 0 0;
+    position: absolute;
+    text-indent: -9999px;
+    top: 50%;
+    width: 101px;
+}
+header h2.small.retina {
+    background: url("../images/portraits-logo-small-retina.png") no-repeat scroll left top / 101px 36px transparent;
+}
+header h3 {
+    background: url("../images/sprite-desktop.png") no-repeat scroll -341px -114px transparent;
+    display: none;
+    height: 33px;
+    margin: 0;
+    position: absolute;
+    right: 29px;
+    text-indent: -9999px;
+    top: 38px;
+    width: 83px;
+}
+header section#upgrade-browser {
+    background: none repeat scroll 0 0 #272727;
+    display: none;
+    height: 120px;
+    padding-left: 150px;
+    width: 100%;
+}
+header section#upgrade-browser h2 {
+    color: #E2E2E2;
+    font-family: "Open Sans";
+    font-size: 50px;
+    letter-spacing: 0;
+    line-height: 72px;
+    margin: 0;
+    padding: 0;
+}
+header section#upgrade-browser h2 span {
+    color: #F3DF43;
+    font-size: 64px;
+    margin-left: -10px;
+}
+header section#upgrade-browser p {
+    color: #A3A3A3;
+    font-family: "Camphor W01 Regular";
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin: 0;
+}
