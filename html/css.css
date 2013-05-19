@@ -120,27 +120,14 @@
     {
         display: block;
         height: 60px;
-        left: 50%;
+        left: 35%;
         margin: 0 0 0 -172px;
         position: absolute;
         top: 26px;
         transition: top 220ms cubic-bezier(0, 0, 0.25, 1) 0s;
     }
 
-    .header nav.desktop
-    {
-        left: 60%;
-    }
-
-    .header nav.desktop
-    {
-        left: 59%;
-    }
-
-    .header nav.desktop
-    {
-        left: 50%;
-    }
+    
 
         .header nav.desktop a
         {
@@ -272,19 +259,19 @@
         position: fixed;
         right: 0;
         top: 25px;
-
+        z-index:99999;
     }
 
         .header div.wrapper .panel.big
         {
-            background: url("images/refresh.png") no-repeat scroll 0 0 transparent;
+            background: url("images/panel.png") no-repeat scroll 0 0 transparent;
             height: 72px;
             width: 52px;
         }
 
         .header div.wrapper .panel.small
         {
-            background: url('images/small-refresh.png') no-repeat;
+            background: url('images/small-panel.png') no-repeat;
             display: none;
             height: 56px;
             width: 36px;
