@@ -45,14 +45,14 @@ namespace projectk.Models
         public string Name { get; set; }
         public string ExternalURL { get; set; }
         public string DropboxShareLink { get; set; }
-        public DateTime DropboxShareLinkExpire;
+        public DateTime DropboxShareLinkExpire { get; set; }
         public int UserID { get; set; }
         public int CategoryID { get; set; }
         public Nullable<long> PageView { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
-        public string LocalURL { get; set; } 
-        public int Status;
+        public string LocalURL { get; set; }
+        public int Status { get; set; }
 
 
         public virtual Categories Category { get; set; }

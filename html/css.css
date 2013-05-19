@@ -237,8 +237,8 @@
             background: url("../images/portraits-logo-small-retina.png") no-repeat scroll left top / 101px 36px transparent;
         }
 
-   
-/*.header section#upgrade-browser {
+
+    /*.header section#upgrade-browser {
     background: none repeat scroll 0 0 #272727;
     display: none;
     height: 120px;
@@ -267,31 +267,35 @@
     line-height: 24px;
     margin: 0;
 }*/
- .header div.wrapper .panel.big
-{
-    background: url("images/refresh.png") no-repeat scroll 0 0 transparent;
-    height: 72px;
-    position: absolute;
-    right: 0;
-    top: 25px;
-    width: 52px;
-}
- .header div.wrapper .panel.small
+    .header div.wrapper .panel
     {
-        background: url('images/small-refresh.png') no-repeat;
-        display:none;
-            height: 56px;
-    position: absolute;
-    right: 0;
-    top: 25px;
-    width: 36px;
-    }
-.header.small div.wrapper .panel.big
-{
-    display: none;
-}
+        position: fixed;
+        right: 0;
+        top: 25px;
 
-.header.small div.wrapper .panel.small
-{
-    display: block;
-}
+    }
+
+        .header div.wrapper .panel.big
+        {
+            background: url("images/refresh.png") no-repeat scroll 0 0 transparent;
+            height: 72px;
+            width: 52px;
+        }
+
+        .header div.wrapper .panel.small
+        {
+            background: url('images/small-refresh.png') no-repeat;
+            display: none;
+            height: 56px;
+            width: 36px;
+        }
+
+    .header.small div.wrapper .panel.big
+    {
+        display: none;
+    }
+
+    .header.small div.wrapper .panel.small
+    {
+        display: block;
+    }

@@ -154,3 +154,5 @@ D:\projectk\projectk\bin\DotNetOpenAuth.OpenId.xml
 D:\projectk\projectk\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 D:\projectk\projectk\obj\Debug\projectk.dll
 D:\projectk\projectk\obj\Debug\projectk.pdb
+D:\projectk\projectk\bin\Common.Logging.dll
+D:\projectk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache
