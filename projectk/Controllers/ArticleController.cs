@@ -11,6 +11,7 @@ using Projectk;
 using Spring.Social.OAuth1;
 using Spring.Social.Dropbox.Api;
 using Spring.Social.Dropbox.Connect;
+using System.Web.Security;
 
 namespace projectk.Controllers
 {
@@ -96,14 +97,17 @@ namespace projectk.Controllers
 
 
                         if (temp != null) article.DropboxShareLink = temp.Result.Url;
+                        article.DropboxShareLinkExpire = DateTime.Now.AddDays(1);
                     }
                 }
                 //endupload file
+                MembershipUser currentUser;
+                currentUser = Membership.GetUser();
+
+                //article.UserID = currentUser.;
+
 
                 article.UserID = 1;
-
-
-
 
 
 

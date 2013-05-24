@@ -23,8 +23,8 @@ namespace projectk
             //    consumerSecret: "");
 
             OAuthWebSecurity.RegisterFacebookClient(
-                appId: "273706276099741",
-                appSecret: "76f24899267f81e17c56266e69bb8ac0");
+                appId: "152607184915546",
+                appSecret: "7f2585a134af90dbb3f4d8dc8156cb78");
 
             //OAuthWebSecurity.RegisterGoogleClient();
         }

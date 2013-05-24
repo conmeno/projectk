@@ -156,3 +156,5 @@ D:\projectk\projectk\obj\Debug\projectk.dll
 D:\projectk\projectk\obj\Debug\projectk.pdb
 D:\projectk\projectk\bin\Common.Logging.dll
 D:\projectk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache
+E:\GitHubApp\projectkk\projectk\bin\Common.Logging.dll
+E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache

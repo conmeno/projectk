@@ -36,14 +36,14 @@ namespace projectk.Controllers
                 //{
                 //    int a = 3;
                 //}
-                if (DateTime.Now > item.DropboxShareLinkExpire)
-                {
+                //if (DateTime.Now > item.DropboxShareLinkExpire)
+                //{
                     var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
                     item.DropboxShareLink = media.Url;
                     item.DropboxShareLinkExpire = DateTime.Now.AddDays(1);// media.ExpireDate;
                     
                     
-                }
+                //}
 
             }
            
