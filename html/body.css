@@ -1,6 +1,6 @@
 .mainbody
 {
-    max-width:960px;
+    max-width:1280px;
     margin:0px auto;
    margin-top:125px;
    position:relative;
@@ -10,8 +10,11 @@
 .aitem
 {
     margin-top:20px;
-} 
- 
+}
+.item-right .aitem-top
+{
+    display:none;
+}
 .aitem-top, .notice{
     /*background-color:#57A0EC;
     padding:10px 0px 10px 10px;
@@ -54,8 +57,8 @@
 }
 .leftPane
 { 
-    max-width:640px;
-    margin-right:290px;
+    max-width:960px;
+    margin-right:300px;
     padding:10px;
     border:solid 1px #D6D6D6;
     border-radius:7px;
@@ -63,7 +66,7 @@
 }
 .article
 {
-    max-width:640px;
+    max-width:960px;
 }
 .rightPane
 { 
@@ -79,4 +82,18 @@
     height:900px;
   border:solid 1px #D6D6D6;
     border-radius:5px;
+    position:relative;
+}
+.item-info-left
+{ 
+    width:250px;
+     position:absolute;
+    
+}
+.item-right
+{
+    
+    margin-left:260px;
+   
+    max-width:700px;
 }

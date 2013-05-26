@@ -14,6 +14,10 @@
     <link href='body.css' rel='stylesheet'>
     <link href='admin.css' rel='stylesheet'>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <script src="js/jquery.lazyload.js"></script>
+
+
     <script src="js.js"></script>
     <!-- <link href='/picture/favicon.ico' rel='shortcut icon'>
     <link href='/picture/favicon32.ico' rel='icon' sizes='32x32'>
@@ -23,10 +27,18 @@
     <title>Portraits with Carter Kustera - Custom Silhouettes</title>-->
 
     <!-- <link rel="stylesheet" media="only screen and (max-width: 1024px) and (min-width: 769px)" href="1024.css-->
-    ">
-	<link rel="stylesheet" media="only screen and (max-width: 768px)" href="mobile.css">
-    <!--<link rel="stylesheet" media="only screen and (max-width: 480px)" href="480.css">-->
+     
+	<link rel="stylesheet" media="only screen and (max-width: 900px)" href="table.css">
+    <link rel="stylesheet" media="only screen and (max-width: 600px)" href="mobile.css">
+    <script type="text/javascript">
 
+        $(document).ready(function () {
+
+            $("img.lazy").lazyload({
+                effect: "fadeIn"
+            });
+        });
+    </script>
 </head>
 <body class='o'>
     <div class="header" style="opacity: 1;">
@@ -52,10 +64,10 @@
                 <a href="#">Đồng cảm 
                     <span></span>
                 </a>
-                  <a href="#">Truyện ngắn
+                <a href="#">Truyện ngắn
                     <span></span>
                 </a>
-                  <a href="#">Buồn
+                <a href="#">Buồn
                     <span></span>
                 </a>
             </nav>
@@ -99,39 +111,68 @@
         <div class="leftPane">
             <div class="articles">
                 <div class="aitem">
-                    <div class="aitem-top">
-                        <div class="aitem-title">Cô gái xinh đẹp thông thạo 6 ngôn ngử</div>
-                        <div class="aitem-title">
-                            <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
+                    <div class="item-info-left">
+
+                        <div class="aitem-top">
+                            <div class="aitem-title">Cô gái xinh đẹp thông thạo 6 ngôn ngử</div>
+                            <div class="aitem-title">
+                                <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
                             rain</span></a>
-                        </div>
-                        <div class="pageview">
-                            <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
+                            </div>
+                            <div>
+                                <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="item-image">
-                        <img src="picture/g1.jpg" />
+                    <div class="item-right">
+                        <div class="aitem-top">
+                            <div class="aitem-title">Cô gái xinh đẹp thông thạo 6 ngôn ngử</div>
+                            <div class="aitem-title">
+                                <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
+                            rain</span></a>
+                            </div>
+                            <div class="pageview">
+                                <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
+                            </div>
+                        </div>
+                        <div class="item-image">
+
+                            <img class="lazy" src="images/no.png" data-original="picture/g1.jpg"
+                                alt="BMW M3 GT" />
+
+                        </div>
                     </div>
+                    <div style="clear: both"></div>
                 </div>
 
                 <div class="aitem">
-                    <div class="aitem-top">
-                        &nbsp;
+                    <div class="item-info-left"></div>
+                    <div class="item-right">
+                        <div class="aitem-top">
+                            &nbsp;
                 <div>con khi con</div>
+                        </div>
+                        <div class="item-image">
+                            <img class="lazy" src="images/no.png" data-original="picture/g2.jpg"
+                                alt="BMW M3 GT" />
+                        </div>
                     </div>
-                    <div class="item-image">
-                        <img src="picture/g2.jpg" />
-                    </div>
+                    <div style="clear: both"></div>
                 </div>
 
 
                 <div class="aitem">
-                    <div class="aitem-top">
-                        &nbsp;
+                    <div class="item-info-left"></div>
+                    <div class="item-right">
+                        <div class="aitem-top">
+                            &nbsp;
+                        </div>
+                        <div class="item-image">
+                            <img class="lazy" src="images/no.png" data-original="picture/g3.jpg"
+                                alt="BMW M3 GT" />
+                        </div>
                     </div>
-                    <div class="item-image">
-                        <img src="picture/g3.jpg" />
-                    </div>
+                    <div style="clear: both"></div>
                 </div>
 
             </div>

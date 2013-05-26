@@ -1,0 +1,14 @@
+.rightPane
+{
+    display:none;
+}
+.leftPane
+{ 
+    max-width:100%;
+    /*margin-right:290px;*/
+    padding:10px;
+    border:solid 1px #D6D6D6;
+    border-radius:7px;
+     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+     margin-right:0px;
+}
