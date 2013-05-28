@@ -37,9 +37,7 @@ namespace projectk.Controllers
                 {
                     var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
                     item.DropboxShareLink = media.Url;
-                    item.DropboxShareLinkExpire = media.ExpireDate;
-
-
+                    item.DropboxShareLinkExpire = media.ExpireDate; 
                 }
 
             }

@@ -3,9 +3,12 @@
 @{
     ViewBag.Title = "Details";
 }
+<div>
 
+@*<img src="data:unknown;base64,@Convert.ToBase64String(Model.ThumbnailData)" />*@
+</div>
 <div class="articles">
- 
+ <div class="fb-like" data-href="@Context.Request.Url.ToString()" data-send="true" data-width="450" data-show-faces="true"></div>
     <div class="aitem">
         <div class="item-info-left">
 

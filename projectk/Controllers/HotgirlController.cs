@@ -10,20 +10,19 @@ using Spring.Social.OAuth1;
 using Spring.Social.Dropbox.Api;
 using Spring.Social.Dropbox.Connect;
 using Projectk;
-
 namespace projectk.Controllers
 {
-    public class HaiController : Controller
+    public class HotgirlController : Controller
     {
         private ProjectkContext db = new ProjectkContext();
-
+       
         //
-        // GET: /Hai/
+        // GET: /Hotgirl/
 
         public ActionResult Index()
         {
             IOAuth1ServiceProvider<IDropbox> dropboxProvider =
-        new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
+       new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
 
             IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
 
@@ -36,25 +35,25 @@ namespace projectk.Controllers
                 //{
                 //    int a = 3;
                 //}
-                //if (DateTime.Now > item.DropboxShareLinkExpire)
-                //{
+                if (DateTime.Now > item.DropboxShareLinkExpire)
+                {
                     var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
                     item.DropboxShareLink = media.Url;
                     item.DropboxShareLinkExpire = DateTime.Now.AddDays(1);// media.ExpireDate;
-                    
-                    
-                //}
+
+
+                }
 
             }
-           
+
             db.SaveChanges();
             return View(articles);
         }
 
         //
-        // GET: /Hai/Details/5
+        // GET: /Hotgirl/Details/5
 
-        public ActionResult Details(long id = 0)
+        public ActionResult Details(int id = 0)
         {
             Article article = db.Articles.Find(id);
             if (article == null)
@@ -65,7 +64,7 @@ namespace projectk.Controllers
         }
 
         //
-        // GET: /Hai/Create
+        // GET: /Hotgirl/Create
 
         public ActionResult Create()
         {
@@ -75,7 +74,7 @@ namespace projectk.Controllers
         }
 
         //
-        // POST: /Hai/Create
+        // POST: /Hotgirl/Create
 
         [HttpPost]
         public ActionResult Create(Article article)
@@ -93,9 +92,9 @@ namespace projectk.Controllers
         }
 
         //
-        // GET: /Hai/Edit/5
+        // GET: /Hotgirl/Edit/5
 
-        public ActionResult Edit(long id = 0)
+        public ActionResult Edit(int id = 0)
         {
             Article article = db.Articles.Find(id);
             if (article == null)
@@ -108,7 +107,7 @@ namespace projectk.Controllers
         }
 
         //
-        // POST: /Hai/Edit/5
+        // POST: /Hotgirl/Edit/5
 
         [HttpPost]
         public ActionResult Edit(Article article)
@@ -125,9 +124,9 @@ namespace projectk.Controllers
         }
 
         //
-        // GET: /Hai/Delete/5
+        // GET: /Hotgirl/Delete/5
 
-        public ActionResult Delete(long id = 0)
+        public ActionResult Delete(int id = 0)
         {
             Article article = db.Articles.Find(id);
             if (article == null)
@@ -138,10 +137,10 @@ namespace projectk.Controllers
         }
 
         //
-        // POST: /Hai/Delete/5
+        // POST: /Hotgirl/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(long id)
+        public ActionResult DeleteConfirmed(int id)
         {
             Article article = db.Articles.Find(id);
             db.Articles.Remove(article);

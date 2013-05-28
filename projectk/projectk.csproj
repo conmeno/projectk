@@ -184,8 +184,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\HaiController.cs" />
+    <Compile Include="Controllers\FunnyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HotgirlController.cs" />
+    <Compile Include="Controllers\SuggestionController.cs" />
     <Compile Include="Core\Variable.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -318,11 +320,17 @@
     <Content Include="Views\Category\Create.cshtml" />
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
-    <Content Include="Views\Hai\Index.cshtml" />
-    <Content Include="Views\Hai\Details.cshtml" />
-    <Content Include="Views\Hai\Create.cshtml" />
-    <Content Include="Views\Hai\Edit.cshtml" />
-    <Content Include="Views\Hai\Delete.cshtml" />
+    <Content Include="Views\Funny\Index.cshtml" />
+    <Content Include="Views\Funny\Details.cshtml" />
+    <Content Include="Views\Funny\Create.cshtml" />
+    <Content Include="Views\Funny\Edit.cshtml" />
+    <Content Include="Views\Funny\Delete.cshtml" />
+    <Content Include="Views\Suggestion\Index.cshtml" />
+    <Content Include="Views\Hotgirl\Index.cshtml" />
+    <Content Include="Views\Hotgirl\Details.cshtml" />
+    <Content Include="Views\Hotgirl\Create.cshtml" />
+    <Content Include="Views\Hotgirl\Edit.cshtml" />
+    <Content Include="Views\Hotgirl\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

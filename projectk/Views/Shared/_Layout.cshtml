@@ -36,15 +36,15 @@
                 <span>waht</span>
             </a>-->
             <nav class="desktop">
-                <a href="#">Funny
+                <a href="/funny">Funny
            
                     <span></span>
                 </a>
-                <a href="#">Hot girl
+                <a href="/hotgirl">Hot girl
            
                     <span></span>
                 </a>
-                <a href="#">Video 
+                <a href="/video">Video 
                     <span></span>
                 </a>
                 <a href="#">Đồng cảm 
@@ -74,7 +74,7 @@
         <div class="wrapper">
             <section class="social" id="socialLoginForm">
                 <h2>Use another service to log in.</h2>
-                @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = Context.Request.Url.Host })
+                @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = Context.Request.Url.ToString() })
             </section>
             <article class="upload f" style="opacity: 1;">
                 <div class="icon"></div>
@@ -103,6 +103,8 @@
         </div>
     </div>
     <div class="mainbody">
+        <div class="fb-like" data-href="http://www.conmeno.com" data-send="true" data-width="450"
+            data-show-faces="true"></div>
 
 
         <div class="leftPane">
@@ -112,7 +114,11 @@
             <div class="notice">
                 Thong tin thong bao!!
             </div>
-            <div class="rightContent"></div>
+            <div class="rightContent">
+                @{
+                    Html.RenderAction("Index", "Suggestion");
+                }
+            </div>
         </div>
         <div style="clear: both;"></div>
     </div>
@@ -157,12 +163,12 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-            
+
             $("img.lazy").lazyload({
                 effect: "fadeIn", failure_limit: 10
             });
         });
-        
+
     </script>
 </body>
 </html>

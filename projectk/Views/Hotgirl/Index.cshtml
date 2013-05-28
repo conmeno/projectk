@@ -1,0 +1,44 @@
+﻿@model IEnumerable<projectk.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="articles">
+@foreach (var item in Model) {
+    <div class="aitem">
+        <div class="item-info-left">
+
+            <div class="aitem-top">
+                <div class="aitem-title"> @Html.DisplayFor(modelItem => item.Name)</div>
+                <div class="aitem-title">
+                    <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
+                            rain</span></a>
+                </div>
+                <div>
+                    <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
+                </div>
+            </div>
+        </div>
+        <div class="item-right">
+            <div class="aitem-top">
+                <div class="aitem-title"> @Html.DisplayFor(modelItem => item.Name)</div>
+                <div class="aitem-title">
+                    <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
+                            rain</span></a>
+                </div>
+                <div class="pageview">
+                    <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
+                </div>
+            </div>
+            <div class="item-image">
+
+                <img class="lazy" src="~/Content/images/no.png" data-original="@Html.DisplayFor(modelItem => item.DropboxShareLink)"
+                    alt="@Html.DisplayFor(modelItem => item.Name)" />
+
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div> 
+}
+</div>

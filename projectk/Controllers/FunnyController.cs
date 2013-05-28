@@ -6,30 +6,53 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using projectk.Models;
-using DropNet;
-using Projectk;
 using Spring.Social.OAuth1;
 using Spring.Social.Dropbox.Api;
 using Spring.Social.Dropbox.Connect;
-using System.Web.Security;
+using Projectk;
 
 namespace projectk.Controllers
 {
-    public class ArticleController : Controller
+    public class FunnyController : Controller
     {
         private ProjectkContext db = new ProjectkContext();
 
         //
-        // GET: /Article/
+        // GET: /Hai/
 
         public ActionResult Index()
         {
-            var articles = db.Articles.Include(a => a.Category).Include(a => a.UserProfile);
-            return View(articles.ToList());
+            IOAuth1ServiceProvider<IDropbox> dropboxProvider =
+        new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
+
+            IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
+
+
+
+            List<Article> articles = db.Articles.Include(a => a.Category).Include(a => a.UserProfile).ToList();
+            foreach (Article item in articles)
+            {
+                //if (item.DropboxShareLinkExpire != null )
+                //{
+                //    int a = 3;
+                //}
+                if (DateTime.Now > item.DropboxShareLinkExpire)
+                {
+                    var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
+                    item.DropboxShareLink = media.Url;
+                    item.DropboxShareLinkExpire = DateTime.Now.AddDays(1);// media.ExpireDate;
+
+
+                }
+
+            }
+           
+            db.SaveChanges();
+            return View(articles);
         }
 
         //
-        // GET: /Article/Details/5
+        // GET: /Hai/Details/5
 
         public ActionResult Details(long id = 0)
         {
@@ -42,7 +65,7 @@ namespace projectk.Controllers
         }
 
         //
-        // GET: /Article/Create
+        // GET: /Hai/Create
 
         public ActionResult Create()
         {
@@ -52,91 +75,15 @@ namespace projectk.Controllers
         }
 
         //
-        // POST: /Article/Create
+        // POST: /Hai/Create
 
         [HttpPost]
         public ActionResult Create(Article article)
         {
             if (ModelState.IsValid)
             {
-                
-                IOAuth1ServiceProvider<IDropbox> dropboxProvider =
-         new DropboxServiceProvider(Variable.ApiKey,Variable.ApiSecret, AccessLevel.Full);
-
-                IDropbox _client = dropboxProvider.GetApi(Variable.UserToken,Variable.UserSecret); 
-
-                
-                var uniqueID = Variable.GetRandomInteger();
-
-
-
-                //upload file
-                if (Request.Files.Count > 0)
-                {
-                    HttpPostedFileBase ofile = Request.Files[0];
-                    string filename = uniqueID + "_" + ofile.FileName;
-                    if (ofile.ContentLength > 0)                    
-                    {
-                        ofile.SaveAs( Variable.WebFolder()+"/Upload/" + filename);
-                        Spring.IO.FileResource file = new Spring.IO.FileResource(Variable.WebFolder() + "/Upload/" + filename);
-
-                        string DropboxURL = "/conmeno/" + filename;
-
-
-                        //_client.UploadFileAsync(file, DropboxURL);
-                        var upload = _client.UploadFileAsync(file, DropboxURL).Result;
-
-                        //_client.UploadFile("/conmeno/", uniqueID + "_" + ofile.FileName, Variable.ReadFully(ofile.InputStream));
-                        article.ExternalURL = DropboxURL;
-
-
-
-                        var temp = _client.GetMediaLinkAsync(article.ExternalURL);
-                       
-                    
-
-
-                        if (temp != null) article.DropboxShareLink = temp.Result.Url;
-                        article.DropboxShareLinkExpire = DateTime.Now.AddHours(3);
-
-                        var a1 = _client.DownloadThumbnailAsync(article.ExternalURL, ThumbnailFormat.Jpeg, ThumbnailSize.Small).Result;
-                        article.ThumbnailData = a1.Content;
-                   
-                          
-                    }
-                }
-                //endupload file
-                MembershipUser currentUser;
-                currentUser = Membership.GetUser();
-
-                //article.UserID = currentUser.;
-
-
-                article.UserID = 1;
-
-
-
-
                 db.Articles.Add(article);
                 db.SaveChanges();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 return RedirectToAction("Index");
             }
 
@@ -146,7 +93,7 @@ namespace projectk.Controllers
         }
 
         //
-        // GET: /Article/Edit/5
+        // GET: /Hai/Edit/5
 
         public ActionResult Edit(long id = 0)
         {
@@ -161,7 +108,7 @@ namespace projectk.Controllers
         }
 
         //
-        // POST: /Article/Edit/5
+        // POST: /Hai/Edit/5
 
         [HttpPost]
         public ActionResult Edit(Article article)
@@ -178,7 +125,7 @@ namespace projectk.Controllers
         }
 
         //
-        // GET: /Article/Delete/5
+        // GET: /Hai/Delete/5
 
         public ActionResult Delete(long id = 0)
         {
@@ -191,7 +138,7 @@ namespace projectk.Controllers
         }
 
         //
-        // POST: /Article/Delete/5
+        // POST: /Hai/Delete/5
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(long id)

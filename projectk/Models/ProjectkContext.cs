@@ -41,7 +41,7 @@ namespace projectk.Models
 
     public partial class Article
     {
-        public long ID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public string ExternalURL { get; set; }
         public string DropboxShareLink { get; set; }
@@ -53,6 +53,13 @@ namespace projectk.Models
         public string Content { get; set; }
         public string LocalURL { get; set; }
         public int Status { get; set; }
+        public bool IsHot { get; set; }
+
+
+        public byte[] ThumbnailData { get; set; }
+        public string OtherObject { get; set; }
+
+
 
 
         public virtual Categories Category { get; set; }
