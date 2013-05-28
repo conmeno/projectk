@@ -97,7 +97,7 @@ namespace projectk.Controllers
 
 
                         if (temp != null) article.DropboxShareLink = temp.Result.Url;
-                        article.DropboxShareLinkExpire = DateTime.Now.AddDays(1);
+                        article.DropboxShareLinkExpire = DateTime.Now.AddHours(3);
                     }
                 }
                 //endupload file

@@ -1,48 +1,168 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
-        </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
-                </div>
-            </div>
-        </footer>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-    </body>
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <meta content='www.conmeno.com' name='author'>
+    <meta content='Connecting people' name='description'>
+    <meta content='hài, vui cười, troll, truyện vui, hotgirl, gái đẹp' name='keywords'>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <link href='~/Content/css.css' rel='stylesheet'>
+    <link href='~/Content/footer.css' rel='stylesheet'>
+    <link href='~/Content/body.css' rel='stylesheet'>
+    <link href='~/Content/admin.css' rel='stylesheet'>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet'
+        type='text/css'>
+    <!-- <link rel="stylesheet" media="only screen and (max-width: 1024px) and (min-width: 769px)" href="1024.css-->
+
+    <link rel="stylesheet" media="only screen and (max-width: 900px)" href="~/Content/table.css">
+    <link rel="stylesheet" media="only screen and (max-width: 600px)" href="~/Content/mobile.css">
+</head>
+<body>
+    <div class="header" style="opacity: 1;">
+        <div class="barcolors"></div>
+        <div class="wrapper">
+            <h2 class="big">AOL Me. with Carter Kustera</h2>
+            <h2 class="small">AOL Me. with Carter Kustera</h2>
+            <!--  <a title="" href="#" class="toggle-dropdown">
+                <span>waht</span>
+            </a>-->
+            <nav class="desktop">
+                <a href="#">Funny
+           
+                    <span></span>
+                </a>
+                <a href="#">Hot girl
+           
+                    <span></span>
+                </a>
+                <a href="#">Video 
+                    <span></span>
+                </a>
+                <a href="#">Đồng cảm 
+                    <span></span>
+                </a>
+                <a href="#">Truyện ngắn
+                    <span></span>
+                </a>
+                <a href="#">Buồn
+                    <span></span>
+                </a>
+            </nav>
+            @{
+                if (User.Identity != null)
+                {
+                <div class="currentUsername"><a href="#">@User.Identity.Name</a> </div>
+                }
+            }
+            <div class="panel big">
+            </div>
+            <div class="panel small">
+            </div>
+        </div>
+    </div>
+
+    <div id="steps-home">
+        <div class="wrapper">
+            <section class="social" id="socialLoginForm">
+                <h2>Use another service to log in.</h2>
+                @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = Context.Request.Url.Host })
+            </section>
+            <article class="upload f" style="opacity: 1;">
+                <div class="icon"></div>
+                <h3>1. Upload</h3>
+                <p id="cms5" class="editable">
+                    Choose your best photo to use as the base for your work
+                        of art!
+                </p>
+            </article>
+            <article class="edit" style="opacity: 1;">
+                <div class="icon"></div>
+                <h3>2. Edit</h3>
+                <p id="cms6" class="editable">
+                    Give your piece of work a little personality with color,
+                        texture and a caption.
+                </p>
+            </article>
+            <article class="enjoy" style="opacity: 1;">
+                <div class="icon"></div>
+                <h3>3. Enjoy</h3>
+                <p id="cms7" class="editable">
+                    Share your unique Portrait with friends and family online,
+                        or get a high-quality print made!
+                </p>
+            </article>
+        </div>
+    </div>
+    <div class="mainbody">
+
+
+        <div class="leftPane">
+            @RenderBody()
+        </div>
+        <div class="rightPane">
+            <div class="notice">
+                Thong tin thong bao!!
+            </div>
+            <div class="rightContent"></div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+
+    <div class="footer">
+
+        @* <div class="bottom">
+            <p id="cms20" class="editable">
+                <a target="_blank" href="http://www.homesessive.com/">AOL-Huff Post Home</a>
+                &copy;2012. All rights Reserved
+         
+            </p>
+            <nav>
+                <a href="blog.html">Blog</a>
+                <a href="#" data-newsletter="open">Newsletter</a>
+                <a href="faq.html">FAQ</a>
+                <a target="_blank" href="http://legal.aol.com/TOS">Terms of Use</a>
+                <a target="_blank" href="http://privacy.aol.com/">Privacy Policy</a>
+            </nav>
+        </div>*@
+    </div>
+
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=152607184915546";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    @*<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>*@
+
+
+    <script src="~/Scripts/js/jquery.lazyload.js"></script>
+
+    <script src="~/Scripts/js/js.js"></script>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            
+            $("img.lazy").lazyload({
+                effect: "fadeIn", failure_limit: 10
+            });
+        });
+        
+    </script>
+</body>
 </html>

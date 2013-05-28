@@ -1,0 +1,17 @@
+.item-info-left
+{
+    display:none;
+}
+.item-right
+{ 
+    max-width:100%;  
+     margin-left:0px;
+}
+.item-right .aitem-top
+{
+    display:inherit;
+}
+.item-info-left .aitem-top
+{
+    display:none;
+}

@@ -102,6 +102,8 @@ E:\githubapp\projectkk\projectk\bin\DotNetOpenAuth.OpenId.xml
 E:\githubapp\projectkk\projectk\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 E:\githubapp\projectkk\projectk\obj\Debug\projectk.dll
 E:\githubapp\projectkk\projectk\obj\Debug\projectk.pdb
+E:\GitHubApp\projectkk\projectk\bin\Common.Logging.dll
+E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache
 D:\projectk\projectk\bin\projectk.dll
 D:\projectk\projectk\bin\projectk.pdb
 D:\projectk\projectk\bin\Antlr3.Runtime.dll
@@ -154,7 +156,3 @@ D:\projectk\projectk\bin\DotNetOpenAuth.OpenId.xml
 D:\projectk\projectk\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 D:\projectk\projectk\obj\Debug\projectk.dll
 D:\projectk\projectk\obj\Debug\projectk.pdb
-D:\projectk\projectk\bin\Common.Logging.dll
-D:\projectk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache
-E:\GitHubApp\projectkk\projectk\bin\Common.Logging.dll
-E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache
