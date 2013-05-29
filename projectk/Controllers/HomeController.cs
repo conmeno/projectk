@@ -26,14 +26,14 @@ namespace projectk.Controllers
 
 
 
-            List<Article> articles = db.Articles.Include(a => a.Category).Include(a => a.UserProfile).ToList();
+            List<Article> articles = db.Articles.Include(a => a.UserProfile).ToList();
             foreach (Article item in articles)
             {
                 //if (item.DropboxShareLinkExpire != null )
                 //{
                 //    int a = 3;
                 //}
-                //if (DateTime.Now > item.DropboxShareLinkExpire)
+                if (DateTime.Now > item.DropboxShareLinkExpire)
                 {
                     var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
                     item.DropboxShareLink = media.Url;

@@ -2,7 +2,7 @@
 {
     background: none repeat scroll 0 0 #46C6E2;
     border-top: 1px solid #3594A9;
-    height: 352px;
+    height: 752px;
     width: 100%; 
     display:none;
     position:fixed;
@@ -20,7 +20,7 @@
 
     #steps-home div.wrapper 
     {
-        width: 768px;
+        max-width: 768px;
     }
 
     #steps-home div.wrapper 
@@ -40,7 +40,7 @@
             margin-left: 5%;
             margin-top: 80px;
             opacity: 0;
-            width: 30%;
+            max-width: 30%;
         }
 
             #steps-home div.wrapper article.f 

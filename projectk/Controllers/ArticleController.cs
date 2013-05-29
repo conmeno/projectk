@@ -24,7 +24,7 @@ namespace projectk.Controllers
 
         public ActionResult Index()
         {
-            var articles = db.Articles.Include(a => a.Category).Include(a => a.UserProfile);
+            var articles = db.Articles.Include(a => a.UserProfile);
             return View(articles.ToList());
         }
 
@@ -46,7 +46,7 @@ namespace projectk.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
+            //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName");
             return View();
         }
@@ -140,7 +140,7 @@ namespace projectk.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
+           // ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
             return View(article);
         }
@@ -155,7 +155,7 @@ namespace projectk.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
+            //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
             return View(article);
         }
@@ -172,7 +172,7 @@ namespace projectk.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
+            //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
             return View(article);
         }

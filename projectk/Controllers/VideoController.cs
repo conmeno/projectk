@@ -12,7 +12,7 @@ using Spring.Social.Dropbox.Connect;
 using Projectk;
 namespace projectk.Controllers
 {
-    public class HotgirlController : Controller
+    public class VideoController : Controller
     {
         private ProjectkContext db = new ProjectkContext();
        
@@ -21,31 +21,10 @@ namespace projectk.Controllers
 
         public ActionResult Index()
         {
-            IOAuth1ServiceProvider<IDropbox> dropboxProvider =
-       new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
-
-            IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
+            
 
 
-
-            List<Article> articles = db.Articles.Include(a => a.UserProfile).ToList();
-            foreach (Article item in articles)
-            {
-                //if (item.DropboxShareLinkExpire != null )
-                //{
-                //    int a = 3;
-                //}
-                if (DateTime.Now > item.DropboxShareLinkExpire)
-                {
-                    var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
-                    item.DropboxShareLink = media.Url;
-                    item.DropboxShareLinkExpire = DateTime.Now.AddDays(1);// media.ExpireDate;
-
-
-                }
-
-            }
-
+            List<Article> articles = db.Articles.Where(a=>a.Cat==(int)Cats.Video).Include(a => a.UserProfile).ToList(); 
             db.SaveChanges();
             return View(articles);
         }

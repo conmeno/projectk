@@ -6,54 +6,34 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using projectk.Models;
+using DropNet;
+using Projectk;
 using Spring.Social.OAuth1;
 using Spring.Social.Dropbox.Api;
 using Spring.Social.Dropbox.Connect;
-using Projectk;
+using System.Web.Security;
+
 namespace projectk.Controllers
 {
-    public class HotgirlController : Controller
+    public class VideoUploadController : Controller
     {
         private ProjectkContext db = new ProjectkContext();
-       
+
         //
-        // GET: /Hotgirl/
+        // GET: /Article/
 
         public ActionResult Index()
         {
-            IOAuth1ServiceProvider<IDropbox> dropboxProvider =
-       new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
-
-            IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
-
-
-
-            List<Article> articles = db.Articles.Include(a => a.UserProfile).ToList();
-            foreach (Article item in articles)
-            {
-                //if (item.DropboxShareLinkExpire != null )
-                //{
-                //    int a = 3;
-                //}
-                if (DateTime.Now > item.DropboxShareLinkExpire)
-                {
-                    var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
-                    item.DropboxShareLink = media.Url;
-                    item.DropboxShareLinkExpire = DateTime.Now.AddDays(1);// media.ExpireDate;
-
-
-                }
-
-            }
-
-            db.SaveChanges();
-            return View(articles);
+            //var articles = db.Articles.Include(a => a.UserProfile);
+            //return View(articles.ToList());
+            ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName");
+            return View();
         }
 
         //
-        // GET: /Hotgirl/Details/5
+        // GET: /Article/Details/5
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(long id = 0)
         {
             Article article = db.Articles.Find(id);
             if (article == null)
@@ -64,7 +44,7 @@ namespace projectk.Controllers
         }
 
         //
-        // GET: /Hotgirl/Create
+        // GET: /Article/Create
 
         public ActionResult Create()
         {
@@ -74,27 +54,39 @@ namespace projectk.Controllers
         }
 
         //
-        // POST: /Hotgirl/Create
+        // POST: /Article/Create
 
         [HttpPost]
-        public ActionResult Create(Article article)
+        public ActionResult Index(Article article)
         {
             if (ModelState.IsValid)
-            {
+            { 
+
                 db.Articles.Add(article);
-                db.SaveChanges();
+                article.DropboxShareLinkExpire = DateTime.Now;
+                //endupload file
+                MembershipUser currentUser;
+                currentUser = Membership.GetUser();
+
+                //article.UserID = currentUser.;
+
+
+                article.UserID = 1;
+                article.Cat = (int)Cats.Video;
+                db.SaveChanges(); 
+
                 return RedirectToAction("Index");
             }
 
-            //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
+           // ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
             return View(article);
         }
 
         //
-        // GET: /Hotgirl/Edit/5
+        // GET: /Article/Edit/5
 
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(long id = 0)
         {
             Article article = db.Articles.Find(id);
             if (article == null)
@@ -107,7 +99,7 @@ namespace projectk.Controllers
         }
 
         //
-        // POST: /Hotgirl/Edit/5
+        // POST: /Article/Edit/5
 
         [HttpPost]
         public ActionResult Edit(Article article)
@@ -124,9 +116,9 @@ namespace projectk.Controllers
         }
 
         //
-        // GET: /Hotgirl/Delete/5
+        // GET: /Article/Delete/5
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(long id = 0)
         {
             Article article = db.Articles.Find(id);
             if (article == null)
@@ -137,10 +129,10 @@ namespace projectk.Controllers
         }
 
         //
-        // POST: /Hotgirl/Delete/5
+        // POST: /Article/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(long id)
         {
             Article article = db.Articles.Find(id);
             db.Articles.Remove(article);

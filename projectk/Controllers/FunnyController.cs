@@ -29,7 +29,7 @@ namespace projectk.Controllers
 
 
 
-            List<Article> articles = db.Articles.Include(a => a.Category).Include(a => a.UserProfile).ToList();
+            List<Article> articles = db.Articles.Include(a => a.UserProfile).ToList();
             foreach (Article item in articles)
             {
                 //if (item.DropboxShareLinkExpire != null )
@@ -69,7 +69,7 @@ namespace projectk.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
+            //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName");
             return View();
         }
@@ -87,7 +87,7 @@ namespace projectk.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
+            //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
             return View(article);
         }
@@ -102,7 +102,7 @@ namespace projectk.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
+            //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
             return View(article);
         }
@@ -119,7 +119,7 @@ namespace projectk.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
+           // ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
             return View(article);
         }

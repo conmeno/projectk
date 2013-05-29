@@ -154,7 +154,9 @@ D:\projectk\projectk\bin\DotNetOpenAuth.OAuth.Consumer.xml
 D:\projectk\projectk\bin\DotNetOpenAuth.OAuth.xml
 D:\projectk\projectk\bin\DotNetOpenAuth.OpenId.xml
 D:\projectk\projectk\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+D:\projectk\projectk\obj\Debug\projectk.Migrations.aaa.resources
+D:\projectk\projectk\obj\Debug\projectk.Migrations.lan2.resources
+D:\projectk\projectk\obj\Debug\projectk.csproj.GenerateResource.Cache
 D:\projectk\projectk\obj\Debug\projectk.dll
 D:\projectk\projectk\obj\Debug\projectk.pdb
-D:\projectk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache
-D:\projectk\projectk\bin\Common.Logging.dll
+D:\projectk\projectk\obj\Debug\projectk.Migrations.lan23.resources

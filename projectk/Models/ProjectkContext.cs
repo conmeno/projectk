@@ -20,7 +20,7 @@ namespace projectk.Models
 
         public DbSet<Article> Articles { get; set; }
 
-        public DbSet<Categories> Categories { get; set; }
+        //public DbSet<Categories> Categories { get; set; }
     }
 
     [Table("UserProfile")]
@@ -47,7 +47,6 @@ namespace projectk.Models
         public string DropboxShareLink { get; set; }
         public DateTime DropboxShareLinkExpire { get; set; }
         public int UserID { get; set; }
-        public int CategoryID { get; set; }
         public Nullable<long> PageView { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
@@ -59,23 +58,33 @@ namespace projectk.Models
         public byte[] ThumbnailData { get; set; }
         public string OtherObject { get; set; }
 
+        public int Cat { get; set; }
 
+        public Cats Category
+        {
+            get { return (Cats)Cat; }
+            set { Cat = (int)value; }
+        }
 
-
-        public virtual Categories Category { get; set; }
+        //public virtual Categories Category { get; set; }
         public virtual UserProfile UserProfile { get; set; }
     }
-    public partial class Categories
-    {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int CategoryID { get; set; }
-        public string Name { get; set; }
+    //public partial class Categories
+    //{
+    //    [Key]
+    //    [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+    //    public int CategoryID { get; set; }
+    //    public string Name { get; set; }
 
-        public virtual ICollection<Article> Articles { get; set; }
+    //    public virtual ICollection<Article> Articles { get; set; }
+    //}
+
+    public enum Cats
+    {
+        Funny = 1, HotGirl = 2, Video = 3,Truyen=4
     }
 
 
 
-     
+
 }
