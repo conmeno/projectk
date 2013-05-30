@@ -26,7 +26,7 @@ namespace projectk.Controllers
 
 
 
-            List<Article> articles = db.Articles.Include(a => a.UserProfile).ToList();
+            List<Article> articles = db.Articles.Where(a=>a.Cat==(int)Cats.Funny).Include(a => a.UserProfile).ToList();
             foreach (Article item in articles)
             {
                 //if (item.DropboxShareLinkExpire != null )

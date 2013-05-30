@@ -21,8 +21,8 @@ namespace projectk.Controllers
 
         public ActionResult Index()
         {
-            
 
+            //http://img.youtube.com/vi/khR2fTZJS4s/0.jpg
 
             List<Article> articles = db.Articles.Where(a=>a.Cat==(int)Cats.Video).Include(a => a.UserProfile).ToList(); 
             db.SaveChanges();

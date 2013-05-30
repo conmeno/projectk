@@ -160,3 +160,7 @@ D:\projectk\projectk\obj\Debug\projectk.csproj.GenerateResource.Cache
 D:\projectk\projectk\obj\Debug\projectk.dll
 D:\projectk\projectk\obj\Debug\projectk.pdb
 D:\projectk\projectk\obj\Debug\projectk.Migrations.lan23.resources
+E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.aaa.resources
+E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.lan2.resources
+E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.lan23.resources
+E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.csproj.GenerateResource.Cache
