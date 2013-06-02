@@ -1,18 +1,23 @@
 ﻿@{List<projectk.Models.Article> articles = (List<projectk.Models.Article>)ViewBag.articles;
-}
+  int i = 0;
+    <div class="so-title">Danh sách các bài liên quan</div>
+    foreach (var item in articles)
+    {
+        i++;
+    <div class="so-item">
 
-@{foreach (var item in articles)
-  {
-      <div class="so-item">
-
-<div class="soi-image">
- <a href="/funny/details/@item.ID">
+        <div class="soi-image">
+            <a href="/funny/details/@item.ID">
                 <img alt="@item.Name" src="data:unknown;base64,@Convert.ToBase64String(item.ThumbnailData)" />
             </a>
-</div>
-<div class="soi-title">@item.Name</div>
-</div>
-  }
-  }
+        </div>
+        <div class="soi-title"><a href="/funny/details/@item.ID">@item.Name</a></div>
+    </div>@*
+        if (i == 4)
+        {
+    <div class="clear"></div>
+        } *@
+    }
+   <div class="clear"></div>
+}
 
- 

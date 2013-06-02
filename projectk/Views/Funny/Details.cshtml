@@ -35,14 +35,17 @@
             </div>
             <div class="item-image">
 
-                <img class="lazy" src="~/Content/images/no.png" data-original="@Model.DropboxShareLink"
-                    alt="@Model.Name" />
+                <a class="imagebox" href="@Model.DropboxShareLink" title="@Model.Name"><img class="lazy" src="~/Content/images/no.png" data-original="@Model.DropboxShareLink"
+                    alt="@Model.Name" /></a>
 
             </div>
         </div>
         <div style="clear: both"></div>
     </div>
 </div>
+
+<div class=""></div>
+
 <div class="suggest-older">
 
     @{

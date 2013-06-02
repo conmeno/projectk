@@ -18,7 +18,7 @@
     <link href='~/Content/footer.css' rel='stylesheet'>
     <link href='~/Content/body.css' rel='stylesheet'>
     <link href='~/Content/admin.css' rel='stylesheet'>
-
+    <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet'
         type='text/css'>
     <!-- <link rel="stylesheet" media="only screen and (max-width: 1024px) and (min-width: 769px)" href="1024.css-->
@@ -156,7 +156,7 @@
 
 
     <script src="~/Scripts/js/jquery.lazyload.js"></script>
-
+    <script src="~/Scripts/js/jquery.colorbox-min.js"></script>
     <script src="~/Scripts/js/js.js"></script>
 
 
@@ -167,6 +167,7 @@
             $("img.lazy").lazyload({
                 effect: "fadeIn", failure_limit: 10
             });
+            $(".imagebox").colorbox({ rel: 'group3', transition: "none", width: "75%", height: "75%" });
         });
 
     </script>

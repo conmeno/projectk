@@ -91,15 +91,13 @@ namespace projectk.Controllers
 
 
 
-                        var temp = _client.GetMediaLinkAsync(article.ExternalURL);
-                       
-                    
+                        var temp = _client.GetMediaLinkAsync(article.ExternalURL); 
 
 
                         if (temp != null) article.DropboxShareLink = temp.Result.Url;
                         article.DropboxShareLinkExpire = DateTime.Now.AddHours(3);
 
-                        var a1 = _client.DownloadThumbnailAsync(article.ExternalURL, ThumbnailFormat.Jpeg, ThumbnailSize.Small).Result;
+                        var a1 = _client.DownloadThumbnailAsync(article.ExternalURL, ThumbnailFormat.Jpeg, ThumbnailSize.Medium).Result;
                         article.ThumbnailData = a1.Content;
                    
                           
@@ -114,7 +112,7 @@ namespace projectk.Controllers
 
                 article.UserID = 1;
 
-
+                article.Cat = (int)Cats.Funny;
 
 
                 db.Articles.Add(article);

@@ -26,7 +26,7 @@ namespace projectk.Controllers
         [ChildActionOnly]
         public ActionResult OlderFunny(int ID)
         {
-            List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny && a.ID>ID).Take(5).ToList();
+            List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny && a.ID>ID).Take(8).ToList();
             ViewBag.articles = articles;
             return PartialView();
         }
