@@ -164,3 +164,5 @@ E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.aaa.resources
 E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.lan2.resources
 E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.lan23.resources
 E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.csproj.GenerateResource.Cache
+D:\projectk\projectk\obj\Debug\projectk.Migrations.aabc.resources
+D:\projectk\projectk\obj\Debug\projectk.Migrations.articleimage.resources

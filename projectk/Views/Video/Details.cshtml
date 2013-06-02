@@ -4,103 +4,40 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="articles">
+ 
+    <div class="aitem">
+        <div class="item-info-left">
 
-<fieldset>
-    <legend>Article</legend>
+            <div class="aitem-top">
+                <div class="aitem-title"> @Model.Name)</div>
+                <div class="aitem-title">
+                    <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
+                            rain</span></a>
+                </div>
+                <div>
+                    <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
+                </div>
+            </div>
+        </div>
+        <div class="item-right">
+            <div class="aitem-top">
+                <div class="aitem-title"> @Model.Name</div>
+                <div class="aitem-title">
+                    <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
+                            rain</span></a>
+                </div>
+                <div class="pageview">
+                    <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
+                </div>
+            </div>
+            <div class="item-image">
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Name)
-    </div>
+                <iframe width="420" height="315" src="http://www.youtube.com/embed/@Model.getYoutubeID()" frameborder="0" allowfullscreen></iframe>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.ExternalURL)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ExternalURL)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DropboxShareLink)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DropboxShareLink)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DropboxShareLinkExpire)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DropboxShareLinkExpire)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.UserProfile.UserName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UserProfile.UserName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Category.Name)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Category.Name)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.PageView)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.PageView)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Description)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Content)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Content)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.LocalURL)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LocalURL)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Status)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Status)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.IsHot)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.IsHot)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.OtherObject)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.OtherObject)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div> 
+ 
+</div>

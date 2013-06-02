@@ -20,6 +20,7 @@ namespace projectk.Models
 
         public DbSet<Article> Articles { get; set; }
 
+        public DbSet<ArticleImages> ArticleImages { get; set; }
         //public DbSet<Categories> Categories { get; set; }
     }
 
@@ -68,7 +69,29 @@ namespace projectk.Models
 
         //public virtual Categories Category { get; set; }
         public virtual UserProfile UserProfile { get; set; }
+
+        public string getYoutubeID()
+        {
+            if (this.Category == Cats.Video)
+            {
+                var list = this.ExternalURL.Split('=');
+                if (list.Length > 1)
+                    return list[1];
+                return "";
+            }
+            return "";
+        }
     }
+    public class ArticleImages
+    {
+        public int ID { get; set; }
+        public int ArticleID { get; set; }
+        public string LocalURL { get; set; }
+        public string DropboxURL { get; set; }
+        public string DropboxShareLink { get; set; }
+        public DateTime DropboxShareLinkExpire { get; set; }
+    }
+
     //public partial class Categories
     //{
     //    [Key]

@@ -183,6 +183,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\UpdateLinkController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Controllers\VideoUploadController.cs" />
     <Compile Include="Controllers\ImageUploadController.cs" />
@@ -206,6 +207,14 @@
     <Compile Include="Migrations\201305291626379_lan23.cs" />
     <Compile Include="Migrations\201305291626379_lan23.Designer.cs">
       <DependentUpon>201305291626379_lan23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306010440268_aabc.cs" />
+    <Compile Include="Migrations\201306010440268_aabc.Designer.cs">
+      <DependentUpon>201306010440268_aabc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306010441294_articleimage.cs" />
+    <Compile Include="Migrations\201306010441294_articleimage.Designer.cs">
+      <DependentUpon>201306010441294_articleimage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
@@ -355,6 +364,8 @@
     <Content Include="Views\Video\Details.cshtml" />
     <Content Include="Views\Video\Edit.cshtml" />
     <Content Include="Views\Video\Index.cshtml" />
+    <Content Include="Views\Suggestion\OlderFunny.cshtml" />
+    <Content Include="Views\UpdateLink\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -371,6 +382,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201305291626379_lan23.resx">
       <DependentUpon>201305291626379_lan23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306010440268_aabc.resx">
+      <DependentUpon>201306010440268_aabc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306010441294_articleimage.resx">
+      <DependentUpon>201306010441294_articleimage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

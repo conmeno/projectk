@@ -4,16 +4,15 @@
     ViewBag.Title = "Details";
 }
 <div>
-
-@*<img src="data:unknown;base64,@Convert.ToBase64String(Model.ThumbnailData)" />*@
 </div>
 <div class="articles">
- <div class="fb-like" data-href="@Context.Request.Url.ToString()" data-send="true" data-width="450" data-show-faces="true"></div>
+    <div class="fb-like" data-href="@Context.Request.Url.ToString()" data-send="true" data-width="450" data-show-faces="true">
+    </div>
     <div class="aitem">
         <div class="item-info-left">
 
             <div class="aitem-top">
-                <div class="aitem-title"> @Model.Name</div>
+                <div class="aitem-title">@Model.Name</div>
                 <div class="aitem-title">
                     <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
                             rain</span></a>
@@ -25,12 +24,12 @@
         </div>
         <div class="item-right">
             <div class="aitem-top">
-                <div class="aitem-title"> @Model.Name</div>
+                <div class="aitem-title">@Model.Name</div>
                 <div class="aitem-title">
                     <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
                             rain</span></a>
                 </div>
-                <div class="pageview">
+                <div class="pageview>"
                     <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
                 </div>
             </div>
@@ -42,7 +41,12 @@
             </div>
         </div>
         <div style="clear: both"></div>
-    </div>  
+    </div>
 </div>
+<div class="suggest-older">
 
-<div class="fb-comments" data-href="http://example.com" data-width="470" data-num-posts="10"></div>
+    @{
+        Html.RenderAction("OlderFunny", "Suggestion",new {ID=@Model.ID});
+    }
+</div>
+@*<div class="fb-comments" data-href="http://example.com" data-width="470" data-num-posts="10"></div>*@

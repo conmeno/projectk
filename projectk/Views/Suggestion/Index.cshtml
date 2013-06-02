@@ -1,5 +1,52 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
+@{List<projectk.Models.Article> ListTopVideo = (List<projectk.Models.Article>)ViewBag.listTopView;
+    
+    <div>Video Moi</div>
+    foreach (var item in ListTopVideo)
+    {
+    <div>
 
-Danh sach de nghi xem
+        <div class="sitem-left">
+            <a href="/video/details/@item.ID">
+                <img alt="video" src="http://img.youtube.com/vi/@item.getYoutubeID()/1.jpg" /></a>
+        </div>
+        <div class="sitem-right">
+            <div><a href="/video/details/@item.ID">@item.Name</a></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    }
+   
+
+}
+
+
+
+
+@{List<projectk.Models.Article> ListTopFunny = (List<projectk.Models.Article>)ViewBag.listTopFunny;
+    
+    <div>Funny moi</div>
+    foreach (var item in ListTopFunny)
+    {
+  
+    <div>
+        <div class="si-image">
+
+            <a href="/funny/details/@item.ID">
+                <img alt="@item.Name" src="data:unknown;base64,@Convert.ToBase64String(item.ThumbnailData)" />
+            </a>
+        </div>
+        <div class="si-title">
+            <div><a href="/funny/details/@item.ID">@item.Name</a></div>
+        </div>
+        <div class="clear"></div>
+    </div>
+        
+        
+    }
+   
+
+}
+

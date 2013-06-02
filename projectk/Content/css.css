@@ -193,7 +193,10 @@ margin:0;
 p,pre,dl,menu,ol,ul {
 margin:1em 0;
 }
-
+.clear
+{
+    clear:both;
+}
 /*end reset css*/
 .header
 {
