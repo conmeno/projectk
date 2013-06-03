@@ -1,0 +1,111 @@
+#steps-home 
+{
+    background: none repeat scroll 0 0 #46C6E2;
+    border-top: 1px solid #3594A9;
+    height: 352px;
+    width: 100%; 
+    display:none;
+    position:fixed;
+    top:100px;
+    z-index:999;
+}
+
+    #steps-home div.wrapper 
+    {
+        display: block;
+        height: inherit;
+        margin: auto;
+        width: 1080px;
+    }
+
+    #steps-home div.wrapper 
+    {
+        width: 768px;
+    }
+
+    #steps-home div.wrapper 
+    {
+        width: 100%;
+    }
+
+    #steps-home div.wrapper 
+    {
+        width: 1080px;
+    }
+
+        #steps-home div.wrapper article 
+        {
+            float: left;
+            height: 200px;
+            margin-left: 5%;
+            margin-top: 80px;
+            opacity: 0;
+            width: 30%;
+        }
+
+            #steps-home div.wrapper article.f 
+            {
+                margin-left: 0;
+            }
+
+            #steps-home div.wrapper article div.icon 
+            {
+                display: block;
+                height: 66px;
+                margin: auto;
+                width: 24%;
+            }
+
+            #steps-home div.wrapper article h3 
+            {
+                color: white;
+                font-family: "Camphor W01 Bold";
+                font-size: 32px;
+                letter-spacing: 0;
+                line-height: 48px;
+                margin: 0;
+                text-align: center;
+            }
+
+            #steps-home div.wrapper article p 
+            {
+                color: white;
+                font-family: "Camphor W01 Medium";
+                font-size: 14px;
+                letter-spacing: 0;
+                line-height: 24px;
+                text-align: center;
+            }
+
+            #steps-home div.wrapper article.upload 
+            {
+                transition: opacity 800ms cubic-bezier(0, 0, 0.25, 1) 0s;
+            }
+
+                #steps-home div.wrapper article.upload div.icon 
+                {
+                    background: url("images/upload.png") no-repeat transparent;
+                    width: 77px;
+                }
+
+            #steps-home div.wrapper article.edit 
+            {
+                transition: opacity 800ms cubic-bezier(0, 0, 0.25, 1) 250ms;
+            }
+
+                #steps-home div.wrapper article.edit div.icon 
+                {
+                    background: url("images/edit.png") no-repeat transparent;
+                    width: 55px;
+                }
+
+            #steps-home div.wrapper article.enjoy 
+            {
+                transition: opacity 800ms cubic-bezier(0, 0, 0.25, 1) 500ms;
+            }
+
+                #steps-home div.wrapper article.enjoy div.icon 
+                {
+                    background: url("images/enjoy.png") no-repeat transparent;
+                    width: 78px;
+                }
