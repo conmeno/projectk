@@ -23,13 +23,13 @@ namespace projectk.Controllers
         public ActionResult Index()
         {
             IOAuth1ServiceProvider<IDropbox> dropboxProvider =
-        new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
+         new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
 
             IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
 
 
 
-            List<Article> articles = db.Articles.Include(a => a.UserProfile).ToList();
+            List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny).Include(a => a.UserProfile).ToList();
             foreach (Article item in articles)
             {
                 //if (item.DropboxShareLinkExpire != null )
@@ -40,13 +40,11 @@ namespace projectk.Controllers
                 {
                     var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
                     item.DropboxShareLink = media.Url;
-                    item.DropboxShareLinkExpire = DateTime.Now.AddDays(1);// media.ExpireDate;
-
-
+                    item.DropboxShareLinkExpire = media.ExpireDate;
                 }
 
             }
-           
+
             db.SaveChanges();
             return View(articles);
         }

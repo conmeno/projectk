@@ -366,6 +366,7 @@
     <Content Include="Views\Video\Index.cshtml" />
     <Content Include="Views\Suggestion\OlderFunny.cshtml" />
     <Content Include="Views\UpdateLink\Index.cshtml" />
+    <Content Include="Views\Suggestion\OlderVideo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -100,16 +100,22 @@
     max-width:700px;
     min-height:300px;
 }
+.si-item
+{
+   margin: 10px 0px;
+}
 .si-image
 {
     width:120px;
     float:left;
+    text-align:center;
 }
 .si-title
 {
     margin-left:10px;
     width:100px;
     float:left;
+
 }
 .so-title
 {
@@ -121,7 +127,7 @@
 {
     border: 1px solid #A5A5A5;
     float: left;
-    height: 180px;
+    height: 130px;
     margin: 10px;
     padding: 10px;
     text-align: center;

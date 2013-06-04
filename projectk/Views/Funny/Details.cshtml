@@ -14,8 +14,19 @@
             <div class="aitem-top">
                 <div class="aitem-title">@Model.Name</div>
                 <div class="aitem-title">
-                    <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
-                            rain</span></a>
+                    <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">
+                     @{
+                         string userName = "";
+                         try{
+                         MembershipUser mu = Membership.GetUser(Model.UserID);
+                          userName = mu.UserName;
+                         }catch
+                         {
+                             userName = "khong tim duoc ";
+                         }
+                     }
+                     @userName
+                                                          </span></a>
                 </div>
                 <div>
                     <span>View: 6422</span>&nbsp;<span>Like: 6422</span>

@@ -15,16 +15,47 @@
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <link href='~/Content/css.css' rel='stylesheet'>
-    <link href='~/Content/footer.css' rel='stylesheet'>
+
     <link href='~/Content/body.css' rel='stylesheet'>
-    <link href='~/Content/admin.css' rel='stylesheet'>
+    <!--<link href='~/Content/footer.css' rel='stylesheet'>
+    
+    <link href='~/Content/admin.css' rel='stylesheet'>-->
     <link href="~/Content/colorbox/colorbox.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:700' rel='stylesheet'
         type='text/css'>
-    <!-- <link rel="stylesheet" media="only screen and (max-width: 1024px) and (min-width: 769px)" href="1024.css-->
 
-    <link rel="stylesheet" media="only screen and (max-width: 900px)" href="~/Content/table.css">
-    <link rel="stylesheet" media="only screen and (max-width: 600px)" href="~/Content/mobile.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap/css/bootstrap-responsive.css">
+    <!-- <link rel="stylesheet" media="only screen and (max-width: 1024px) and (min-width: 769px)" href="1024.css
+
+  <link rel="stylesheet" media="only screen and (max-width: 900px)" href="~/Content/table.css">
+    <link rel="stylesheet" media="only screen and (max-width: 600px)" href="~/Content/mobile.css"> -->
+    <style>
+        .container-fluid
+        {
+            margin-top: 130px;
+        }
+
+        .article-content
+        {
+            padding: 15px;
+            border: solid 1px #D6D6D6;
+            border-radius: 7px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .suggestion
+        {
+            border: solid 1px #D6D6D6;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .aitem
+        {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <div class="header" style="opacity: 1;">
@@ -63,6 +94,22 @@
                 <div class="currentUsername"><a href="#">@User.Identity.Name</a> </div>
                 }
             }
+            <div class="currentUsername">
+                <div class="dropdown">
+                    <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                        Chia sẻ nội dung<b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                        <li><a tabindex="-1" href="#">Action</a></li>
+                        <li><a tabindex="-1" href="#">Another action</a></li>
+                        <li><a tabindex="-1" href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="#">Separated link</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+
             <div class="panel big">
             </div>
             <div class="panel small">
@@ -70,76 +117,98 @@
         </div>
     </div>
 
-    <div id="steps-home">
-        <div class="wrapper">
-            <section class="social" id="socialLoginForm">
-                <h2>Use another service to log in.</h2>
-                @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = Context.Request.Url.ToString() })
-            </section>
-            <article class="upload f" style="opacity: 1;">
-                <div class="icon"></div>
-                <h3>1. Upload</h3>
-                <p id="cms5" class="editable">
-                    Choose your best photo to use as the base for your work
-                        of art!
-                </p>
-            </article>
-            <article class="edit" style="opacity: 1;">
-                <div class="icon"></div>
-                <h3>2. Edit</h3>
-                <p id="cms6" class="editable">
-                    Give your piece of work a little personality with color,
-                        texture and a caption.
-                </p>
-            </article>
-            <article class="enjoy" style="opacity: 1;">
-                <div class="icon"></div>
-                <h3>3. Enjoy</h3>
-                <p id="cms7" class="editable">
-                    Share your unique Portrait with friends and family online,
-                        or get a high-quality print made!
-                </p>
-            </article>
-        </div>
-    </div>
-    <div class="mainbody">
-        <div class="fb-like" data-href="http://www.conmeno.com" data-send="true" data-width="450"
-            data-show-faces="true"></div>
+    <div class="container-fluid">
+
+        @*<div class="row-fluid">
+
+            <div class="span5 offset2" style="border: solid 1px red;">
+                <!--<button class="btn btn-large btn-primary" type="button">Large button</button>-->
 
 
-        <div class="leftPane">
-            @RenderBody()
-        </div>
-        <div class="rightPane">
-            <div class="notice">
-                Thong tin thong bao!!
+                <div class="dropdown visible-desktop">
+                    <a href="#" id="A5" role="button" class="btn btn-large btn-primary" data-toggle="dropdown">
+                        Dropdown xx <b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="A5">
+                        <li><a tabindex="-1" href="#">Action</a></li>
+                        <li><a tabindex="-1" href="#">Another action</a></li>
+                        <li><a tabindex="-1" href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="#">Separated link</a></li>
+                    </ul>
+                </div>
+                <div class="alert">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Warning!</strong> Best check yo self, you're not looking too good.
+                </div>
+
+
             </div>
-            <div class="rightContent">
-                @{
-                    Html.RenderAction("Index", "Suggestion");
-                }
-            </div>
-        </div>
-        <div style="clear: both;"></div>
-    </div>
-
-    <div class="footer">
-
-        @* <div class="bottom">
-            <p id="cms20" class="editable">
-                <a target="_blank" href="http://www.homesessive.com/">AOL-Huff Post Home</a>
-                &copy;2012. All rights Reserved
-         
-            </p>
-            <nav>
-                <a href="blog.html">Blog</a>
-                <a href="#" data-newsletter="open">Newsletter</a>
-                <a href="faq.html">FAQ</a>
-                <a target="_blank" href="http://legal.aol.com/TOS">Terms of Use</a>
-                <a target="_blank" href="http://privacy.aol.com/">Privacy Policy</a>
-            </nav>
         </div>*@
+        @*  <div id="steps-home">
+            <div class="wrapper">
+
+                <div class="row-fluid">
+                    <div class="span4">
+                        <article class="upload f" style="opacity: 1;">
+                            <div class="icon"></div>
+                            <h3>1. Upload</h3>
+                            <p id="cms5" class="editable">
+                                Choose your best photo to use as the base for your work
+                        of art!
+                            </p>
+                        </article>
+                    </div>
+                    <div class="span4">
+                        <article class="edit" style="opacity: 1;">
+                            <div class="icon"></div>
+                            <h3>2. Edit</h3>
+                            <p id="cms6" class="editable">
+                                Give your piece of work a little personality with color,
+                        texture and a caption.
+                            </p>
+                        </article>
+                    </div>
+                    <div class="span4">
+                        <article class="enjoy" style="opacity: 1;">
+                            <div class="icon"></div>
+                            <h3>3. Enjoy</h3>
+                            <p id="cms7" class="editable">
+                                Share your unique Portrait with friends and family online,
+                        or get a high-quality print made!
+                            </p>
+                        </article>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>*@
+        <div class="row-fluid">
+
+            <div class="span9">
+                <div class="article-content">
+                    @RenderBody()
+                </div>
+
+
+            </div>
+            <div class="span3">
+                <div class="suggestion">
+                    <div class="well">
+                        Like và chia sẻ conmeno.com lên fb của bạn là niềm hạnh phúc lớn của chúng tôi :)
+                        <div class="fb-like" data-href="http://www.conmeno.com" data-send="true" data-width="200"
+                            data-show-faces="true">
+                        </div>
+                    </div>
+                    @{
+                        Html.RenderAction("Index", "Suggestion");
+                    }
+                </div>
+            </div>
+        </div>
     </div>
+
 
     <div id="fb-root"></div>
     <script>(function (d, s, id) {
@@ -153,7 +222,7 @@
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
     @*<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>*@
-
+    <script type="text/javascript" src="~/Content/bootstrap/js/bootstrap.min.js"></script>
 
     <script src="~/Scripts/js/jquery.lazyload.js"></script>
     <script src="~/Scripts/js/jquery.colorbox-min.js"></script>

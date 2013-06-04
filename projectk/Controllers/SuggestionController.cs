@@ -30,6 +30,13 @@ namespace projectk.Controllers
             ViewBag.articles = articles;
             return PartialView();
         }
+        [ChildActionOnly]
+        public ActionResult OlderVideo(int ID)
+        {
+            List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.Video && a.ID > ID).Take(8).ToList();
+            ViewBag.articles = articles;
+            return PartialView();
+        }
 
 
     }
