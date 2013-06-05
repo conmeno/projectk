@@ -48,13 +48,15 @@ namespace projectk.Models
         public string DropboxShareLink { get; set; }
         public DateTime DropboxShareLinkExpire { get; set; }
         public int UserID { get; set; }
-        public Nullable<long> PageView { get; set; }
+        public long PageView { get; set; }
+        public long Like { get; set; }
+        public long Comment { get; set; }
         public string Description { get; set; }
         public string Content { get; set; }
         public string LocalURL { get; set; }
         public int Status { get; set; }
         public bool IsHot { get; set; }
-
+        public string Source { get; set; }
 
         public byte[] ThumbnailData { get; set; }
         public string OtherObject { get; set; }

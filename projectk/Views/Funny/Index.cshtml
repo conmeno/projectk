@@ -51,7 +51,7 @@
 
                 <div class="aitem-top">
                     <div class="aitem-title">
-                        <a href="funny/details/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
+                        <h4><a href="funny/details/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a></h4>
                     </div>
                     <div class="aitem-title">
 
@@ -72,7 +72,7 @@
                         </span></a>
                     </div>
                     <div>
-                        <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
+                        <span>View: @item.PageView</span>&nbsp;<span>Comment: @item.Comment</span>
                     </div> 
                     <div class="fb-like" data-href="@Context.Request.Url.ToString()" data-send="false" data-layout="button_count" data-width="50" data-show-faces="true"></div>
                 </div>

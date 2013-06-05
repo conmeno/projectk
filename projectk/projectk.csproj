@@ -216,6 +216,14 @@
     <Compile Include="Migrations\201306010441294_articleimage.Designer.cs">
       <DependentUpon>201306010441294_articleimage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306051605026_addlikefb.cs" />
+    <Compile Include="Migrations\201306051605026_addlikefb.Designer.cs">
+      <DependentUpon>201306051605026_addlikefb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201306051610507_addsource.cs" />
+    <Compile Include="Migrations\201306051610507_addsource.Designer.cs">
+      <DependentUpon>201306051610507_addsource.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ProjectkContext.cs" />
@@ -389,6 +397,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306010441294_articleimage.resx">
       <DependentUpon>201306010441294_articleimage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306051605026_addlikefb.resx">
+      <DependentUpon>201306051605026_addlikefb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306051610507_addsource.resx">
+      <DependentUpon>201306051610507_addsource.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
