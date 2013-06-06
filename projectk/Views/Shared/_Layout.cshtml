@@ -169,73 +169,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-
-        @*<div class="row-fluid">
-
-            <div class="span5 offset2" style="border: solid 1px red;">
-                <!--<button class="btn btn-large btn-primary" type="button">Large button</button>-->
-
-
-                <div class="dropdown visible-desktop">
-                    <a href="#" id="A5" role="button" class="btn btn-large btn-primary" data-toggle="dropdown">
-                        Dropdown xx <b class="caret"></b></a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="A5">
-                        <li><a tabindex="-1" href="#">Action</a></li>
-                        <li><a tabindex="-1" href="#">Another action</a></li>
-                        <li><a tabindex="-1" href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="#">Separated link</a></li>
-                    </ul>
-                </div>
-                <div class="alert">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Warning!</strong> Best check yo self, you're not looking too good.
-                </div>
-
-
-            </div>
-        </div>*@
-        @*  <div id="steps-home">
-            <div class="wrapper">
-
-                <div class="row-fluid">
-                    <div class="span4">
-                        <article class="upload f" style="opacity: 1;">
-                            <div class="icon"></div>
-                            <h3>1. Upload</h3>
-                            <p id="cms5" class="editable">
-                                Choose your best photo to use as the base for your work
-                        of art!
-                            </p>
-                        </article>
-                    </div>
-                    <div class="span4">
-                        <article class="edit" style="opacity: 1;">
-                            <div class="icon"></div>
-                            <h3>2. Edit</h3>
-                            <p id="cms6" class="editable">
-                                Give your piece of work a little personality with color,
-                        texture and a caption.
-                            </p>
-                        </article>
-                    </div>
-                    <div class="span4">
-                        <article class="enjoy" style="opacity: 1;">
-                            <div class="icon"></div>
-                            <h3>3. Enjoy</h3>
-                            <p id="cms7" class="editable">
-                                Share your unique Portrait with friends and family online,
-                        or get a high-quality print made!
-                            </p>
-                        </article>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>*@
+    <div class="container-fluid"> 
         <div class="row-fluid">
 
             <div class="span9">
@@ -263,13 +197,13 @@
 
 
     <div id="fb-root"></div>
-    <script>(function (d, s, id) {
+  @*  <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=152607184915546";
     fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));</script>*@
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
@@ -292,5 +226,41 @@
         });
 
     </script>
+
+
+
+     <script src="//connect.facebook.net/en_US/all.js#xfbml=1&appId=567852689902024"></script>
+
+    <script type="text/javascript">
+        FB.Event.subscribe('edge.create',
+        function (response) {
+            $.ajax({
+                url: '/aj/updatelike?link=' + response, success: function (result) {
+                    $("#container1").append(result);
+                }
+            });
+            //alert('You liked the URL: ' + response);
+        }
+);
+        FB.Event.subscribe('edge.remove',
+      function (response) {
+          $.ajax({
+              url: '/aj/updateunlike?link=' + response, success: function (result) {
+                  $("#container1").append(result);
+              }
+          });
+          //alert('You liked the URL: ' + response);
+      }
+);
+        $(document).keypress(function (e) {
+            if (e.keyCode == 37) {
+                alert('You pressed left arrow key!');
+            }
+            if (e.keyCode == 39) {
+                alert('You pressed right arrow key!');
+            }
+        });
+
+</script>
 </body>
 </html>

@@ -224,6 +224,10 @@
     <Compile Include="Migrations\201306051610507_addsource.Designer.cs">
       <DependentUpon>201306051610507_addsource.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201306061608333_addusername_toArticle.cs" />
+    <Compile Include="Migrations\201306061608333_addusername_toArticle.Designer.cs">
+      <DependentUpon>201306061608333_addusername_toArticle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ProjectkContext.cs" />
@@ -403,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306051610507_addsource.resx">
       <DependentUpon>201306051610507_addsource.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201306061608333_addusername_toArticle.resx">
+      <DependentUpon>201306061608333_addusername_toArticle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -57,6 +57,7 @@ namespace projectk.Models
         public int Status { get; set; }
         public bool IsHot { get; set; }
         public string Source { get; set; }
+        public string UserName { get; set; }
 
         public byte[] ThumbnailData { get; set; }
         public string OtherObject { get; set; }

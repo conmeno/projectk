@@ -124,8 +124,7 @@
     padding:10px;
 }
 .so-item
-{
-    border: 1px solid #A5A5A5;
+{ 
     float: left;
     height: 130px;
     margin: 10px;
@@ -136,7 +135,7 @@
 .sio-image
 {
      
-     
+     border: 1px solid #A5A5A5;
 }
 .sio-title
 {
