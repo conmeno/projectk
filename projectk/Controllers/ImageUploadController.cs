@@ -77,9 +77,12 @@ namespace projectk.Controllers
                     string filename = uniqueID + "_" + ofile.FileName;
                     if (ofile.ContentLength > 0)                    
                     {
+                         
                         ofile.SaveAs( Variable.WebFolder()+"/Upload/" + filename);
+                        var image=System.Drawing.Image.FromFile(Variable.WebFolder() + "/Upload/" + filename);
+                        
                         Spring.IO.FileResource file = new Spring.IO.FileResource(Variable.WebFolder() + "/Upload/" + filename);
-
+                        
                         string DropboxURL = "/conmeno/" + filename;
 
 

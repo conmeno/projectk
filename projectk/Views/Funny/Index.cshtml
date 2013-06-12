@@ -47,11 +47,13 @@
 {
     <div class="aitem">
         <div class="row-fluid">
-            <div class="span3">
+         
+            <div class="span4">
 
                 <div class="aitem-top">
                     <div class="aitem-title">
-                        <h4><a href="funny/details/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a></h4>
+                        <h4><a href="funny/details/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
+                        </h4>
                     </div>
                     <div class="aitem-title">
 
@@ -73,14 +75,15 @@
                     </div>
                     <div>
                         <span>View: @item.PageView</span>&nbsp;<span>Comment: @item.Comment</span>
-                    </div> 
-                    <div class="fb-like" data-href="@Context.Request.Url.ToString()" data-send="false" data-layout="button_count" data-width="50" data-show-faces="true"></div>
+                    </div>
+                    <div class="fb-like" data-href="@Context.Request.Url.ToString()" data-send="false" data-layout="button_count" data-width="50" data-show-faces="true">
+                    </div>
                 </div>
             </div>
-            <div class="span9">
+            <div class="span8">
                 <div class="item-image">
                     <a href="/funny/details/@item.ID">
-                        <img class="lazy img-polaroid" src="~/Content/images/no.png" data-original="@Html.DisplayFor(modelItem => item.DropboxShareLink)"
+                        <img class="lazy img-polaroid"  src="~/Content/images/loading_anim.gif" data-original="@Html.DisplayFor(modelItem => item.DropboxShareLink)"
                     alt="@Html.DisplayFor(modelItem => item.Name)" />
 
                     </a>
@@ -90,5 +93,6 @@
         </div>
 
     </div>
+    <div class="separate"></div>
 }
 

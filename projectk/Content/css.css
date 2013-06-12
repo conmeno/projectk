@@ -456,26 +456,33 @@ margin:1em 0;
 }*/
 .currentUsername
 {
+    float:left;
+    /*margin-top:15px;
+    margin-right: 23px;*/
+}
+.header-right
+{
         position: fixed;
-        right: 65px;
-        top: 43px;
+        right:0px;
+        top: 24px;
         z-index:99999;
+        margin-right:20px;
 }
 
-.currentUsername a  {
+.header-right a  {
     color: #00A3E5;
     text-decoration: none;
 }
-.header.small div.wrapper .currentUsername
+.header.small div.wrapper .header-right
 {
     top:32px;
     right: 45px;
 }
     .header div.wrapper .panel
     {
-        position: fixed;
+        /*position: fixed; 
         right: 0;
-        top: 25px;
+        top: 25px;*/
         z-index:99999;
     }
 

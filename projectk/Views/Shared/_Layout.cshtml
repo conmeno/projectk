@@ -30,201 +30,28 @@
 
   <link rel="stylesheet" media="only screen and (max-width: 900px)" href="~/Content/table.css">
     <link rel="stylesheet" media="only screen and (max-width: 600px)" href="~/Content/mobile.css"> -->
-    <style>
-        .container-fluid
-        {
-            margin-top: 130px;
-        }
-
-        .article-content
-        {
-            padding: 15px;
-            border: solid 1px #D6D6D6;
-            border-radius: 7px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        }
-
-        .suggestion
-        {
-            border: solid 1px #D6D6D6;
-            border-radius: 5px;
-            padding: 10px;
-        }
-
-        .aitem
-        {
-            margin-bottom: 10px;
-        }
-
-        /*detail*/
-        .title-detail
-        {
-            height: 70px;
-            border-radius: 4px;
-            text-align: center;
-            background-color: #006DCC;
-            background-image: linear-gradient(to bottom, #0088CC, #0044CC);
-            background-repeat: repeat-x;
-            border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-            color: #FFFFFF;
-            text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-            margin-bottom: 5px;
-        }
-
-        .author-info
-        {
-            height: 70px;
-            border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-        }
-
-        .a-prev
-        {
-            background: url(/images/prev.png) no-repeat center center;
-            width: 70px;
-            height: 70px;
-        }
-
-        .a-next
-        {
-            background: url(/images/next.png) no-repeat center center;
-            width: 70px;
-            height: 70px;
-        }
-
-        .a-control:hover
-        {
-            background-color: #a5a5a5;
-            opacity: 0.5;
-        }
-
-        .a-control a:hover
-        {
-            background: none;
-        }
-
-        .a-rate div
-        {
-            padding-bottom: 5px;
-            float: left;
-        }
-
-        /*panel*/
-        #mobileMenu
-        {
-          position: fixed;
-    text-align: center;
-    top: 125px;
-    width: 100%;
-    z-index: 999;
-    background-color:#a5a5a5;
-   
-        }
-    </style>
+  
 </head>
-<body>
-    <div class="header" style="opacity: 1;">
-        <div class="barcolors"></div>
-        <div class="wrapper">
-            <h2 class="big">Super Rain</h2>
-            <h2 class="small">Super Rain</h2>
-            <!--  <a title="" href="#" class="toggle-dropdown">
-                <span>waht</span>
-            </a>-->
-            <nav class="desktop">
-                <a href="/funny">Funny
-           
-                    <span></span>
-                </a>
-                <a href="/hotgirl">Hot girl
-           
-                    <span></span>
-                </a>
-                <a href="/video">Video 
-                    <span></span>
-                </a>
-                <a href="#">Truyện cười 
-                    <span></span>
-                </a>
-
-            </nav>
-            <div class="currentUsername">
-                @{
-                
-               
-                
-               
-                    if (User.Identity.IsAuthenticated)
-                    {
-                 
-                    
-                     
-                    <div class="dropdown">
-                        <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                            @User.Identity.Name<b class="caret"></b></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                            <li><a tabindex="-1" href="#">Upload Funny</a></li>
-                            <li><a tabindex="-1" href="#">Upload Video</a></li>
-                            <li><a tabindex="-1" href="#">Upload Hotgirl</a></li>
-                            <li><a tabindex="-1" href="#">Upload Truyện cười</a></li>
-                            <li class="divider"></li>
-                            <li><a tabindex="-1" href="#">Log Out</a></li>
-                        </ul>
-                    </div>
-            
-                    
-
-                    }
-                    else
-                    {
-                      
-                    @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
-                    }
-
-               
-                
-                }
-            </div>
-
-
-
-
-            <div class="panel big" data-toggle="collapse" data-target="#mobileMenu">
-            </div>
-            <div class="panel small" data-toggle="collapse" data-target="#mobileMenu">
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div id="mobileMenu" class="collapse">
-
-                <ul class="nav nav-pills nav-stacked">
-
-                    <li><a href="/">Home</a></li>
-                    <li class="active"><a href="/funny">Funny</a></li>
-                    <li><a href="/hotgirl">Hot girl</a></li>
-                    <li><a href="/video">Video</a></li>
-                    <li><a href="/truyencuoi">Truyện cười</a></li>
-                </ul>
-            </div>
-        </div>
+<body> 
+  @Html.Partial("_header")
+    <div class="container-fluid"> 
         <div class="row-fluid">
 
-            <div class="span9">
+            <div class="span8">
                 <div class="article-content">
                     @RenderBody()
                 </div>
 
 
             </div>
-            <div class="span3">
+            <div class="span4">
                 <div class="suggestion">
-                    <div class="well">
+                    <div class="well fb-box">
                         Like và chia sẻ conmeno.com lên fb của bạn là niềm hạnh phúc lớn của chúng tôi :)
-                        <div class="fb-like" data-href="http://www.conmeno.com" data-send="true" data-width="200"
-                            data-show-faces="true">
+                        <div style="margin-top:15px;">
+                        <div class="fb-like-box" data-href="http://www.facebook.com/nguocdoi.funny" data-width="230"
+                            data-show-faces="true" data-stream="false" data-show-border="true" data-header="true">
+                        </div>
                         </div>
                     </div>
                     @{
@@ -235,7 +62,7 @@
         </div>
     </div>
 
-
+     @Html.Partial("_footer")
     <div id="fb-root"></div>
     @*  <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -253,7 +80,7 @@
     <script src="~/Scripts/js/jquery.lazyload.js"></script>
     <script src="~/Scripts/js/jquery.colorbox-min.js"></script>
     <script src="~/Scripts/js/js.js"></script>
-
+    <script src="~/Scripts/js/holder.js"></script>
 
     <script type="text/javascript">
 

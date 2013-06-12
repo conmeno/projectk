@@ -2,11 +2,13 @@ $(window).scroll(function () {
     var header = $('.header');
     if ($(window).scrollTop() >= 38 & !header.hasClass('small')) {
         header.addClass('small');
-        $('#steps-home').css("top", '65px');
+        $('#mobileMenu').css("margin-top", '-34px');
+        //$('.currentUsername').css("margin-top", '-15px');
     }
     if ($(window).scrollTop() < 38 & header.hasClass('small')) {
         header.removeClass('small');
-        $('#steps-home').css("top", '100px');
+        $('#mobileMenu').css("margin-top", '0px');
+        //$('.currentUsername').css("margin-top", '15px');
     }
 
    

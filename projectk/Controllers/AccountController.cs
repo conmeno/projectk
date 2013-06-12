@@ -57,6 +57,12 @@ namespace projectk.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult Thoat()
+        {
+            WebSecurity.Logout();
+
+            return RedirectToAction("Index", "Home");
+        }
         //
         // GET: /Account/Register
 
