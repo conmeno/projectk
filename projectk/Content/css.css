@@ -475,8 +475,8 @@ margin:1em 0;
 }
 .header.small div.wrapper .header-right
 {
-    top:32px;
-    right: 45px;
+    /*top:32px;
+    right: 45px;*/
 }
     .header div.wrapper .panel
     {
@@ -491,6 +491,7 @@ margin:1em 0;
             background: url("images/panel.png") no-repeat scroll 0 0 transparent;
             height: 72px;
             width: 52px;
+            margin-top: -10px;
         }
 
         .header div.wrapper .panel.small

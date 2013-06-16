@@ -1,0 +1,86 @@
+﻿<div class="header" style="opacity: 1;">
+    <div class="barcolors"></div>
+    <div class="wrapper">
+        <h2 class="big">Super Rain</h2>
+        <h2 class="small">Super Rain</h2>
+        <!--  <a title="" href="#" class="toggle-dropdown">
+                <span>waht</span>
+            </a>-->
+        <nav class="desktop visible-desktop">
+                <a href="/funny">Funny
+           
+                    <span></span>
+                </a>
+                <a href="/hotgirl">Hot girl
+           
+                    <span></span>
+                </a>
+                <a href="/video">Video 
+                    <span></span>
+                </a>
+                <a href="#">Truyện cười 
+                    <span></span>
+                </a>
+
+            </nav>
+        <div class="header-right">
+ <div class="currentUsername">
+                
+            @{
+                
+               
+               
+                if (User.Identity.IsAuthenticated)
+                {
+                 
+                    
+                     
+                <div class="dropdown">
+                    <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                        @User.Identity.Name<b class="caret"></b></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                        <li><a tabindex="-1" href="#">Upload Funny</a></li>
+                        <li><a tabindex="-1" href="#">Upload Video</a></li>
+                        <li><a tabindex="-1" href="#">Upload Hotgirl</a></li>
+                        <li><a tabindex="-1" href="#">Upload Truyện cười</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="/Account/Thoat">Log Out</a></li>
+                    </ul>
+                </div>
+            
+                    
+
+                }
+                else
+                {
+               
+                    @Html.Action("ExternalLoginsList", "Account", new { ReturnUrl = ViewBag.ReturnUrl })
+               
+                }
+
+                 
+                
+            }
+             </div>
+            <div class="hidden-desktop pull-left">
+                <div class="panel big" data-toggle="collapse" data-target="#mobileMenu">
+                </div>
+                <div class="panel small" data-toggle="collapse" data-target="#mobileMenu">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+</div>
+<div id="mobileMenu" class="collapse">
+
+    <ul class="nav nav-pills nav-stacked">
+
+        <li><a href="/">Home</a></li>
+        <li class="active"><a href="/funny">Funny</a></li>
+        <li><a href="/hotgirl">Hot girl</a></li>
+        <li><a href="/video">Video</a></li>
+        <li><a href="/truyencuoi">Truyện cười</a></li>
+    </ul>
+</div>

@@ -14,8 +14,10 @@
             <div class="span2">
 
                 <div class="pull-left a-prev a-control">
-                    <a title="Bài trước" style="display: block; height: 100%; width: 100%;" href="#">
+                @if(@ViewBag.Prev!=-1){
+                    <a title="Bài trước" class="Next-Button" href="/funny/details/@ViewBag.Prev">
                     </a>
+                }
                 </div>
             </div>
             <div class="span8" style="line-height: 70px;">
@@ -23,9 +25,10 @@
             </div>
             <div class="span2">
                 <div class="pull-right a-next a-control">
-                    <a title="Bài kế tiếp" style="display: block; height: 100%; width: 100%;" href="#">
+                 @if(@ViewBag.Next!=-1){
+                    <a  class="Next-Button" title="Bài kế tiếp" href="/funny/details/@ViewBag.Next">
                     </a>
-
+                 }
                 </div>
             </div>
         </div>

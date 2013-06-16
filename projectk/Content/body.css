@@ -245,3 +245,16 @@
             z-index: 999;
             background-color: #a5a5a5;
         }
+
+.Next-Button
+{
+    display: block; height: 100%; width: 100%;
+}
+/*footer*/
+.footer {
+    background-color: #F5F5F5;
+    border-top: 1px solid #E5E5E5;
+    margin-top: 70px;
+    padding: 30px 0;
+    text-align: center;
+}

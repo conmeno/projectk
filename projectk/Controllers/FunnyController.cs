@@ -55,13 +55,24 @@ namespace projectk.Controllers
         public ActionResult Details(long id = 0)
         {
             Article article = db.Articles.Find(id);
+            ViewBag.Next = -1;
+            ViewBag.Prev = -1;
+             Article Next= db.Articles.Where(a => a.ID>id && a.Cat ==(int)Cats.Funny).FirstOrDefault();
+             if (Next != null)
+                 ViewBag.Next = Next.ID;
+             Article Prev = db.Articles.Where(a => a.ID < id && a.Cat == (int)Cats.Funny).FirstOrDefault();
+             if (Prev != null)
+                 ViewBag.Pre = Prev.ID;
             if (article == null)
             {
                 return HttpNotFound();
             }
             return View(article);
         }
+        public void FindNext(DbSet<Article> a,long currentID)
+        {
 
+        }
         //
         // GET: /Hai/Create
 
