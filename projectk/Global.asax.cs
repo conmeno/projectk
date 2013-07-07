@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projectk;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -28,6 +29,9 @@ namespace projectk
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            Pageview.A = new System.Collections.Hashtable();
+            Pageview.IsRunning();
         }
     }
 }

@@ -191,6 +191,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HotgirlController.cs" />
     <Compile Include="Controllers\SuggestionController.cs" />
+    <Compile Include="Core\PageView.cs" />
     <Compile Include="Core\Variable.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">

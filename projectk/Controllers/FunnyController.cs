@@ -54,6 +54,17 @@ namespace projectk.Controllers
 
         public ActionResult Details(long id = 0)
         {
+            //set pageview
+            if (Pageview.A[id] == null)
+            {
+                Pageview.A[id] = 1;
+
+            }
+            else
+            {
+                Pageview.A[id] = int.Parse(Pageview.A[id].ToString()) + 1;
+            }
+            //end set pageview
             Article article = db.Articles.Find(id);
             ViewBag.Next = -1;
             ViewBag.Prev = -1;
