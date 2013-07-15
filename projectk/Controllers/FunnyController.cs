@@ -22,6 +22,7 @@ namespace projectk.Controllers
 
         public ActionResult Index()
         {
+
             IOAuth1ServiceProvider<IDropbox> dropboxProvider =
          new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
 
@@ -32,17 +33,20 @@ namespace projectk.Controllers
             List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny).Include(a => a.UserProfile).ToList();
             foreach (Article item in articles)
             {
-                //if (item.DropboxShareLinkExpire != null )
-                //{
-                //    int a = 3;
-                //}
                 if (DateTime.Now > item.DropboxShareLinkExpire)
                 {
                     var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
                     item.DropboxShareLink = media.Url;
                     item.DropboxShareLinkExpire = media.ExpireDate;
                 }
-
+                if (item.UserName == null || item.UserName == string.Empty)
+                {
+                    UserProfile u = Variable.GetUserByID(item.UserID);
+                    if (u == null)
+                        item.UserName = "";
+                    else
+                        item.UserName = u.UserName;
+                }
             }
 
             db.SaveChanges();
@@ -68,19 +72,19 @@ namespace projectk.Controllers
             Article article = db.Articles.Find(id);
             ViewBag.Next = -1;
             ViewBag.Prev = -1;
-             Article Next= db.Articles.Where(a => a.ID>id && a.Cat ==(int)Cats.Funny).FirstOrDefault();
-             if (Next != null)
-                 ViewBag.Next = Next.ID;
-             Article Prev = db.Articles.Where(a => a.ID < id && a.Cat == (int)Cats.Funny).FirstOrDefault();
-             if (Prev != null)
-                 ViewBag.Pre = Prev.ID;
+            Article Next = db.Articles.Where(a => a.ID > id && a.Cat == (int)Cats.Funny).FirstOrDefault();
+            if (Next != null)
+                ViewBag.Next = Next.ID;
+            Article Prev = db.Articles.Where(a => a.ID < id && a.Cat == (int)Cats.Funny).FirstOrDefault();
+            if (Prev != null)
+                ViewBag.Pre = Prev.ID;
             if (article == null)
             {
                 return HttpNotFound();
             }
             return View(article);
         }
-        public void FindNext(DbSet<Article> a,long currentID)
+        public void FindNext(DbSet<Article> a, long currentID)
         {
 
         }
@@ -139,7 +143,7 @@ namespace projectk.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-           // ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
+            // ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
             return View(article);
         }

@@ -67,54 +67,7 @@
 
         </div>
     </div>
-    @* <div class="row-fluid">
-        <div class="span12">
-
-            <div class="aitem-top">
-
-                <div class="row-fluid">
-                    <div class="span8">
-                        <div class="aitem-title">
-                            <h4>@Model.Name</h4>
-                        </div>
-                        <div>
-                            <span>View: @Model.PageView</span>&nbsp;<span>Comment: @Model.Comment</span>
-                        </div>
-                        <div>
-                            <span>Nguồn: @Model.Source</span>
-                        </div>
-                    </div>
-                    <div class="span4">
-                        <div class="aitem-title">
-                            <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">
-                                @{
-                                    string userName = "";
-                                    try
-                                    {
-                                        MembershipUser mu = Membership.GetUser(@Model.UserID);
-                                        userName = mu.UserName;
-                                    }
-                                    catch
-                                    {
-                                        userName = "khong tim duoc ";
-                                    }
-                                }
-                                @userName
-                            </span></a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="fb-like" data-href="@Context.Request.Url.ToString()" data-send="false" data-layout="button_count" data-width="50" data-show-faces="true">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-    </div>*@
+     
     <div class="row-fluid">
 
         <div class="span12">

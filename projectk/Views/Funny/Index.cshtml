@@ -24,8 +24,10 @@
     string userName = "";
     try
     {
-        MembershipUser mu = Membership.GetUser(item.UserID);
-        userName = mu.UserName;
+        //MembershipUser mu = Membership.GetUser(item.UserID);
+        //userName = mu.UserName;
+        userName = item.UserName;
+        
     }
     catch
     {
