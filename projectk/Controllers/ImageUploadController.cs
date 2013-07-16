@@ -28,18 +28,7 @@ namespace projectk.Controllers
             return View(articles.ToList());
         }
 
-        //
-        // GET: /Article/Details/5
-
-        public ActionResult Details(long id = 0)
-        {
-            Article article = db.Articles.Find(id);
-            if (article == null)
-            {
-                return HttpNotFound();
-            }
-            return View(article);
-        }
+       
 
         //
         // GET: /Article/Create
@@ -107,17 +96,15 @@ namespace projectk.Controllers
                     }
                 }
                 //endupload file
-                MembershipUser currentUser;
-                currentUser = Membership.GetUser();
-
+              
                 //article.UserID = currentUser.;
 
 
                 article.UserID = 1;
-
+                article.UserName = User.Identity.Name;
                 article.Cat = (int)Cats.Funny;
-
-
+                article.Status = 1;
+                article.DatePost = DateTime.Now;
                 db.Articles.Add(article);
                 db.SaveChanges();
 
@@ -147,36 +134,14 @@ namespace projectk.Controllers
         }
 
         //
-        // GET: /Article/Edit/5
+        // GET: /Article/Create
 
-        public ActionResult Edit(long id = 0)
+        public ActionResult Check()
         {
-            Article article = db.Articles.Find(id);
-            if (article == null)
-            {
-                return HttpNotFound();
-            }
-            //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
-            ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
-            return View(article);
+            var articles = db.Articles.Include(a => a.UserProfile);
+            return View(articles.ToList());
         }
 
-        //
-        // POST: /Article/Edit/5
-
-        [HttpPost]
-        public ActionResult Edit(Article article)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(article).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
-            ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
-            return View(article);
-        }
 
         //
         // GET: /Article/Delete/5

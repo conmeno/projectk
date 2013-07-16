@@ -65,14 +65,17 @@ namespace projectk.Controllers
                 db.Articles.Add(article);
                 article.DropboxShareLinkExpire = DateTime.Now;
                 //endupload file
-                MembershipUser currentUser;
-                currentUser = Membership.GetUser();
+                //MembershipUser currentUser;
+                //currentUser = Membership.GetUser();
 
                 //article.UserID = currentUser.;
 
 
                 article.UserID = 1;
+                article.UserName = User.Identity.Name;
                 article.Cat = (int)Cats.Video;
+                article.DatePost = DateTime.Now;
+                article.Status = 1;
                 db.SaveChanges(); 
 
                 return RedirectToAction("Index");

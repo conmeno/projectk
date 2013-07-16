@@ -54,11 +54,11 @@ namespace projectk.Models
         public string Description { get; set; }
         public string Content { get; set; }
         public string LocalURL { get; set; }
-        public int Status { get; set; }
+        public int Status { get; set; }//0: new post, 1: approve, 2: fuck
         public bool IsHot { get; set; }
         public string Source { get; set; }
         public string UserName { get; set; }
-
+        public DateTime DatePost { get; set; }
         public byte[] ThumbnailData { get; set; }
         public string OtherObject { get; set; }
 

@@ -30,7 +30,7 @@ namespace projectk.Controllers
 
 
 
-            List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny).Include(a => a.UserProfile).ToList();
+            List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny).Include(a => a.UserProfile).OrderByDescending(a=>a.DatePost).ToList();
             foreach (Article item in articles)
             {
                 if (DateTime.Now > item.DropboxShareLinkExpire)
@@ -39,14 +39,14 @@ namespace projectk.Controllers
                     item.DropboxShareLink = media.Url;
                     item.DropboxShareLinkExpire = media.ExpireDate;
                 }
-                if (item.UserName == null || item.UserName == string.Empty)
-                {
-                    UserProfile u = Variable.GetUserByID(item.UserID);
-                    if (u == null)
-                        item.UserName = "";
-                    else
-                        item.UserName = u.UserName;
-                }
+                //if (item.UserName == null || item.UserName == string.Empty)
+                //{
+                //    UserProfile u = Variable.GetUserByID(item.UserID);
+                //    if (u == null)
+                //        item.UserName = "";
+                //    else
+                //        item.UserName = u.UserName;
+                //}
             }
 
             db.SaveChanges();

@@ -229,6 +229,10 @@
     <Compile Include="Migrations\201306061608333_addusername_toArticle.Designer.cs">
       <DependentUpon>201306061608333_addusername_toArticle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307161625427_add-datepost.cs" />
+    <Compile Include="Migrations\201307161625427_add-datepost.Designer.cs">
+      <DependentUpon>201307161625427_add-datepost.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ProjectkContext.cs" />
@@ -347,10 +351,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\ImageUpload\Index.cshtml" />
-    <Content Include="Views\ImageUpload\Details.cshtml" />
     <Content Include="Views\ImageUpload\Create.cshtml" />
-    <Content Include="Views\ImageUpload\Edit.cshtml" />
-    <Content Include="Views\ImageUpload\Delete.cshtml" />
     <Content Include="Views\Funny\Index.cshtml" />
     <Content Include="Views\Funny\Details.cshtml" />
     <Content Include="Views\Funny\Create.cshtml" />
@@ -383,6 +384,7 @@
     <Content Include="Views\Shared\_header.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\ImageUpload\Check.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -414,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201306061608333_addusername_toArticle.resx">
       <DependentUpon>201306061608333_addusername_toArticle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307161625427_add-datepost.resx">
+      <DependentUpon>201307161625427_add-datepost.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
