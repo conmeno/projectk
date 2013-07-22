@@ -24,11 +24,11 @@ namespace projectk.Controllers
 
         public ActionResult Index()
         {
-            var articles = db.Articles.Include(a => a.UserProfile);
+            var articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny).Where(a => a.UserName == User.Identity.Name).OrderByDescending(a => a.DatePost).Take(100).Include(a => a.UserProfile).ToList();
             return View(articles.ToList());
         }
 
-       
+
 
         //
         // GET: /Article/Create
@@ -48,87 +48,74 @@ namespace projectk.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+
                 IOAuth1ServiceProvider<IDropbox> dropboxProvider =
-         new DropboxServiceProvider(Variable.ApiKey,Variable.ApiSecret, AccessLevel.Full);
+         new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
 
-                IDropbox _client = dropboxProvider.GetApi(Variable.UserToken,Variable.UserSecret); 
+                IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
 
-                
+
                 var uniqueID = Variable.GetRandomInteger();
 
 
 
                 //upload file
-                if (Request.Files.Count > 0)
+                if (Request.Files.Count == 0 && Request.Files[0].FileName!="")
+                    return RedirectToAction("Index");
+
+                HttpPostedFileBase ofile = Request.Files[0];
+                string filename = uniqueID + "_" + ofile.FileName;
+                if (ofile.ContentLength > 0)
                 {
-                    HttpPostedFileBase ofile = Request.Files[0];
-                    string filename = uniqueID + "_" + ofile.FileName;
-                    if (ofile.ContentLength > 0)                    
-                    {
-                         
-                        ofile.SaveAs( Variable.WebFolder()+"/Upload/" + filename);
-                        var image=System.Drawing.Image.FromFile(Variable.WebFolder() + "/Upload/" + filename);
-                        
-                        Spring.IO.FileResource file = new Spring.IO.FileResource(Variable.WebFolder() + "/Upload/" + filename);
-                        
-                        string DropboxURL = "/conmeno/" + filename;
+
+                    ofile.SaveAs(Variable.WebFolder() + "/Upload/" + filename);
+                    var image = System.Drawing.Image.FromFile(Variable.WebFolder() + "/Upload/" + filename);
+
+                    Spring.IO.FileResource file = new Spring.IO.FileResource(Variable.WebFolder() + "/Upload/" + filename);
+
+                    string DropboxURL = "/conmeno/" + filename;
 
 
-                        //_client.UploadFileAsync(file, DropboxURL);
-                        var upload = _client.UploadFileAsync(file, DropboxURL).Result;
+                    //_client.UploadFileAsync(file, DropboxURL);
+                    var upload = _client.UploadFileAsync(file, DropboxURL).Result;
 
-                        //_client.UploadFile("/conmeno/", uniqueID + "_" + ofile.FileName, Variable.ReadFully(ofile.InputStream));
-                        article.ExternalURL = DropboxURL;
+                    //_client.UploadFile("/conmeno/", uniqueID + "_" + ofile.FileName, Variable.ReadFully(ofile.InputStream));
+                    article.ExternalURL = DropboxURL;
 
 
 
-                        var temp = _client.GetMediaLinkAsync(article.ExternalURL); 
+                    var temp = _client.GetMediaLinkAsync(article.ExternalURL);
 
 
-                        if (temp != null) article.DropboxShareLink = temp.Result.Url;
-                        article.DropboxShareLinkExpire = DateTime.Now.AddHours(3);
+                    if (temp != null) article.DropboxShareLink = temp.Result.Url;
+                    article.DropboxShareLinkExpire = DateTime.Now.AddHours(3);
 
-                        var a1 = _client.DownloadThumbnailAsync(article.ExternalURL, ThumbnailFormat.Jpeg, ThumbnailSize.Medium).Result;
-                        article.ThumbnailData = a1.Content;
-                   
-                          
-                    }
+                    var a1 = _client.DownloadThumbnailAsync(article.ExternalURL, ThumbnailFormat.Jpeg, ThumbnailSize.Medium).Result;
+                    article.ThumbnailData = a1.Content;
+
+
                 }
+
                 //endupload file
-              
+
                 //article.UserID = currentUser.;
 
 
                 article.UserID = 1;
                 article.UserName = User.Identity.Name;
                 article.Cat = (int)Cats.Funny;
-                article.Status = 1;
+                article.Status = 0;
+                if (Variable.AutoApprove)
+                    article.Status = 1;
                 article.DatePost = DateTime.Now;
                 db.Articles.Add(article);
-                db.SaveChanges();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                db.SaveChanges(); 
 
 
                 return RedirectToAction("Index");
             }
 
-           // ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
+            // ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", article.CategoryID);
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
             return View(article);
         }
@@ -136,9 +123,11 @@ namespace projectk.Controllers
         //
         // GET: /Article/Create
 
-        public ActionResult Check()
+        public ActionResult Check(int type=1)
         {
-            var articles = db.Articles.Include(a => a.UserProfile);
+            Cats temp = (Cats)type;
+            var articles = db.Articles.Where(a => a.Cat == (int)temp).OrderByDescending(a => a.DatePost).Take(100).Include(a => a.UserProfile).ToList();
+            
             return View(articles.ToList());
         }
 
@@ -165,7 +154,16 @@ namespace projectk.Controllers
             Article article = db.Articles.Find(id);
             db.Articles.Remove(article);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("check");
+        }
+
+
+        public ActionResult Approve(long id)
+        {
+            Article article = db.Articles.Find(id);
+            article.Status = 1; 
+            db.SaveChanges();
+            return RedirectToAction("Check");
         }
 
         protected override void Dispose(bool disposing)

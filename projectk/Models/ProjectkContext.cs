@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
@@ -42,7 +43,12 @@ namespace projectk.Models
 
     public partial class Article
     {
+        //[RegularExpression(@"[0-9]",
+        //    ErrorMessage = "Năm sinh không hợp lệ")]
+
         public int ID { get; set; }
+         [DisplayName("Tiêu đề")][Required]
+        
         public string Name { get; set; }
         public string ExternalURL { get; set; }
         public string DropboxShareLink { get; set; }
@@ -54,11 +60,15 @@ namespace projectk.Models
         public string Description { get; set; }
         public string Content { get; set; }
         public string LocalURL { get; set; }
+        [DisplayName("Trạng thái")]
         public int Status { get; set; }//0: new post, 1: approve, 2: fuck
         public bool IsHot { get; set; }
+        [DisplayName("Nguồn")]
         public string Source { get; set; }
         public string UserName { get; set; }
+        [DisplayName("Ngày post")]
         public DateTime DatePost { get; set; }
+        [DisplayName("Thumbnail")]
         public byte[] ThumbnailData { get; set; }
         public string OtherObject { get; set; }
 
@@ -83,6 +93,14 @@ namespace projectk.Models
                 return "";
             }
             return "";
+        }
+        public string GetStatus()
+        {
+            if (this.Status == 0)
+                return "Đang duyệt";
+            if (this.Status == 1)
+                return "Đã duyệt";
+            return "Bị hủy";
         }
     }
     public class ArticleImages

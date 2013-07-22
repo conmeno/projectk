@@ -9,7 +9,8 @@ namespace Projectk
 {
     public class Variable
     {
-
+        public static int NumberOfArticleLoaded=20;
+        public static bool AutoApprove = true;
         public static string ApiKey = "x9n1ufyyyj00odt";
         public static string ApiSecret = "vwevab5370evd3v";
         public static string UserToken = "uss2v2w38xlfvrb";

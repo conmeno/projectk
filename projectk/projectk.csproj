@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201307161625427_add-datepost.Designer.cs">
       <DependentUpon>201307161625427_add-datepost.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201307221533286_require.cs" />
+    <Compile Include="Migrations\201307221533286_require.Designer.cs">
+      <DependentUpon>201307221533286_require.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ProjectkContext.cs" />
@@ -385,6 +389,7 @@
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\ImageUpload\Check.cshtml" />
+    <Content Include="Views\ImageUpload\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -419,6 +424,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201307161625427_add-datepost.resx">
       <DependentUpon>201307161625427_add-datepost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201307221533286_require.resx">
+      <DependentUpon>201307221533286_require.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

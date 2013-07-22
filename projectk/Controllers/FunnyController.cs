@@ -22,7 +22,7 @@ namespace projectk.Controllers
 
         public ActionResult Index()
         {
-
+            int numberLoad = Variable.NumberOfArticleLoaded;
             IOAuth1ServiceProvider<IDropbox> dropboxProvider =
          new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
 
@@ -30,7 +30,7 @@ namespace projectk.Controllers
 
 
 
-            List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny).Include(a => a.UserProfile).OrderByDescending(a=>a.DatePost).ToList();
+            List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny).OrderByDescending(a => a.DatePost).Take(numberLoad).Include(a => a.UserProfile).ToList();
             foreach (Article item in articles)
             {
                 if (DateTime.Now > item.DropboxShareLinkExpire)
@@ -70,6 +70,7 @@ namespace projectk.Controllers
             }
             //end set pageview
             Article article = db.Articles.Find(id);
+            article.UserProfile = db.UserProfiles.Where(a => a.UserName == article.UserName).FirstOrDefault();
             ViewBag.Next = -1;
             ViewBag.Prev = -1;
             Article Next = db.Articles.Where(a => a.ID > id && a.Cat == (int)Cats.Funny).FirstOrDefault();

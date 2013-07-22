@@ -1,0 +1,57 @@
+﻿@model projectk.Models.Article
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Bạn có chắc là bạn muốn xóa ảnh này?</h3>
+<fieldset>
+    <legend>Article</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.DatePost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DatePost)
+    </div>
+
+    <div class="display-field">
+        @{
+          
+            if (Model.ThumbnailData != null)
+            {
+
+            <a href="/funny/details/@Model.ID">
+                <img alt="@Model.Name" src="data:unknown;base64,@Convert.ToBase64String(Model.ThumbnailData)" />
+            </a> 
+                
+                
+            }
+        }
+
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Delete" />
+        |
+        @Html.ActionLink("Back to List", "check")
+    </p>
+}

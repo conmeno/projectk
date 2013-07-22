@@ -1,7 +1,7 @@
 ﻿@model projectk.Models.Article
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Upload funny";
 }
 
 
@@ -11,14 +11,15 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Upload hinh anh</legend>
+        <legend>Upload hình ảnh vui nhộn</legend>
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
-        </div> 
+        </div>
+
 
         @* <div class="editor-label">
             @Html.LabelFor(model => model.Description)
@@ -36,6 +37,14 @@
             @Html.ValidationMessageFor(model => model.Content)
         </div> *@
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Source)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Source)
+            @Html.ValidationMessageFor(model => model.Source)
+        </div>
+
 
         <div>
 
@@ -49,7 +58,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Đến danh sách các bài đăng của bạn", "Index")
 </div>
 
 @section Scripts {
