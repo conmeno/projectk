@@ -56,7 +56,7 @@ namespace projectk.Controllers
         //
         // GET: /Hai/Details/5
 
-        public ActionResult Details(long id = 0)
+        public ActionResult Image(long id = 0)
         {
             //set pageview
             if (Pageview.A[id] == null)

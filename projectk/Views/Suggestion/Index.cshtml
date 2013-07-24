@@ -9,11 +9,11 @@
     <div class="si-item ">
 
         <div class="si-image img-polaroid">
-            <a href="/video/details/@item.ID">
+            <a href="/video/image/@item.ID">
                 <img alt="video" src="http://img.youtube.com/vi/@item.getYoutubeID()/1.jpg" /></a>
         </div>
         <div class="si-title">
-            <div><a href="/video/details/@item.ID">@item.Name</a></div>
+            <div><a href="/video/image/@item.ID">@item.Name</a></div>
         </div>
         <div class="clear"></div>
     </div>
@@ -34,12 +34,12 @@
     <div class="si-item">
         <div class="si-image img-polaroid">
 
-            <a href="/funny/details/@item.ID">
+            <a href="/funny/image/@item.ID">
                 <img alt="@item.Name" src="data:unknown;base64,@Convert.ToBase64String(item.ThumbnailData)" />
             </a>
         </div>
         <div class="si-title">
-            <div><a href="/funny/details/@item.ID">@item.Name</a></div>
+            <div><a href="/funny/image/@item.ID">@item.Name</a></div>
         </div>
         <div class="clear"></div>
     </div>

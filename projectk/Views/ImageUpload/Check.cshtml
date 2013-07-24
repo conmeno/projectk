@@ -27,23 +27,25 @@
 </style>
 <h2>Kiểm duyệt bài đăng</h2>
 
-<div style="margin:20px 0px;">
-@{
-    var class1 = "btn-inverse";
-    var class2 = "btn-inverse";
-    var class3 = "btn-inverse";
-    var class4 = "btn-inverse";
+<div style="margin: 20px 0px;">
+    @{
+        var class1 = "btn-inverse";
+        var class2 = "btn-inverse";
+        var class3 = "btn-inverse";
+        var class4 = "btn-inverse";
+        bool isVideo = false;
     
-}
-@if (Request.QueryString["type"] == null) { class1 = "btn-success"; }
-@if (Request.QueryString["type"] != null && Request.QueryString["type"].ToString() == "1") { class1 = "btn-success"; }
- @Html.ActionLink("Funny", "Check", new { type=1 }, new {@class = "btn " + class1})
- @if (Request.QueryString["type"] != null && Request.QueryString["type"].ToString() == "2") { class2 = "btn-success"; }
- @Html.ActionLink("Hotgirl", "Check", new { type=2 }, new {@class = "btn " + class2})
- @if (Request.QueryString["type"] != null && Request.QueryString["type"].ToString() == "3") { class3 = "btn-success"; }
- @Html.ActionLink("Video", "Check", new { type=3 }, new {@class = "btn " + class3})
- @if (Request.QueryString["type"] != null && Request.QueryString["type"].ToString() == "4") { class4 = "btn-success"; }
- @Html.ActionLink("Truyện", "Check", new { type=4 }, new {@class = "btn " + class4})
+    
+    }
+    @if (Request.QueryString["type"] == null) { class1 = "btn-success"; }
+    @if (Request.QueryString["type"] != null && Request.QueryString["type"].ToString() == "1") { class1 = "btn-success"; }
+    @Html.ActionLink("Funny", "Check", new { type = 1 }, new { @class = "btn " + class1 })
+    @if (Request.QueryString["type"] != null && Request.QueryString["type"].ToString() == "2") { class2 = "btn-success";  }
+    @Html.ActionLink("Hotgirl", "Check", new { type = 2 }, new { @class = "btn " + class2 })
+    @if (Request.QueryString["type"] != null && Request.QueryString["type"].ToString() == "3") { class3 = "btn-success"; isVideo = true; }
+    @Html.ActionLink("Video", "Check", new { type = 3 }, new { @class = "btn " + class3 })
+    @if (Request.QueryString["type"] != null && Request.QueryString["type"].ToString() == "4") { class4 = "btn-success"; }
+    @Html.ActionLink("Truyện", "Check", new { type = 4 }, new { @class = "btn " + class4 })
 </div>
 <table>
     <tr>
@@ -76,13 +78,21 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @if(item.ThumbnailData!=null)
-            {
-                    <a href="/funny/details/@item.ID">
-                        <img alt="@item.Name" src="data:unknown;base64,@Convert.ToBase64String(item.ThumbnailData)" />
+                @if (isVideo)
+                {
+                 <a href="/video/details/@item.ID"><img alt="video" src="http://img.youtube.com/vi/@item.getYoutubeID()/1.jpg" /></a> 
+                }
+                else
+                {
+                    if (item.ThumbnailData != null)
+                    {
+<a href="/funny/details/@item.ID">
+                        <img alt="@item.Name" src="data:unknown;base64,@Convert.ToBase64String(item.ThumbnailData)"
+                    />
                     </a> 
                 
-            }
+                    }
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DatePost)
@@ -98,16 +108,17 @@
             </td>
             <td>
                 @{
-                    if (item.Status == 0)
-                    { 
+                if (item.Status == 0)
+                { 
                     
                     @Html.ActionLink("Duyệt", "Approve", new { id = item.ID }, new { @class = "btn btn-success" })              
                   
 
-                    }
                 }
-                <br />  <br />
-                  @Html.ActionLink("Xóa", "Delete", new { id=item.ID }, new {@class = "btn btn-danger"})
+                }
+                <br />
+                <br />
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
             </td>
 
         </tr>

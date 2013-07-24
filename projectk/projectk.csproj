@@ -357,7 +357,7 @@
     <Content Include="Views\ImageUpload\Index.cshtml" />
     <Content Include="Views\ImageUpload\Create.cshtml" />
     <Content Include="Views\Funny\Index.cshtml" />
-    <Content Include="Views\Funny\Details.cshtml" />
+    <Content Include="Views\Funny\Image.cshtml" />
     <Content Include="Views\Funny\Create.cshtml" />
     <Content Include="Views\Funny\Edit.cshtml" />
     <Content Include="Views\Funny\Delete.cshtml" />

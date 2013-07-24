@@ -1,10 +1,8 @@
 ﻿@model IEnumerable<projectk.Models.Article>
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Hài";
 }
-
  
-
 @foreach (var item in Model)
 {
     <div class="aitem">
@@ -14,27 +12,13 @@
 
                 <div class="aitem-top">
                     <div class="aitem-title">
-                        <h4><a href="funny/details/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
+                        <h4><a href="funny/image/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
                         </h4>
                     </div>
                     <div class="aitem-title">
 
-                        <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">
-                            @{
-    string userName = "";
-    try
-    {
-        //MembershipUser mu = Membership.GetUser(item.UserID);
-        //userName = mu.UserName;
-        userName = item.UserName;
-        
-    }
-    catch
-    {
-        userName = "khong tim duoc ";
-    }
-                            }
-                            @userName
+                        <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;"> 
+                            @item.UserName;
                         </span></a>
                     </div>
                     <div>
@@ -46,7 +30,7 @@
             </div>
             <div class="span8">
                 <div class="item-image">
-                    <a href="/funny/details/@item.ID">
+                    <a href="/funny/image/@item.ID">
                         <img class="lazy img-polaroid"  src="~/Content/images/loading_anim.gif" data-original="@Html.DisplayFor(modelItem => item.DropboxShareLink)"
                     alt="@Html.DisplayFor(modelItem => item.Name)" />
 
