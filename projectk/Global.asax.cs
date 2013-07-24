@@ -31,7 +31,7 @@ namespace projectk
             AuthConfig.RegisterAuth();
 
             Pageview.A = new System.Collections.Hashtable();
-            Pageview.IsRunning();
+            Pageview.IsRunning(); 
         }
     }
 }

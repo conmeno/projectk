@@ -183,6 +183,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\UpdateLinkController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Controllers\VideoUploadController.cs" />
@@ -358,15 +359,9 @@
     <Content Include="Views\ImageUpload\Create.cshtml" />
     <Content Include="Views\Funny\Index.cshtml" />
     <Content Include="Views\Funny\Image.cshtml" />
-    <Content Include="Views\Funny\Create.cshtml" />
-    <Content Include="Views\Funny\Edit.cshtml" />
-    <Content Include="Views\Funny\Delete.cshtml" />
     <Content Include="Views\Suggestion\Index.cshtml" />
     <Content Include="Views\Hotgirl\Index.cshtml" />
-    <Content Include="Views\Hotgirl\Details.cshtml" />
-    <Content Include="Views\Hotgirl\Create.cshtml" />
-    <Content Include="Views\Hotgirl\Edit.cshtml" />
-    <Content Include="Views\Hotgirl\Delete.cshtml" />
+    <Content Include="Views\Hotgirl\Image.cshtml" />
     <Content Include="Views\Article\Create.cshtml" />
     <Content Include="Views\Article\Delete.cshtml" />
     <Content Include="Views\Article\Details.cshtml" />
@@ -390,6 +385,7 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\ImageUpload\Check.cshtml" />
     <Content Include="Views\ImageUpload\Delete.cshtml" />
+    <Content Include="Views\Image\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
