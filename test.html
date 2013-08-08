@@ -4,7 +4,7 @@
     <title>Interior Design</title>
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet" />
-     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
 
 
@@ -17,98 +17,98 @@
     <div class="container-fluid">
 
 
-      <div style="height:100px;width:100px;"></div>
+        <div style="height: 100px; width: 100px;"></div>
 
- <div class="row-fluid article_item">
+        <div class="row-fluid article_item">
             <div class="span8">
-                 <div class="content" style="height:500px;border:solid 1px red;"></div>
+                <div class="content" style="height: 500px; border: solid 1px red;"></div>
             </div>
             <div class="span4">
                 <div class="info">
-                    <div style="height:100px;border:solid 1px blue;">
-                    abcdef gheie
-                        </div>
+                    <div style="height: 100px; border: solid 1px blue;">
+                        abcdef gheie
+                    </div>
                 </div>
-                
-            </div> 
+
+            </div>
         </div>
-         <div class="row-fluid article_item">
+        <div class="row-fluid article_item">
             <div class="span8">
-                 <div class="content" style="height:500px;border:solid 1px red;"></div>
+                <div class="content" style="height: 500px; border: solid 1px red;"></div>
             </div>
             <div class="span4">
                 <div class="info">
-                    <div style="height:100px;border:solid 1px blue;">
-                    abcdef gheie
-                        </div>
+                    <div style="height: 100px; border: solid 1px blue;">
+                        abcdef gheie
+                    </div>
                 </div>
-                
-            </div> 
+
+            </div>
         </div>
-         <div class="row-fluid article_item">
+        <div class="row-fluid article_item">
             <div class="span8">
-                 <div class="content" style="height:500px;border:solid 1px red;"></div>
+                <div class="content" style="height: 500px; border: solid 1px red;"></div>
             </div>
             <div class="span4">
                 <div class="info">
-                    <div style="height:100px;border:solid 1px blue;">
-                    abcdef gheie
-                        </div>
+                    <div style="height: 100px; border: solid 1px blue;">
+                        abcdef gheie
+                    </div>
                 </div>
-                
-            </div> 
+
+            </div>
         </div>
-          <div class="row-fluid article_item">
+        <div class="row-fluid article_item">
             <div class="span8">
-                 <div class="content" style="height:500px;border:solid 1px red;"></div>
+                <div class="content" style="height: 500px; border: solid 1px red;"></div>
             </div>
             <div class="span4">
                 <div class="info">
-                    <div style="height:100px;border:solid 1px blue;">
-                    abcdef gheie
-                        </div>
+                    <div style="height: 100px; border: solid 1px blue;">
+                        abcdef gheie
+                    </div>
                 </div>
-                
-            </div> 
+
+            </div>
         </div>
-          <div class="row-fluid article_item">
+        <div class="row-fluid article_item">
             <div class="span8">
-                 <div class="content" style="height:500px;border:solid 1px red;"></div>
+                <div class="content" style="height: 500px; border: solid 1px red;"></div>
             </div>
             <div class="span4">
                 <div class="info">
-                    <div style="height:100px;border:solid 1px blue;">
-                    abcdef gheie
-                        </div>
+                    <div style="height: 100px; border: solid 1px blue;">
+                        abcdef gheie
+                    </div>
                 </div>
-                
-            </div> 
+
+            </div>
         </div>
-          <div class="row-fluid article_item">
+        <div class="row-fluid article_item">
             <div class="span8">
-                 <div class="content" style="height:500px;border:solid 1px red;"></div>
+                <div class="content" style="height: 500px; border: solid 1px red;"></div>
             </div>
             <div class="span4">
                 <div class="info">
-                    <div style="height:100px;border:solid 1px blue;">
-                    abcdef gheie
-                        </div>
+                    <div style="height: 100px; border: solid 1px blue;">
+                        abcdef gheie
+                    </div>
                 </div>
-                
-            </div> 
+
+            </div>
         </div>
-          <div class="row-fluid article_item">
+        <div class="row-fluid article_item">
             <div class="span8">
-                 <div class="content" style="height:500px;border:solid 1px red;"></div>
+                <div class="content" style="height: 500px; border: solid 1px red;"></div>
             </div>
             <div class="span4">
                 <div class="info">
-                    <div style="height:100px;border:solid 1px blue;">
-                    abcdef gheie
-                        </div>
+                    <div style="height: 100px; border: solid 1px blue;">
+                        abcdef gheie
+                    </div>
                 </div>
-                
-            </div> 
+
+            </div>
         </div>
 
 
@@ -119,51 +119,51 @@
     <style>
         .article_item
         {
-            margin-top:20px;
+            margin-top: 20px;
         }
+
         .abc
         {
-            position:fixed;
-            top:0px;
+            position: fixed;
+            top: 0px;
         }
     </style>
-        <script type="text/javascript">
-           
-            $(document).ready(function () {
-                
-            });
+    <script type="text/javascript">
 
-            $(window).scroll(function () {
-                $('.content').each(function () {
-                    var ctop = $(this).position().top;
-                    var cheight = $(this).height();
-                    
-                    var info = $(this).parent('div').parent('.article_item').find('.info');
-                    var iheight = info.height();
-                    var d = ctop - $(window).scrollTop()
-                    var margintop = info.css('margin-top');
-                    if (d > 0)
-                    {
-                        info.css('margin-top', '0');
-                        return;
-                    }
-                    if (d <= 0 && (-d + iheight< cheight)) {
-                       
-                        info.css('margin-top', -d + 'px');
-                        //info.addClass('abc');
-                        //alert('xx');
-                    }
-                    else {
-                        info.css('margin-top', margintop);
-                        //info.removeClass('abc');
-                    }
+        $(document).ready(function () {
 
+        });
+
+        $(window).scroll(function () {
+            $('.content').each(function () {
+                var ctop = $(this).position().top;
+                var cheight = $(this).height();
+
+                var info = $(this).parent('div').parent('.article_item').find('.info');
+                var iheight = info.height();
+                var d = ctop - $(window).scrollTop()
+                var margintop = info.css('margin-top');
+                if (d > 0) {
+                    info.css('margin-top', '0');
+                    return;
+                }
+                if (d <= 0 && (-d + iheight < cheight)) {
+
+                    info.css('margin-top', -d + 'px');
+                    //info.addClass('abc');
+                    //alert('xx');
+                }
+                else {
+                    info.css('margin-top', margintop);
+                    //info.removeClass('abc');
+                }
 
 
-                });
-                
 
             });
+
+
+        });
     </script>
 </body>
 </html>

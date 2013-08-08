@@ -22,12 +22,34 @@ namespace projectk.Controllers
 
         public ActionResult Index()
         {
+            //int numberLoad = Variable.NumberOfArticleLoaded;
+            //IOAuth1ServiceProvider<IDropbox> dropboxProvider =new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
+
+            //IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
+
+            List<Article> articles = GetArticle();// db.Articles.Where(a => a.Cat == (int)Cats.Funny).OrderByDescending(a => a.DatePost).Take(numberLoad).Include(a => a.UserProfile).ToList();
+            //foreach (Article item in articles)
+            //{
+            //    if (DateTime.Now > item.DropboxShareLinkExpire)
+            //    {
+            //        var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
+            //        item.DropboxShareLink = media.Url;
+            //        item.DropboxShareLinkExpire = media.ExpireDate;
+            //    } 
+            //}
+
+            db.SaveChanges();
+            return View(articles);
+        }
+        public List<Article> GetArticle(int BeginID=0)
+        {
+            List<Article> articles = new List<Article>();
             int numberLoad = Variable.NumberOfArticleLoaded;
-            IOAuth1ServiceProvider<IDropbox> dropboxProvider =new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
+            IOAuth1ServiceProvider<IDropbox> dropboxProvider = new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
 
             IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
 
-            List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny).OrderByDescending(a => a.DatePost).Take(numberLoad).Include(a => a.UserProfile).ToList();
+             articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny && a.ID>BeginID).OrderByDescending(a => a.DatePost).Take(numberLoad).Include(a => a.UserProfile).ToList();
             foreach (Article item in articles)
             {
                 if (DateTime.Now > item.DropboxShareLinkExpire)
@@ -36,20 +58,62 @@ namespace projectk.Controllers
                     item.DropboxShareLink = media.Url;
                     item.DropboxShareLinkExpire = media.ExpireDate;
                 }
-                //if (item.UserName == null || item.UserName == string.Empty)
-                //{
-                //    UserProfile u = Variable.GetUserByID(item.UserID);
-                //    if (u == null)
-                //        item.UserName = "";
-                //    else
-                //        item.UserName = u.UserName;
-                //}
             }
+            return articles;
+        }
+        public string load(int id=0)
+        {
+            List<Article> articles = GetArticle(id);
+            return GenerateArticles(articles);
 
-            db.SaveChanges();
-            return View(articles);
         }
 
+        public string GenerateArticles(List<Article> articles)
+        { System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            foreach (Article a in articles)
+            {
+                sb.Append(GenerateArticle(a));
+            }
+            return sb.ToString();
+        }
+        public string GenerateArticle(Article a)
+        {
+            string currentURL = "";
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.AppendLine("    <div class=\"aitem\">");
+            sb.AppendLine("        <div class=\"row-fluid article_item\">");
+            sb.AppendLine("            <div class=\"span4\">");
+            sb.AppendLine("                <div class=\"aitem-top\">");
+            sb.AppendLine("                    <div class=\"aitem-title\">");
+            sb.AppendLine("                        <h4><a href=\"funny/image/"+a.ID+"\">"+a.Name+"</a>");
+            sb.AppendLine("                        </h4>");
+            sb.AppendLine("                    </div>");
+            sb.AppendLine("                    <div class=\"aitem-title\">");
+            sb.AppendLine("                        <span>Post by</span>&nbsp;<a href=\"#\"><span style=\"font-weight: bold;\">");
+            sb.AppendLine(a.UserName);
+            sb.AppendLine("                        </span></a>");
+            sb.AppendLine("                    </div>");
+            sb.AppendLine("                    <div>");
+            sb.AppendLine("                        <span>View: "+a.PageView+"</span>&nbsp;<span>Comment: "+a.Comment+"</span>");
+            sb.AppendLine("                    </div>");
+            sb.AppendLine("                    <div class=\"fb-like\" data-href=\"" + currentURL + "\" data-send=\"false\" data-layout=\"button_count\" data-width=\"50\" data-show-faces=\"true\">");
+            sb.AppendLine("                    </div>");
+            sb.AppendLine("                </div>");
+            sb.AppendLine("            </div>");
+            sb.AppendLine("            <div class=\"span8\">");
+            sb.AppendLine("                <div class=\"item-image\">");
+            sb.AppendLine("                    <a href=\"/funny/image/"+a.ID+"\">");
+            sb.AppendLine("                        <img class=\"lazy img-polaroid\"  src=\"~/Content/images/loading_anim.gif\" data-original=\""+a.DropboxShareLink+"\"");
+            sb.AppendLine("                    alt=\""+a.Name+"\" />");
+            sb.AppendLine("                    </a>");
+            sb.AppendLine("                </div>");
+            sb.AppendLine("            </div>");
+            sb.AppendLine("        </div>");
+            sb.AppendLine("    </div>");
+            sb.AppendLine("    <div class=\"separate\"></div>");
+
+            return sb.ToString();
+        }
         //
         // GET: /Hai/Details/5
 

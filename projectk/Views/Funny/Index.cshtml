@@ -6,17 +6,14 @@
 @foreach (var item in Model)
 {
     <div class="aitem">
-        <div class="row-fluid">
-         
+        <div class="row-fluid article_item">         
             <div class="span4">
-
                 <div class="aitem-top">
                     <div class="aitem-title">
                         <h4><a href="funny/image/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
                         </h4>
                     </div>
                     <div class="aitem-title">
-
                         <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;"> 
                             @item.UserName;
                         </span></a>
@@ -39,8 +36,85 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div class="separate"></div>
 }
+<div class="loading" style="display: none;">
+        <img src="/images/load.png" />
+    </div>
+<div class="buttonload">
+    <button id="load" class="load btn btn-primary">load more</button>
+</div>
 
+@section scripts{
+<script type="text/javascript">
+
+    $(function () {
+        $('#load').live({
+            click: function () {
+                $('.loading').show();
+                //$.ajax({
+                //    url: "http://graph.facebook.com/?ids=http%3a%2f%2fhaivl.com/photo/546331", success: function (result) {
+
+                //        $.each(result, function (index, file) {
+                //            ;
+                //            $("#container1").append('<div>' + file.shares + '</div>');
+                //        });
+
+
+
+                //    }
+                //});
+                $.ajax({
+                    url: "/funny/load", success: function (result) {
+                        $(".article-content").append(result);
+                        $('.loading').remove();
+                        $('.buttonload').remove();
+                        $(".article-content").append("<div class='loading' style='display:none;'><img src='/images/load.png' /></div>");
+                        $(".article-content").append("<div class=\"buttonload\"><button id='load' class='load btn btn-primary'>load more</button></div>");
+                        $("img.lazy").lazyload({
+                            effect: "fadeIn", failure_limit: 10
+                        }).removeClass("lazy");;
+                    }
+                });
+            }
+        });
+
+      
+    })
+    var topHeight = 0;
+    $(window).scroll(function () {
+        $('.item-image').each(function () {
+            var ctop = $(this).position().top;
+            var cheight = $(this).height();
+
+            var info = $(this).parent('div').parent('.article_item').find('.aitem-top');
+            var iheight = info.height();
+            var d = ctop - $(window).scrollTop()
+            var margintop = info.css('margin-top');
+            if (d > 0) {
+                info.css('margin-top', '0');
+                return false;
+            }
+            if (d <= 0 && ((-d + iheight) < cheight)) {
+
+                info.css('margin-top', -d + 'px');
+                return false;
+                //info.addClass('abc');
+                //alert('xx');
+            }
+            else {
+                info.css('margin-top', margintop);
+                //info.removeClass('abc');
+            }
+
+
+
+        });
+
+
+    });
+</script>
+}
+     
+ 
