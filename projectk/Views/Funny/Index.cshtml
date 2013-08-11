@@ -2,8 +2,8 @@
 @{
     ViewBag.Title = "Hài";
 }
- 
-@foreach (var item in Model)
+ @Html.Raw(projectk.Controllers.FunnyController.GenerateArticles((List<projectk.Models.Article>)Model,ViewBag.EndID,Request.Url.PathAndQuery))
+@*@foreach (var item in Model)
 {
     <div class="aitem">
         <div class="row-fluid article_item">         
@@ -38,14 +38,25 @@
         </div>
     </div>
     <div class="separate"></div>
-}
-<div class="loading" style="display: none;">
+}*@
+@*<div class="loading" style="display: none;">
         <img src="/images/load.png" />
     </div>
 <div class="buttonload">
     <button id="load" class="load btn btn-primary">load more</button>
-</div>
-
+</div>*@
+  <style>
+       
+        .abc
+        {
+            position: fixed;
+            top: 70px;
+        }
+      .buttonload
+      {
+          margin-top:20px;
+      }
+    </style>
 @section scripts{
 <script type="text/javascript">
 
@@ -65,16 +76,20 @@
 
                 //    }
                 //});
+                var urlAJ = "/funny/load/"+ $('#EndID').val();
                 $.ajax({
-                    url: "/funny/load", success: function (result) {
-                        $(".article-content").append(result);
+                    url: urlAJ, success: function (result) {
+                      
                         $('.loading').remove();
                         $('.buttonload').remove();
-                        $(".article-content").append("<div class='loading' style='display:none;'><img src='/images/load.png' /></div>");
-                        $(".article-content").append("<div class=\"buttonload\"><button id='load' class='load btn btn-primary'>load more</button></div>");
-                        $("img.lazy").lazyload({
-                            effect: "fadeIn", failure_limit: 10
-                        }).removeClass("lazy");;
+                        $(".article-content").append(result);
+                       // $(".article-content").append("<div class='loading' style='display:none;'><img src='/images/load.png' /></div>");
+                       // $(".article-content").append("<div class=\"buttonload\"><button id='load' class='load btn btn-primary'>load more</button></div>");
+                        $(document).ready(function () {
+                            $("img.lazy").lazyload({
+                                effect: "fadeIn", failure_limit: 10
+                            }).removeClass("lazy");
+                        });
                     }
                 });
             }
@@ -82,7 +97,7 @@
 
       
     })
-    var topHeight = 0;
+    var topHeight = 65;
     $(window).scroll(function () {
         $('.item-image').each(function () {
             var ctop = $(this).position().top;
@@ -90,22 +105,25 @@
 
             var info = $(this).parent('div').parent('.article_item').find('.aitem-top');
             var iheight = info.height();
-            var d = ctop - $(window).scrollTop()
+            var d = ctop - $(window).scrollTop()-topHeight;
             var margintop = info.css('margin-top');
             if (d > 0) {
-                info.css('margin-top', '0');
+                // info.css('margin-top', '0');
+                info.removeClass('abc');
+                info.css('width', (info.parent('.span4').width()-20) + 'px');
                 return false;
             }
-            if (d <= 0 && ((-d + iheight) < cheight)) {
+            if (d <= 0 && ((-d) < (cheight-iheight))) {
 
-                info.css('margin-top', -d + 'px');
-                return false;
-                //info.addClass('abc');
+               // info.css('margin-top', -d + 'px');
+               // return false;
+                info.addClass('abc');
+                info.css('width', (info.parent('.span4').width() - 20) + 'px');
                 //alert('xx');
             }
             else {
-                info.css('margin-top', margintop);
-                //info.removeClass('abc');
+               // info.css('margin-top', margintop);
+                info.removeClass('abc');
             }
 
 

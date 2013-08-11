@@ -26,8 +26,9 @@ namespace projectk.Controllers
             //IOAuth1ServiceProvider<IDropbox> dropboxProvider =new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
 
             //IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
-
-            List<Article> articles = GetArticle();// db.Articles.Where(a => a.Cat == (int)Cats.Funny).OrderByDescending(a => a.DatePost).Take(numberLoad).Include(a => a.UserProfile).ToList();
+            int EndID = 0;
+            List<Article> articles = GetArticle(ref EndID);// db.Articles.Where(a => a.Cat == (int)Cats.Funny).OrderByDescending(a => a.DatePost).Take(numberLoad).Include(a => a.UserProfile).ToList();
+            ViewBag.EndID = EndID;
             //foreach (Article item in articles)
             //{
             //    if (DateTime.Now > item.DropboxShareLinkExpire)
@@ -41,7 +42,7 @@ namespace projectk.Controllers
             db.SaveChanges();
             return View(articles);
         }
-        public List<Article> GetArticle(int BeginID=0)
+        public List<Article> GetArticle(ref int EndID,int BeginID=999999)
         {
             List<Article> articles = new List<Article>();
             int numberLoad = Variable.NumberOfArticleLoaded;
@@ -49,7 +50,7 @@ namespace projectk.Controllers
 
             IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
 
-             articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny && a.ID>BeginID).OrderByDescending(a => a.DatePost).Take(numberLoad).Include(a => a.UserProfile).ToList();
+             articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny && a.ID<BeginID).OrderByDescending(a => a.DatePost).Take(numberLoad).Include(a => a.UserProfile).ToList();
             foreach (Article item in articles)
             {
                 if (DateTime.Now > item.DropboxShareLinkExpire)
@@ -59,33 +60,48 @@ namespace projectk.Controllers
                     item.DropboxShareLinkExpire = media.ExpireDate;
                 }
             }
+            if (articles.Count > 0)
+                EndID = articles[articles.Count - 1].ID;
             return articles;
         }
         public string load(int id=0)
         {
-            List<Article> articles = GetArticle(id);
-            return GenerateArticles(articles);
+            string currentURL = Request.Url.PathAndQuery;
+            int EndID = 0;
+            List<Article> articles = GetArticle(ref EndID,id);
+            return GenerateArticles(articles, EndID, currentURL);
 
         }
 
-        public string GenerateArticles(List<Article> articles)
+        public static string GenerateArticles(List<Article> articles, int EndID, string currentURL)
         { System.Text.StringBuilder sb = new System.Text.StringBuilder();
             foreach (Article a in articles)
             {
-                sb.Append(GenerateArticle(a));
+                sb.Append(GenerateArticle(a, currentURL));
+            }
+            //render loading button
+            if (articles.Count > 0)
+            {
+                sb.AppendLine("<div class=\"loading\" style=\"display: none;\">");
+                sb.AppendLine("        <img src=\"/images/load.png\" />");
+                sb.AppendLine("    </div>");
+                sb.AppendLine("<div class=\"buttonload\">");
+                sb.AppendLine("    <button id=\"load\"  class=\"load btn btn-primary\">load more</button>");
+                sb.AppendLine("<input type=\"hidden\" name=\"EndID\" id=\"EndID\" value=\"" + EndID + "\"/>");
+                sb.AppendLine("</div>");
             }
             return sb.ToString();
         }
-        public string GenerateArticle(Article a)
+        public static string GenerateArticle(Article a,string currentURL)
         {
-            string currentURL = "";
+           
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             sb.AppendLine("    <div class=\"aitem\">");
             sb.AppendLine("        <div class=\"row-fluid article_item\">");
             sb.AppendLine("            <div class=\"span4\">");
             sb.AppendLine("                <div class=\"aitem-top\">");
             sb.AppendLine("                    <div class=\"aitem-title\">");
-            sb.AppendLine("                        <h4><a href=\"funny/image/"+a.ID+"\">"+a.Name+"</a>");
+            sb.AppendLine("                        <h4><a href=\"image/"+a.ID+"\">"+a.Name+"</a>");
             sb.AppendLine("                        </h4>");
             sb.AppendLine("                    </div>");
             sb.AppendLine("                    <div class=\"aitem-title\">");
@@ -102,8 +118,8 @@ namespace projectk.Controllers
             sb.AppendLine("            </div>");
             sb.AppendLine("            <div class=\"span8\">");
             sb.AppendLine("                <div class=\"item-image\">");
-            sb.AppendLine("                    <a href=\"/funny/image/"+a.ID+"\">");
-            sb.AppendLine("                        <img class=\"lazy img-polaroid\"  src=\"~/Content/images/loading_anim.gif\" data-original=\""+a.DropboxShareLink+"\"");
+            sb.AppendLine("                    <a href=\"image/"+a.ID+"\">");
+            sb.AppendLine("                        <img class=\"lazy img-polaroid\"  src=\"/Content/images/loading_anim.gif\" data-original=\""+a.DropboxShareLink+"\"");
             sb.AppendLine("                    alt=\""+a.Name+"\" />");
             sb.AppendLine("                    </a>");
             sb.AppendLine("                </div>");
@@ -117,35 +133,35 @@ namespace projectk.Controllers
         //
         // GET: /Hai/Details/5
 
-        public ActionResult Image(long id = 0)
-        {
-            //set pageview
-            if (Pageview.A[id] == null)
-            {
-                Pageview.A[id] = 1;
+        //public ActionResult Image(long id = 0)
+        //{
+        //    //set pageview
+        //    if (Pageview.A[id] == null)
+        //    {
+        //        Pageview.A[id] = 1;
 
-            }
-            else
-            {
-                Pageview.A[id] = int.Parse(Pageview.A[id].ToString()) + 1;
-            }
-            //end set pageview
-            Article article = db.Articles.Find(id);
-            article.UserProfile = db.UserProfiles.Where(a => a.UserName == article.UserName).FirstOrDefault();
-            ViewBag.Next = -1;
-            ViewBag.Prev = -1;
-            Article Next = db.Articles.Where(a => a.ID > id && a.Cat == (int)Cats.Funny).FirstOrDefault();
-            if (Next != null)
-                ViewBag.Next = Next.ID;
-            Article Prev = db.Articles.Where(a => a.ID < id && a.Cat == (int)Cats.Funny).FirstOrDefault();
-            if (Prev != null)
-                ViewBag.Pre = Prev.ID;
-            if (article == null)
-            {
-                return HttpNotFound();
-            }
-            return View(article);
-        }
+        //    }
+        //    else
+        //    {
+        //        Pageview.A[id] = int.Parse(Pageview.A[id].ToString()) + 1;
+        //    }
+        //    //end set pageview
+        //    Article article = db.Articles.Find(id);
+        //    article.UserProfile = db.UserProfiles.Where(a => a.UserName == article.UserName).FirstOrDefault();
+        //    ViewBag.Next = -1;
+        //    ViewBag.Prev = -1;
+        //    Article Next = db.Articles.Where(a => a.ID > id && a.Cat == (int)Cats.Funny).FirstOrDefault();
+        //    if (Next != null)
+        //        ViewBag.Next = Next.ID;
+        //    Article Prev = db.Articles.Where(a => a.ID < id && a.Cat == (int)Cats.Funny).FirstOrDefault();
+        //    if (Prev != null)
+        //        ViewBag.Pre = Prev.ID;
+        //    if (article == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(article);
+        //}
         public void FindNext(DbSet<Article> a, long currentID)
         {
 
