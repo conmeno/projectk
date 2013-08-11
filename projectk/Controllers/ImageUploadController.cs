@@ -24,7 +24,7 @@ namespace projectk.Controllers
 
         public ActionResult Index()
         {
-            var articles = db.Articles.Where(a => a.Cat == (int)Cats.Funny).Where(a => a.UserName == User.Identity.Name).OrderByDescending(a => a.DatePost).Take(100).Include(a => a.UserProfile).ToList();
+            var articles = db.Articles.Where(a => a.UserName == User.Identity.Name).OrderByDescending(a => a.DatePost).Take(100).Include(a => a.UserProfile).ToList();
             return View(articles.ToList());
         }
 
@@ -48,6 +48,7 @@ namespace projectk.Controllers
         {
             if (ModelState.IsValid)
             {
+                int cat = int.Parse(Request.Form["imageType"].ToString()); ;
 
                 IOAuth1ServiceProvider<IDropbox> dropboxProvider =
          new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
@@ -73,7 +74,11 @@ namespace projectk.Controllers
 
                     Spring.IO.FileResource file = new Spring.IO.FileResource(Variable.WebFolder() + "/Upload/" + filename);
 
-                    string DropboxURL = "/conmeno/" + filename;
+                    string DropboxURL = "";
+                    if(cat==(int)Cats.Funny) 
+                    DropboxURL="/conmeno/funny/" + filename;
+                    else
+                        DropboxURL = "/conmeno/hotgirl/" + filename;
 
 
                     //_client.UploadFileAsync(file, DropboxURL);
@@ -103,7 +108,10 @@ namespace projectk.Controllers
 
                 article.UserID = 1;
                 article.UserName = User.Identity.Name;
+                if (cat == (int)Cats.Funny) 
                 article.Cat = (int)Cats.Funny;
+                else
+                    article.Cat = (int)Cats.HotGirl;
                 article.Status = 0;
                 if (Variable.AutoApprove)
                     article.Status = 1;

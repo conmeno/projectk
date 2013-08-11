@@ -185,7 +185,7 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\UpdateLinkController.cs" />
-    <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Controllers\FunVideoController.cs" />
     <Compile Include="Controllers\VideoUploadController.cs" />
     <Compile Include="Controllers\ImageUploadController.cs" />
     <Compile Include="Controllers\FunnyController.cs" />
@@ -358,10 +358,8 @@
     <Content Include="Views\ImageUpload\Index.cshtml" />
     <Content Include="Views\ImageUpload\Create.cshtml" />
     <Content Include="Views\Funny\Index.cshtml" />
-    <Content Include="Views\Funny\Image.cshtml" />
     <Content Include="Views\Suggestion\Index.cshtml" />
     <Content Include="Views\Hotgirl\Index.cshtml" />
-    <Content Include="Views\Hotgirl\Image.cshtml" />
     <Content Include="Views\Article\Create.cshtml" />
     <Content Include="Views\Article\Delete.cshtml" />
     <Content Include="Views\Article\Details.cshtml" />
@@ -372,11 +370,8 @@
     <Content Include="Views\VideoUpload\Details.cshtml" />
     <Content Include="Views\VideoUpload\Edit.cshtml" />
     <Content Include="Views\VideoUpload\Index.cshtml" />
-    <Content Include="Views\Video\Create.cshtml" />
-    <Content Include="Views\Video\Delete.cshtml" />
-    <Content Include="Views\Video\Details.cshtml" />
-    <Content Include="Views\Video\Edit.cshtml" />
-    <Content Include="Views\Video\Index.cshtml" />
+    <Content Include="Views\FunVideo\Details.cshtml" />
+    <Content Include="Views\FunVideo\Index.cshtml" />
     <Content Include="Views\Suggestion\OlderFunny.cshtml" />
     <Content Include="Views\UpdateLink\Index.cshtml" />
     <Content Include="Views\Suggestion\OlderVideo.cshtml" />

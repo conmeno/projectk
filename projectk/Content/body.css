@@ -258,3 +258,12 @@
     padding: 30px 0;
     text-align: center;
 }
+ .FixTitle
+        {
+            position: fixed;
+            top: 70px;
+        }
+      .buttonload
+      {
+          margin-top:20px;
+      }

@@ -37,10 +37,10 @@ namespace projectk.Controllers
             article.UserProfile = db.UserProfiles.Where(a => a.UserName == article.UserName).FirstOrDefault();
             ViewBag.Next = -1;
             ViewBag.Prev = -1;
-            Article Next = db.Articles.Where(a => a.ID > id && a.Cat == (int)Cats.Funny).FirstOrDefault();
+            Article Next = db.Articles.Where(a => a.ID > id && a.Cat == article.Cat).FirstOrDefault();
             if (Next != null)
                 ViewBag.Next = Next.ID;
-            Article Prev = db.Articles.Where(a => a.ID < id && a.Cat == (int)Cats.Funny).FirstOrDefault();
+            Article Prev = db.Articles.Where(a => a.ID < id && a.Cat == article.Cat).FirstOrDefault();
             if (Prev != null)
                 ViewBag.Pre = Prev.ID;
             if (article == null)

@@ -19,43 +19,47 @@ namespace projectk.Controllers
         //
         // GET: /Hotgirl/
 
+        //public ActionResult Index()
+        //{
+        //    int numberLoad = Variable.NumberOfArticleLoaded;
+        //    IOAuth1ServiceProvider<IDropbox> dropboxProvider = new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
+
+        //    IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
+
+        //    List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.HotGirl).OrderByDescending(a => a.DatePost).Take(numberLoad).Include(a => a.UserProfile).ToList();
+        //    foreach (Article item in articles)
+        //    {
+        //        if (DateTime.Now > item.DropboxShareLinkExpire)
+        //        {
+        //            var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
+        //            item.DropboxShareLink = media.Url;
+        //            item.DropboxShareLinkExpire = media.ExpireDate;
+        //        }
+              
+        //    }
+
+        //    db.SaveChanges();
+        //    return View(articles);
+        //}
+
+
         public ActionResult Index()
         {
-            int numberLoad = Variable.NumberOfArticleLoaded;
-            IOAuth1ServiceProvider<IDropbox> dropboxProvider = new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
-
-            IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
-
-            List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.HotGirl).OrderByDescending(a => a.DatePost).Take(numberLoad).Include(a => a.UserProfile).ToList();
-            foreach (Article item in articles)
-            {
-                if (DateTime.Now > item.DropboxShareLinkExpire)
-                {
-                    var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
-                    item.DropboxShareLink = media.Url;
-                    item.DropboxShareLinkExpire = media.ExpireDate;
-                }
-              
-            }
-
+            int EndID = 0;
+            List<Article> articles =Variable.GetArticle(ref EndID,Cats.HotGirl);
+            ViewBag.EndID = EndID;
             db.SaveChanges();
             return View(articles);
         }
-
-        //
-        // GET: /Hotgirl/Details/5
-
-        public ActionResult Image(int id = 0)
+      
+        public string load(int id = 0)
         {
-            Article article = db.Articles.Find(id);
-            if (article == null)
-            {
-                return HttpNotFound();
-            }
-            return View(article);
-        }
+            string currentURL = Request.Url.PathAndQuery;
+            int EndID = 0;
+            List<Article> articles =Variable.GetArticle(ref EndID,Cats.HotGirl, id);
+            return Variable.GenerateArticles(articles, EndID, currentURL);
 
-     
+        } 
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

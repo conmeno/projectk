@@ -2,89 +2,21 @@
 @{
     ViewBag.Title = "Hài";
 }
- @Html.Raw(projectk.Controllers.FunnyController.GenerateArticles((List<projectk.Models.Article>)Model,ViewBag.EndID,Request.Url.PathAndQuery))
-@*@foreach (var item in Model)
-{
-    <div class="aitem">
-        <div class="row-fluid article_item">         
-            <div class="span4">
-                <div class="aitem-top">
-                    <div class="aitem-title">
-                        <h4><a href="funny/image/@item.ID">@Html.DisplayFor(modelItem => item.Name)</a>
-                        </h4>
-                    </div>
-                    <div class="aitem-title">
-                        <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;"> 
-                            @item.UserName;
-                        </span></a>
-                    </div>
-                    <div>
-                        <span>View: @item.PageView</span>&nbsp;<span>Comment: @item.Comment</span>
-                    </div>
-                    <div class="fb-like" data-href="@Context.Request.Url.ToString()" data-send="false" data-layout="button_count" data-width="50" data-show-faces="true">
-                    </div>
-                </div>
-            </div>
-            <div class="span8">
-                <div class="item-image">
-                    <a href="/funny/image/@item.ID">
-                        <img class="lazy img-polaroid"  src="~/Content/images/loading_anim.gif" data-original="@Html.DisplayFor(modelItem => item.DropboxShareLink)"
-                    alt="@Html.DisplayFor(modelItem => item.Name)" />
-
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="separate"></div>
-}*@
-@*<div class="loading" style="display: none;">
-        <img src="/images/load.png" />
-    </div>
-<div class="buttonload">
-    <button id="load" class="load btn btn-primary">load more</button>
-</div>*@
-  <style>
-       
-        .abc
-        {
-            position: fixed;
-            top: 70px;
-        }
-      .buttonload
-      {
-          margin-top:20px;
-      }
-    </style>
+ @Html.Raw(Projectk.Variable.GenerateArticles((List<projectk.Models.Article>)Model,ViewBag.EndID,Context.Request.Url.ToString()))
+ 
+  
 @section scripts{
 <script type="text/javascript">
-
     $(function () {
         $('#load').live({
             click: function () {
-                $('.loading').show();
-                //$.ajax({
-                //    url: "http://graph.facebook.com/?ids=http%3a%2f%2fhaivl.com/photo/546331", success: function (result) {
-
-                //        $.each(result, function (index, file) {
-                //            ;
-                //            $("#container1").append('<div>' + file.shares + '</div>');
-                //        });
-
-
-
-                //    }
-                //});
+                $('.loading').show(); 
                 var urlAJ = "/funny/load/"+ $('#EndID').val();
                 $.ajax({
-                    url: urlAJ, success: function (result) {
-                      
+                    url: urlAJ, success: function (result) { 
                         $('.loading').remove();
                         $('.buttonload').remove();
-                        $(".article-content").append(result);
-                       // $(".article-content").append("<div class='loading' style='display:none;'><img src='/images/load.png' /></div>");
-                       // $(".article-content").append("<div class=\"buttonload\"><button id='load' class='load btn btn-primary'>load more</button></div>");
+                        $(".article-content").append(result); 
                         $(document).ready(function () {
                             $("img.lazy").lazyload({
                                 effect: "fadeIn", failure_limit: 10
@@ -107,30 +39,19 @@
             var iheight = info.height();
             var d = ctop - $(window).scrollTop()-topHeight;
             var margintop = info.css('margin-top');
-            if (d > 0) {
-                // info.css('margin-top', '0');
-                info.removeClass('abc');
+            if (d > 0) { 
+                info.removeClass('FixTitle');
                 info.css('width', (info.parent('.span4').width()-20) + 'px');
                 return false;
             }
-            if (d <= 0 && ((-d) < (cheight-iheight))) {
-
-               // info.css('margin-top', -d + 'px');
-               // return false;
-                info.addClass('abc');
-                info.css('width', (info.parent('.span4').width() - 20) + 'px');
-                //alert('xx');
+            if (d <= 0 && ((-d) < (cheight-iheight))) { 
+                info.addClass('FixTitle');
+                info.css('width', (info.parent('.span4').width() - 20) + 'px');               
             }
-            else {
-               // info.css('margin-top', margintop);
-                info.removeClass('abc');
+            else {              
+                info.removeClass('FixTitle');
             }
-
-
-
         });
-
-
     });
 </script>
 }

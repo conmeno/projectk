@@ -36,8 +36,11 @@ namespace projectk.Models
     public class RegisterExternalLoginModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Tên tài khoản")]
         public string UserName { get; set; }
+
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         public string ExternalLoginData { get; set; }
     }

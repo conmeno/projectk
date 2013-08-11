@@ -16,6 +16,12 @@ namespace projectk
             routes.MapRoute("Default2",
          "image/{id}",
          new { controller = "Image", action = "Index" });
+
+            routes.MapRoute("Default3",
+      "funvideo/{id}",
+      new { controller = "FunVideo", action = "Details" });
+
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

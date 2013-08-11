@@ -37,6 +37,19 @@
             @Html.ValidationMessageFor(model => model.Content)
         </div> *@
 
+
+        <div class="editor-label">
+            Thể loại
+        </div>
+        <div class="editor-field">
+            <div style="line-height: 20px;">
+                <span>
+                    <input type="radio" value="1" name="imageType"/>Funny  </span>
+                <span>
+                    <input type="radio" value="2" name="imageType"/>Hot Girl</span>
+            </div>
+        </div>
+
         <div class="editor-label">
             @Html.LabelFor(model => model.Source)
         </div>
