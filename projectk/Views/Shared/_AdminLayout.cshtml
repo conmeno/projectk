@@ -30,11 +30,11 @@
 
   <link rel="stylesheet" media="only screen and (max-width: 900px)" href="~/Content/table.css">
     <link rel="stylesheet" media="only screen and (max-width: 600px)" href="~/Content/mobile.css"> -->
-  
+
 </head>
-<body> 
-  @Html.Partial("_header")
-    <div class="container-fluid"> 
+<body>
+    @Html.Partial("_header")
+    <div class="container-fluid">
         <div class="row-fluid">
 
             <div class="span8">
@@ -45,34 +45,62 @@
 
             </div>
             <div class="span4">
-                <div>Các quy định trước khi upload</div>
+                <div class="guideline-container">
+                    <h3>Những quy định khi đăng ảnh</h3>
+                    <ul class="guidelines" style="list-style-type:circle;">
+                    <li><span style="color: red">Ảnh sưu tầm mà để tự làm có thể bị xóa</span> mà không
+                            cần thông báo</li>
+                        <li>Không đăng ảnh tự sướng, dìm hàng</li>
+                        <li><span style="color: red">Không đăng ảnh chứa thông tin cá nhân của người khác</span>
+                            (kể cả tên, avatar, link Facebook), trừ người nổi tiếng</li>
+                      <li>Không đăng ảnh trái với thuần phong mỹ tục</li>
+                        <li>Không đăng ảnh liên quan đến các vấn đề chính trị, tôn giáo</li>
+                        <li><span style="color: red">Không spam link ảnh</span> của bạn trong phần bình luận
+                            của ảnh khác</li>
+                             <li>Hãy đặt tiêu đề và mô tả ảnh một cách <b>sáng tạo</b>. Tránh đặt kiểu như: "hay
+                            vãi", "chuẩn", ":))"...<span style="color: red">Không đặt tiêu đề câu like, vote hay
+                                có chữ câu like, vote trong ảnh.</span></li>
+                        <li>Hạn chế sử dụng emoticon (mặt cười)</li>
+                        <li><span style="color: red">Đăng ảnh phản động, đồi trụy sẽ bị khóa tài khoản ngay
+                            lập tức</span></li>
+                        <li>Không đăng ảnh đã bị trùng</li>
+                        <li><span style="color: red">Đừng xóa watermark của ảnh (nếu có) để đăng bạn nhé!</span>
+                            Hãy tôn trọng sự sáng tạo!</li>
+                        <li>Hãy dùng chức năng tìm kiếm bằng hình ảnh của <b><a target="_blank" href="https://www.google.com/imghp">
+                            Google Images</a></b> để tìm bản gốc của ảnh</li>
+                        
+                        <li>Nhập các thông tin bằng <b>tiếng Việt có dấu</b> và <b>đúng chính tả</b></li>
+                       
+                      
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 
-     @Html.Partial("_footer")
+    @Html.Partial("_footer")
     <div id="fb-root"></div>
- 
+
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
-    
+
     <script type="text/javascript" src="~/Content/bootstrap/js/bootstrap.min.js"></script>
 
-    
+
     <script src="~/Scripts/js/jquery.colorbox-min.js"></script>
     <script src="~/Scripts/js/js.js"></script>
     <script src="~/Scripts/js/holder.js"></script>
 
     <script type="text/javascript">
 
-        $(document).ready(function () { 
+        $(document).ready(function () {
             $(function () {
                 $('#socialLoginList').find('button').addClass(" btn btn-primary ");
             });
         });
 
     </script>
- 
+
 </body>
 </html>

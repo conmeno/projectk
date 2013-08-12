@@ -33,7 +33,7 @@ namespace projectk.Controllers
         //
         // GET: /Article/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int id=0)
         {
             //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName");

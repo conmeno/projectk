@@ -50,6 +50,7 @@ namespace projectk.Models
          [DisplayName("Tiêu đề")][Required]
         
         public string Name { get; set; }
+         [DisplayName("Đường dẫn youtube")] 
         public string ExternalURL { get; set; }
         public string DropboxShareLink { get; set; }
         public DateTime DropboxShareLinkExpire { get; set; }
@@ -57,6 +58,7 @@ namespace projectk.Models
         public long PageView { get; set; }
         public long Like { get; set; }
         public long Comment { get; set; }
+        [DisplayName("Mô tả ngắn")] 
         public string Description { get; set; }
         public string Content { get; set; }
         public string LocalURL { get; set; }

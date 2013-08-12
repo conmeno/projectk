@@ -365,10 +365,6 @@
     <Content Include="Views\Article\Details.cshtml" />
     <Content Include="Views\Article\Edit.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
-    <Content Include="Views\VideoUpload\Create.cshtml" />
-    <Content Include="Views\VideoUpload\Delete.cshtml" />
-    <Content Include="Views\VideoUpload\Details.cshtml" />
-    <Content Include="Views\VideoUpload\Edit.cshtml" />
     <Content Include="Views\VideoUpload\Index.cshtml" />
     <Content Include="Views\FunVideo\Details.cshtml" />
     <Content Include="Views\FunVideo\Index.cshtml" />
