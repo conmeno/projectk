@@ -1,0 +1,97 @@
+﻿@model IEnumerable<projectk.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<div class="articles">
+@foreach (var item in Model) {
+    <div class="aitem">
+        <div class="item-info-left">
+
+            <div class="aitem-top">
+                <div class="aitem-title"> @Html.DisplayFor(modelItem => item.Name)</div>
+                <div class="aitem-title">
+                    <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
+                            rain</span></a>
+                </div>
+                <div>
+                    <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
+                </div>
+            </div>
+        </div>
+        <div class="item-right">
+            <div class="aitem-top">
+                <div class="aitem-title"> @Html.DisplayFor(modelItem => item.Name)</div>
+                <div class="aitem-title">
+                    <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
+                            rain</span></a>
+                </div>
+                <div class="pageview">
+                    <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
+                </div>
+            </div>
+            <div class="item-image">
+            <a href="/video/details/@item.ID"><img alt="video" src="http://img.youtube.com/vi/@item.getYoutubeID()/0.jpg" /></a> 
+            <a style="position:absolute;top:150px;left:200px" href="/video/details/10"><img src="/images/play.png" alt="video"/></a>
+             
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div> 
+}
+</div>*@
+
+
+  @Html.Raw(Projectk.Variable.GenerateVideos((List<projectk.Models.Article>)Model,ViewBag.EndID,Context.Request.Url.ToString()))
+ 
+@section scripts{
+<script type="text/javascript">
+    $(function () {
+        $('#load').live({
+            click: function () {
+                $('.loading').show(); 
+                var urlAJ = "/funvideo/load/"+ $('#EndID').val();
+                $.ajax({
+                    url: urlAJ, success: function (result) { 
+                        $('.loading').remove();
+                        $('.buttonload').remove();
+                        $(".article-content").append(result); 
+                        $(document).ready(function () {
+                            $("img.lazy").lazyload({
+                                effect: "fadeIn", failure_limit: 10
+                            }).removeClass("lazy");
+                        });
+                    }
+                });
+            }
+        });
+
+      
+    })
+    var topHeight = 65;
+    $(window).scroll(function () {
+        $('.item-image').each(function () {
+            var ctop = $(this).position().top;
+            var cheight = $(this).height();
+
+            var info = $(this).parent('div').parent('.article_item').find('.aitem-top');
+            var iheight = info.height();
+            var d = ctop - $(window).scrollTop()-topHeight;
+            var margintop = info.css('margin-top');
+            if (d > 0) { 
+                info.removeClass('FixTitle');
+                info.css('width', (info.parent('.span4').width()-20) + 'px');
+                return false;
+            }
+            if (d <= 0 && ((-d) < (cheight-iheight))) { 
+                info.addClass('FixTitle');
+                info.css('width', (info.parent('.span4').width() - 20) + 'px');               
+            }
+            else {              
+                info.removeClass('FixTitle');
+            }
+        });
+    });
+</script>
+}

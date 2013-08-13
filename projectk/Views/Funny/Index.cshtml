@@ -2,58 +2,66 @@
 @{
     ViewBag.Title = "Hài";
 }
- @Html.Raw(Projectk.Variable.GenerateArticles((List<projectk.Models.Article>)Model,ViewBag.EndID,Context.Request.Url.ToString()))
- 
-  
+@Html.Raw(Projectk.Variable.GenerateArticles((List<projectk.Models.Article>)Model, ViewBag.EndID, Context.Request.Url.ToString()))
+
+
 @section scripts{
-<script type="text/javascript">
-    $(function () {
-        $('#load').live({
-            click: function () {
-                $('.loading').show(); 
-                var urlAJ = "/funny/load/"+ $('#EndID').val();
-                $.ajax({
-                    url: urlAJ, success: function (result) { 
-                        $('.loading').remove();
-                        $('.buttonload').remove();
-                        $(".article-content").append(result); 
-                        $(document).ready(function () {
-                            $("img.lazy").lazyload({
-                                effect: "fadeIn", failure_limit: 10
-                            }).removeClass("lazy");
-                        });
+    <script type="text/javascript">
+        $(function () {
+            $('#load').live({
+                click: function () {
+                    $('.loading').show();
+                    var urlAJ = "/funny/load/" + $('#EndID').val();
+                    $.ajax({
+                        url: urlAJ, success: function (result) {
+                            $('.loading').remove();
+                            $('.buttonload').remove();
+                            $(".article-content").append(result);
+                            $(document).ready(function () {
+                                $("img.lazy").lazyload({
+                                    effect: "fadeIn", failure_limit: 10
+                                }).removeClass("lazy");
+                            });
+                        }
+                    });
+                }
+            });
+
+
+        })
+
+
+
+    </script>
+    @if (!Projectk.Variable.IsMobileClient())
+    {
+        <script type="text/javascript">
+            var topHeight = 65;
+            $(window).scroll(function () {
+                $('.item-image').each(function () {
+                    var ctop = $(this).position().top;
+                    var cheight = $(this).height();
+
+                    var info = $(this).parent('div').parent('.article_item').find('.aitem-top');
+                    var iheight = info.height();
+                    var d = ctop - $(window).scrollTop() - topHeight;
+                    var margintop = info.css('margin-top');
+                    if (d > 0) {
+                        info.removeClass('FixTitle');
+                        info.css('width', (info.parent('.span4').width() - 20) + 'px');
+                        return false;
+                    }
+                    if (d <= 0 && ((-d) < (cheight - iheight))) {
+                        info.addClass('FixTitle');
+                        info.css('width', (info.parent('.span4').width() - 20) + 'px');
+                    }
+                    else {
+                        info.removeClass('FixTitle');
                     }
                 });
-            }
-        });
-
-      
-    })
-    var topHeight = 65;
-    $(window).scroll(function () {
-        $('.item-image').each(function () {
-            var ctop = $(this).position().top;
-            var cheight = $(this).height();
-
-            var info = $(this).parent('div').parent('.article_item').find('.aitem-top');
-            var iheight = info.height();
-            var d = ctop - $(window).scrollTop()-topHeight;
-            var margintop = info.css('margin-top');
-            if (d > 0) { 
-                info.removeClass('FixTitle');
-                info.css('width', (info.parent('.span4').width()-20) + 'px');
-                return false;
-            }
-            if (d <= 0 && ((-d) < (cheight-iheight))) { 
-                info.addClass('FixTitle');
-                info.css('width', (info.parent('.span4').width() - 20) + 'px');               
-            }
-            else {              
-                info.removeClass('FixTitle');
-            }
-        });
-    });
-</script>
+            });
+        </script>
+    }
 }
-     
- 
+
+
