@@ -3,7 +3,7 @@
     ViewBag.Title = "Hotgirl";
 }
  
- @Html.Raw(Projectk.Variable.GenerateArticles((List<projectk.Models.Article>)Model,ViewBag.EndID,Context.Request.Url.ToString()))
+ @Html.Raw(Projectk.Variable.GenerateArticles((List<projectk.Models.Article>)Model,ViewBag.EndID,Context.Request.Url.ToString(),true))
  
   
 @section scripts{

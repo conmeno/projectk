@@ -73,8 +73,18 @@
         <div class="span12">
             <div class="item-image">
                 <a href="/funny/details/@Model.ID">
-                    <img class="imagebox lazy img-polaroid" src="/Content/images/loading_anim.gif" data-original="@Model.DropboxShareLink"
+                @{
+                    if (Projectk.Variable.UseLocalURL &&Projectk.Variable.UseLocalURLFirstPage&& Model.LocalURL != string.Empty && System.IO.File.Exists(Server.MapPath(Model.LocalURL)))
+                    {
+                     <img class="imagebox lazy img-polaroid" src="/Content/images/loading_anim.gif" data-original="@Model.LocalURL"
                     alt="@Model.Name" />
+                    }else
+                    {
+                     <img class="imagebox lazy img-polaroid" src="/Content/images/loading_anim.gif" data-original="@Model.DropboxShareLink"
+                    alt="@Model.Name" />
+                    }
+                }
+                   
 
                 </a>
 

@@ -266,4 +266,13 @@
       .buttonload
       {
           margin-top:20px;
+          text-align:center;
       }
+.loading
+{
+    text-align:center;
+}
+.loading-upload
+{
+    display:none;
+}

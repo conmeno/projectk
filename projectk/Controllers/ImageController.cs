@@ -34,6 +34,14 @@ namespace projectk.Controllers
             }
             //end set pageview
             Article article = db.Articles.Find(id);
+
+            if (!((Variable.UseLocalURL || Variable.UseLocalURLFirstPage) && article.LocalURL != string.Empty && System.IO.File.Exists(Server.MapPath(article.LocalURL))))
+            {
+                if (DateTime.Now > article.DropboxShareLinkExpire)
+                {
+                    article = Variable.GetDropboxShareLink(id);
+                }
+            }
             article.UserProfile = db.UserProfiles.Where(a => a.UserName == article.UserName).FirstOrDefault();
             ViewBag.Next = -1;
             ViewBag.Prev = -1;

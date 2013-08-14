@@ -17,6 +17,8 @@ namespace Projectk
     {
         public static int NumberOfArticleLoaded=10;
         public static bool AutoApprove = true;
+        public static bool UseLocalURL = false;
+        public static bool UseLocalURLFirstPage = true;
         public static string ApiKey = "x9n1ufyyyj00odt";
         public static string ApiSecret = "vwevab5370evd3v";
         public static string UserToken = "uss2v2w38xlfvrb";
@@ -26,6 +28,7 @@ namespace Projectk
         public static string WebFolder()
         {
             return HttpRuntime.AppDomainAppPath;
+             
         }
         public static string MapPathFile()
         {
@@ -67,12 +70,12 @@ namespace Projectk
             return user;
         }
 
-        public static string GenerateArticles(List<Article> articles, int EndID, string currentURL)
+        public static string GenerateArticles(List<Article> articles, int EndID, string currentURL, bool UseLocalLink = false)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             foreach (Article a in articles)
             {
-                sb.Append(GenerateArticle(a, currentURL));
+                sb.Append(GenerateArticle(a, currentURL, UseLocalLink));
             }
             //render loading button
             if (articles.Count > 0)
@@ -87,9 +90,9 @@ namespace Projectk
             }
             return sb.ToString();
         }
-        public static string GenerateArticle(Article a, string currentURL)
+        public static string GenerateArticle(Article a, string currentURL,bool UseLocalLink=false)
         {
-
+            if (UseLocalURL) UseLocalLink = true;
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             sb.AppendLine("    <div class=\"aitem\">");
             sb.AppendLine("        <div class=\"row-fluid article_item\">");
@@ -114,7 +117,16 @@ namespace Projectk
             sb.AppendLine("            <div class=\"span8\">");
             sb.AppendLine("                <div class=\"item-image\">");
             sb.AppendLine("                    <a href=\"image/" + a.ID + "\">");
-            sb.AppendLine("                        <img class=\"lazy img-polaroid\"  src=\"/Content/images/loading_anim.gif\" data-original=\"" + a.DropboxShareLink + "\"");
+            if ((UseLocalURL || UseLocalURLFirstPage)&& UseLocalLink && a.LocalURL != string.Empty && System.IO.File.Exists(HttpContext.Current.Server.MapPath(a.LocalURL)))
+            {
+                sb.AppendLine("                        <img class=\"lazy img-polaroid\"  src=\"/Content/images/loading_anim.gif\" data-original=\"" + a.LocalURL + "\"");
+            }
+            else
+            {
+                sb.AppendLine("                        <img class=\"lazy img-polaroid\"  src=\"/Content/images/loading_anim.gif\" data-original=\"" + a.DropboxShareLink + "\"");
+            }
+
+           
             sb.AppendLine("                    alt=\"" + a.Name + "\" />");
             sb.AppendLine("                    </a>");
             sb.AppendLine("                </div>");
@@ -138,7 +150,7 @@ namespace Projectk
             if (articles.Count > 0)
             {
                 sb.AppendLine("<div class=\"loading\" style=\"display: none;\">");
-                sb.AppendLine("        <img src=\"/images/load.png\" />");
+                sb.AppendLine("        <img src=\"/images/funny_loading.gif\" />");
                 sb.AppendLine("    </div>");
                 sb.AppendLine("<div class=\"buttonload\">");
                 sb.AppendLine("    <button id=\"load\"  class=\"load btn btn-primary\">load more</button>");
@@ -187,7 +199,27 @@ namespace Projectk
             return sb.ToString();
         }
 
+        public static Article GetDropboxShareLink(long id)
+        {
+            Article item = new Article();
 
+            IOAuth1ServiceProvider<IDropbox> dropboxProvider = new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
+
+            IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
+            ProjectkContext db = new ProjectkContext(); 
+             item = db.Articles.Find(id);
+
+            if (item != null)
+            {
+                var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
+                item.DropboxShareLink = media.Url; 
+                item.DropboxShareLinkExpire = media.ExpireDate;
+                db.SaveChanges();
+            }
+
+
+            return item;
+            }
         public static List<Article> GetArticle(ref int EndID, Cats cat, int BeginID = 999999)
         {  
             ProjectkContext db = new ProjectkContext();
@@ -202,12 +234,15 @@ namespace Projectk
             bool isChange = false;
             foreach (Article item in articles)
             {
-                if (DateTime.Now > item.DropboxShareLinkExpire)
+                if (!((Variable.UseLocalURL ||Variable.UseLocalURLFirstPage) && item.LocalURL != string.Empty && System.IO.File.Exists(HttpContext.Current.Server.MapPath(item.LocalURL))))
                 {
-                    isChange = true;
-                    var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
-                    item.DropboxShareLink = media.Url;
-                    item.DropboxShareLinkExpire = media.ExpireDate;
+                    if (DateTime.Now > item.DropboxShareLinkExpire)
+                    {
+                        isChange = true;
+                        var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
+                        item.DropboxShareLink = media.Url;
+                        item.DropboxShareLinkExpire = media.ExpireDate;
+                    }
                 }
             }
             if (isChange)

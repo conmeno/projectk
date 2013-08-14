@@ -68,13 +68,24 @@ namespace projectk.Controllers
                 string filename = uniqueID + "_" + ofile.FileName;
                 if (ofile.ContentLength > 0)
                 {
-
-                    ofile.SaveAs(Variable.WebFolder() + "/Upload/" + filename);
-                    var image = System.Drawing.Image.FromFile(Variable.WebFolder() + "/Upload/" + filename);
-
-                    Spring.IO.FileResource file = new Spring.IO.FileResource(Variable.WebFolder() + "/Upload/" + filename);
-
+                    string localURL1="";
                     string DropboxURL = "";
+                    if (cat == (int)Cats.Funny)
+                    {
+                        DropboxURL = "/conmeno/funny/" + filename;
+                        localURL1 = Variable.WebFolder() + "/Upload/funny/" + filename;
+                    }
+                    else {
+                        localURL1 = Variable.WebFolder() + "/Upload/hotgirl/" + filename;
+                        DropboxURL = "/conmeno/hotgirl/" + filename;
+                    }
+
+                    ofile.SaveAs(localURL1);
+                    var image = System.Drawing.Image.FromFile(localURL1);
+
+                    Spring.IO.FileResource file = new Spring.IO.FileResource(localURL1);
+
+                   
                     if(cat==(int)Cats.Funny) 
                     DropboxURL="/conmeno/funny/" + filename;
                     else
@@ -86,7 +97,7 @@ namespace projectk.Controllers
 
                     //_client.UploadFile("/conmeno/", uniqueID + "_" + ofile.FileName, Variable.ReadFully(ofile.InputStream));
                     article.ExternalURL = DropboxURL;
-
+                    article.LocalURL = localURL1.Replace(Variable.WebFolder(), "");
 
 
                     var temp = _client.GetMediaLinkAsync(article.ExternalURL);

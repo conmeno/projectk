@@ -13,7 +13,7 @@
 <style>
     .myinput
     {
-        margin:0!important;
+        margin: 0!important;
     }
 </style>
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -41,16 +41,19 @@
                 @if (cat == 0)
                 {
                     <span>
-                        <input class="myinput" checked="checked" type="radio" value="1" name="imageType" />&nbsp;Funny  </span>
+                        <input class="myinput" checked="checked" type="radio" value="1" name="imageType" />&nbsp;Funny
+                    </span>
                     <span>
                         <input class="myinput" type="radio" value="2" name="imageType" />&nbsp;Hot Girl</span>
                 }
                 else
                 { 
                     <span>
-                        <input class="myinput" type="radio" value="1" name="imageType" />&nbsp;Funny  </span>
+                        <input class="myinput" type="radio" value="1" name="imageType" />&nbsp;Funny 
+                    </span>
                     <span>
-                        <input class="myinput" checked="checked" type="radio" value="2" name="imageType" />&nbsp;Hot Girl</span>
+                        <input class="myinput" checked="checked" type="radio" value="2" name="imageType" />&nbsp;Hot
+                        Girl</span>
                 }
 
 
@@ -71,9 +74,13 @@
             <input type="file" name="PictureFile" id="PictureFile" />
         </div>
 
-        <p>
-            <input class="btn btn-primary" type="submit" value="Upload" />
-        </p>
+        <div class="loading-upload">
+            <img src="/images/funny_loading.gif" />
+        </div>
+        <div>
+            <input class="upload1 btn btn-primary" type="submit" value="Upload" /></div>
+
+
     </fieldset>
 }
 
@@ -83,4 +90,11 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $('.upload1').click(function () {
+            $('.loading-upload').show();
+            $(this).hide();
+        });
+    </script>
 }

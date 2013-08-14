@@ -16,32 +16,7 @@ namespace projectk.Controllers
     {
         private ProjectkContext db = new ProjectkContext();
        
-        //
-        // GET: /Hotgirl/
-
-        //public ActionResult Index()
-        //{
-        //    int numberLoad = Variable.NumberOfArticleLoaded;
-        //    IOAuth1ServiceProvider<IDropbox> dropboxProvider = new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
-
-        //    IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
-
-        //    List<Article> articles = db.Articles.Where(a => a.Cat == (int)Cats.HotGirl).OrderByDescending(a => a.DatePost).Take(numberLoad).Include(a => a.UserProfile).ToList();
-        //    foreach (Article item in articles)
-        //    {
-        //        if (DateTime.Now > item.DropboxShareLinkExpire)
-        //        {
-        //            var media = _client.GetMediaLinkAsync(item.ExternalURL).Result;
-        //            item.DropboxShareLink = media.Url;
-        //            item.DropboxShareLinkExpire = media.ExpireDate;
-        //        }
-              
-        //    }
-
-        //    db.SaveChanges();
-        //    return View(articles);
-        //}
-
+        
 
         public ActionResult Index()
         {
