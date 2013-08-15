@@ -2,7 +2,13 @@
 
 @{
     ViewBag.Title = "Ảnh - " + @Model.Name;
+    ViewBag.url = @Request.Url;
+    ViewBag.title = @Model.Name;
+    ViewBag.image = "data:unknown;base64," + Convert.ToBase64String(Model.ThumbnailData);
+    
+    
 }
+ 
 <div class="aitem">
     <div class="row-fluid">
 
@@ -74,7 +80,7 @@
             <div class="item-image">
                 <a href="/funny/details/@Model.ID">
                 @{
-                    if (Projectk.Variable.UseLocalURL &&Projectk.Variable.UseLocalURLFirstPage&& Model.LocalURL != string.Empty && System.IO.File.Exists(Server.MapPath(Model.LocalURL)))
+                    if ((Projectk.Variable.UseLocalURL ||Projectk.Variable.UseLocalURLFirstPage)&& Model.LocalURL != string.Empty && System.IO.File.Exists(Server.MapPath(Model.LocalURL)))
                     {
                      <img class="imagebox lazy img-polaroid" src="/Content/images/loading_anim.gif" data-original="@Model.LocalURL"
                     alt="@Model.Name" />
