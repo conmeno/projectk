@@ -172,5 +172,3 @@ D:\projectk\projectk\obj\Debug\projectk.Migrations.addusername_toArticle.resourc
 D:\projectk\projectk\obj\Debug\projectk.Migrations.adddatepost.resources
 D:\projectk\projectk\obj\Debug\projectk.Migrations.require.resources
 D:\projectk\projectk\obj\Debug\projectk.Migrations.aa.resources
-D:\projectk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache
-D:\projectk\projectk\bin\Common.Logging.dll

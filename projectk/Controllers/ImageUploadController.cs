@@ -26,6 +26,8 @@ namespace projectk.Controllers
 
         public ActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Hotgirl");
             var articles = db.Articles.Where(a => a.UserName == User.Identity.Name).OrderByDescending(a => a.DatePost).Take(100).Include(a => a.UserProfile).ToList();
             return View(articles.ToList());
         }
@@ -37,6 +39,8 @@ namespace projectk.Controllers
 
         public ActionResult Create(int id=0)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Hotgirl");
             //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName");
             return View();
@@ -48,6 +52,8 @@ namespace projectk.Controllers
         [HttpPost]
         public ActionResult Create(Article article)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Hotgirl");
             if (ModelState.IsValid)
             {
                 int cat = int.Parse(Request.Form["imageType"].ToString()); ;
@@ -140,9 +146,8 @@ namespace projectk.Controllers
                     article.Status = 1;
                 article.DatePost = DateTime.Now;
                 db.Articles.Add(article);
-                db.SaveChanges(); 
-
-
+                db.SaveChanges();  
+                
                 return RedirectToAction("Index");
             }
 
@@ -156,6 +161,8 @@ namespace projectk.Controllers
 
         public ActionResult Check(int type=1)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Hotgirl");
             Cats temp = (Cats)type;
             var articles = db.Articles.Where(a => a.Cat == (int)temp).OrderByDescending(a => a.DatePost).Take(100).Include(a => a.UserProfile).ToList();
             
@@ -168,6 +175,8 @@ namespace projectk.Controllers
 
         public ActionResult Delete(long id = 0)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Hotgirl");
             Article article = db.Articles.Find(id);
             if (article == null)
             {
@@ -182,6 +191,8 @@ namespace projectk.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(long id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Hotgirl");
             Article article = db.Articles.Find(id);
             db.Articles.Remove(article);
             db.SaveChanges();
@@ -191,6 +202,8 @@ namespace projectk.Controllers
 
         public ActionResult Approve(long id)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Hotgirl");
             Article article = db.Articles.Find(id);
             article.Status = 1; 
             db.SaveChanges();

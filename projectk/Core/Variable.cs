@@ -21,8 +21,8 @@ namespace Projectk
         public static bool UseLocalURLFirstPage = true;
         public static string ApiKey = "x9n1ufyyyj00odt";
         public static string ApiSecret = "vwevab5370evd3v";
-        public static string UserToken = "uss2v2w38xlfvrb";
-        public static string UserSecret = "apz9iqaoi3oa3un";
+        public static string UserToken ="g2ke0vwz2eqvlx11";// "uss2v2w38xlfvrb";
+        public static string UserSecret ="6llka2ekr7zzm1e";// "apz9iqaoi3oa3un";
         [ThreadStatic]
         private static Random rnd;
         public static string WebFolder()
@@ -168,7 +168,7 @@ namespace Projectk
             sb.AppendLine("            <div class=\"span4\">");
             sb.AppendLine("                <div class=\"aitem-top\">");
             sb.AppendLine("                    <div class=\"aitem-title\">");
-            sb.AppendLine("                        <h4><a href=\"image/" + a.ID + "\">" + a.Name + "</a>");
+            sb.AppendLine("                        <h4><a href=\"funvideo/" + a.ID + "\">" + a.Name + "</a>");
             sb.AppendLine("                        </h4>");
             sb.AppendLine("                    </div>");
             sb.AppendLine("                    <div class=\"aitem-title\">");
@@ -179,16 +179,16 @@ namespace Projectk
             sb.AppendLine("                    <div>");
             sb.AppendLine("                        <span>View: " + a.PageView + "</span>&nbsp;<span>Comment: " + a.Comment + "</span>");
             sb.AppendLine("                    </div>");
-            sb.AppendLine("                    <div class=\"fb-like\" data-href=\"" + currentURL + "\" data-send=\"false\" data-layout=\"button_count\" data-width=\"50\" data-show-faces=\"true\">");
+            sb.AppendLine("                    <div class=\"fb-like\" data-href=\"" + currentURL + "/"+ a.ID + "\" data-send=\"false\" data-layout=\"button_count\" data-width=\"50\" data-show-faces=\"true\">");
             sb.AppendLine("                    </div>");
             sb.AppendLine("                </div>");
             sb.AppendLine("            </div>");
             sb.AppendLine("            <div class=\"span8\">");
-            sb.AppendLine("                <div class=\"item-image\">");
+            sb.AppendLine("                <div class=\"video-container\">");
 
-            sb.Append("            <a href=\"/funvideo/"+a.ID+"\"><img alt=\"video\" src=\"http://img.youtube.com/vi/"+a.getYoutubeID()+"/0.jpg\" /></a>");
-            sb.Append("            <a style=\"position:absolute;top:150px;left:200px\" href=\"/funvideo/"+a.ID+"\"><img src=\"/images/play.png\" alt=\"video\"/></a>");
-
+            //sb.Append("            <a href=\"/funvideo/"+a.ID+"\"><img alt=\"video\" src=\"http://img.youtube.com/vi/"+a.getYoutubeID()+"/0.jpg\" /></a>");
+            //sb.Append("            <a style=\"position:absolute;top:150px;left:200px\" href=\"/funvideo/"+a.ID+"\"><img src=\"/images/play.png\" alt=\"video\"/></a>");
+            sb.Append("<iframe width=\"550\" height=\"315\" src=\"http://www.youtube.com/embed/"+a.getYoutubeID()+"\" frameborder=\"0\" allowfullscreen></iframe>");
 
             sb.AppendLine("                </div>");
             sb.AppendLine("            </div>");
@@ -204,7 +204,7 @@ namespace Projectk
             Article item = new Article();
 
             IOAuth1ServiceProvider<IDropbox> dropboxProvider = new DropboxServiceProvider(Variable.ApiKey, Variable.ApiSecret, AccessLevel.Full);
-
+            
             IDropbox _client = dropboxProvider.GetApi(Variable.UserToken, Variable.UserSecret);
             ProjectkContext db = new ProjectkContext(); 
              item = db.Articles.Find(id);
@@ -278,5 +278,9 @@ namespace Projectk
             }
             return false;
         }
+        //public static isSecure()
+        //{
+        //    return User.Identity.IsAuthenticated;
+        //}
     }
 }

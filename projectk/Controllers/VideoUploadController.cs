@@ -24,6 +24,8 @@ namespace projectk.Controllers
 
         public ActionResult Index()
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "FunVideo");
             //var articles = db.Articles.Include(a => a.UserProfile);
             //return View(articles.ToList());
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName");
@@ -37,6 +39,8 @@ namespace projectk.Controllers
         [HttpPost]
         public ActionResult Index(Article article)
         {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "FunVideo");
             if (ModelState.IsValid)
             { 
 
