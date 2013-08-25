@@ -31,7 +31,8 @@ namespace projectk.Controllers
        
         public string load(int id=0)
         {
-            string currentURL = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "");
+             
+            string currentURL = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "") + "/image/";
             int EndID = 0;
             List<Article> articles = Variable.GetArticle(ref EndID,Cats.Funny, id);
             return Variable.GenerateArticles(articles, EndID, currentURL);

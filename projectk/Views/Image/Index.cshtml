@@ -4,7 +4,7 @@
     ViewBag.Title = "Ảnh - " + @Model.Name;
     ViewBag.url = @Request.Url;
     ViewBag.title = @Model.Name;
-    ViewBag.image = "data:unknown;base64," + Convert.ToBase64String(Model.ThumbnailData);
+    ViewBag.image = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath,"")+  @Model.ThumbnailURL;
     
     
 }
@@ -50,9 +50,9 @@
                                 <fb:comments-count href="@Request.Url.AbsoluteUri" />
                             </fb:comments-count></span>
                     </div>
-                    <div class="fb-like" data-href="@Request.Url.AbsoluteUri" data-send="true" data-layout="button_count"
-                        data-width="450" data-show-faces="true">
-                    </div>
+                     <div class="fb-like" data-href="@Request.Url" data-send="false" data-layout="button_count"
+                       data-width="450" data-show-faces="true"></div> 
+                     
                 </div>
                 <div style="clear: both;"></div>
                 <div>
@@ -78,7 +78,7 @@
 
         <div class="span12">
             <div class="item-image">
-                <a href="/funny/details/@Model.ID">
+                <a href="/image/@Model.ID">
                 @{
                     if ((Projectk.Variable.UseLocalURL ||Projectk.Variable.UseLocalURLFirstPage)&& Model.LocalURL != string.Empty && System.IO.File.Exists(Server.MapPath(Model.LocalURL)))
                     {

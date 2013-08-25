@@ -1,9 +1,10 @@
 ﻿@model IEnumerable<projectk.Models.Article>
 @{
     ViewBag.Title = "Hotgirl";
+    string DetailURL = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "") + "/image/";
 }
  
- @Html.Raw(Projectk.Variable.GenerateArticles((List<projectk.Models.Article>)Model,ViewBag.EndID,Context.Request.Url.ToString(),true))
+ @Html.Raw(Projectk.Variable.GenerateArticles((List<projectk.Models.Article>)Model,ViewBag.EndID,DetailURL,true))
  
   
 @section scripts{

@@ -73,7 +73,7 @@ namespace projectk.Models
         [DisplayName("Thumbnail")]
         public byte[] ThumbnailData { get; set; }
         public string OtherObject { get; set; }
-
+        public string ThumbnailURL { get; set; }
         public int Cat { get; set; }
 
         public Cats Category

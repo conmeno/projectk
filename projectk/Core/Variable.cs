@@ -110,7 +110,7 @@ namespace Projectk
             sb.AppendLine("                    <div>");
             sb.AppendLine("                        <span>View: " + a.PageView + "</span>&nbsp;<span>Comment: " + a.Comment + "</span>");
             sb.AppendLine("                    </div>");
-            sb.AppendLine("                    <div class=\"fb-like\" data-href=\"" + currentURL + "\" data-send=\"false\" data-layout=\"button_count\" data-width=\"50\" data-show-faces=\"true\">");
+            sb.AppendLine("                    <div class=\"fb-like\" data-href=\"" + currentURL + a.ID + "\" data-send=\"false\" data-layout=\"button_count\" data-width=\"50\" data-show-faces=\"true\">");
             sb.AppendLine("                    </div>");
             sb.AppendLine("                </div>");
             sb.AppendLine("            </div>");

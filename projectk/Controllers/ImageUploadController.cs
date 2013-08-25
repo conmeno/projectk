@@ -12,6 +12,8 @@ using Spring.Social.OAuth1;
 using Spring.Social.Dropbox.Api;
 using Spring.Social.Dropbox.Connect;
 using System.Web.Security;
+using System.Drawing;
+using System.IO;
 
 namespace projectk.Controllers
 {
@@ -69,14 +71,17 @@ namespace projectk.Controllers
                 if (ofile.ContentLength > 0)
                 {
                     string localURL1="";
+                    string ThumbnailURL = "";
                     string DropboxURL = "";
                     if (cat == (int)Cats.Funny)
                     {
                         DropboxURL = "/conmeno/funny/" + filename;
                         localURL1 = Variable.WebFolder() + "/Upload/funny/" + filename;
+                        ThumbnailURL = Variable.WebFolder() + "/Upload/funny/thumbnail/" + filename;
                     }
                     else {
                         localURL1 = Variable.WebFolder() + "/Upload/hotgirl/" + filename;
+                        ThumbnailURL = Variable.WebFolder() + "/Upload/hotgirl/thumbnail/" + filename;
                         DropboxURL = "/conmeno/hotgirl/" + filename;
                     }
 
@@ -107,6 +112,13 @@ namespace projectk.Controllers
                     article.DropboxShareLinkExpire = DateTime.Now.AddHours(3);
 
                     var a1 = _client.DownloadThumbnailAsync(article.ExternalURL, ThumbnailFormat.Jpeg, ThumbnailSize.Medium).Result;
+                    if (a1.Content.Count()>0)
+                    {
+                        MemoryStream ms = new MemoryStream(a1.Content);
+                        Image returnImage = Image.FromStream(ms);
+                        returnImage.Save(ThumbnailURL);
+                        article.ThumbnailURL = ThumbnailURL.Replace(Variable.WebFolder(), "");
+                    }
                     article.ThumbnailData = a1.Content;
 
 
