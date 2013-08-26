@@ -4,26 +4,56 @@
     ViewBag.Title = "Ảnh - " + @Model.Name;
     ViewBag.url = @Request.Url;
     ViewBag.title = @Model.Name;
-    ViewBag.image = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath,"")+  @Model.ThumbnailURL;
+    ViewBag.image = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "") + @Model.ThumbnailURL;
     
     
 }
- 
+
 <div class="aitem">
     <div class="row-fluid">
 
-        <div class="alert alert-info"> 
+        <div class="alert alert-info">
             <button type="button" class="close" data-dismiss="alert">×</button>
             Sử dụng cáo phím <- hay -> trên bàn phím của bạn để xem các bài khác
         </div>
-        <div class="title-detail" style="">
+        <div class="visible-phone" style="">
+            <div style="line-height: 70px;">
+                <h3>@Model.Name </h3>
+            </div> 
+
+
+
+            <div class="title-detail visible-phone" style="">
+                
+                    <div class="pull-left a-prev a-control">
+                        @if (@ViewBag.Prev != -1)
+                        {
+                            <a title="Bài trước" class="Next-Button" href="/image/@ViewBag.Prev"></a>
+                        }
+                    </div>
+                
+               
+                
+                    <div class="pull-right a-next a-control">
+                        @if (@ViewBag.Next != -1)
+                        {
+                            <a  class="Next-Button" title="Bài kế tiếp" href="/image/@ViewBag.Next"></a>
+                        }
+                    </div>
+                
+            </div>
+
+
+
+        </div>
+        <div class="title-detail hidden-phone" style="">
             <div class="span2">
 
                 <div class="pull-left a-prev a-control">
-                @if(@ViewBag.Prev!=-1){
-                    <a title="Bài trước" class="Next-Button" href="/image/@ViewBag.Prev">
-                    </a>
-                }
+                    @if (@ViewBag.Prev != -1)
+                    {
+                        <a title="Bài trước" class="Next-Button" href="/image/@ViewBag.Prev"></a>
+                    }
                 </div>
             </div>
             <div class="span8" style="line-height: 70px;">
@@ -31,10 +61,10 @@
             </div>
             <div class="span2">
                 <div class="pull-right a-next a-control">
-                 @if(@ViewBag.Next!=-1){
-                    <a  class="Next-Button" title="Bài kế tiếp" href="/image/@ViewBag.Next">
-                    </a>
-                 }
+                    @if (@ViewBag.Next != -1)
+                    {
+                        <a  class="Next-Button" title="Bài kế tiếp" href="/image/@ViewBag.Next"></a>
+                    }
                 </div>
             </div>
         </div>
@@ -50,9 +80,10 @@
                                 <fb:comments-count href="@Request.Url.AbsoluteUri" />
                             </fb:comments-count></span>
                     </div>
-                     <div class="fb-like" data-href="@Request.Url" data-send="false" data-layout="button_count"
-                       data-width="450" data-show-faces="true"></div> 
-                     
+                    <div class="fb-like" data-href="@Request.Url" data-send="false" data-layout="button_count"
+                       data-width="450" data-show-faces="true">
+                    </div>
+
                 </div>
                 <div style="clear: both;"></div>
                 <div>
@@ -62,8 +93,8 @@
             <div class="span6">
                 <div style="float: right; color: #000;">
                     <span>Được chia sẻ bởi </span><span><a href="#">
-                    @Model.UserName
-                        
+                        @Model.UserName
+
                     </a></span>
                     <span class="badge badge-success">Like: @Model.UserProfile.TotalLike </span>
 
@@ -73,24 +104,25 @@
 
         </div>
     </div>
-     
+
     <div class="row-fluid">
 
         <div class="span12">
             <div class="item-image">
                 <a href="/image/@Model.ID">
-                @{
-                    if ((Projectk.Variable.UseLocalURL ||Projectk.Variable.UseLocalURLFirstPage)&& Model.LocalURL != string.Empty && System.IO.File.Exists(Server.MapPath(Model.LocalURL)))
-                    {
-                     <img class="imagebox lazy img-polaroid" src="/Content/images/loading_anim.gif" data-original="@Model.LocalURL"
+                    @{
+                        if ((Projectk.Variable.UseLocalURL || Projectk.Variable.UseLocalURLFirstPage) && Model.LocalURL != string.Empty && System.IO.File.Exists(Server.MapPath(Model.LocalURL)))
+                        {
+                        <img class="imagebox lazy img-polaroid" src="/Content/images/loading_anim.gif" data-original="@Model.LocalURL"
                     alt="@Model.Name" />
-                    }else
-                    {
-                     <img class="imagebox lazy img-polaroid" src="/Content/images/loading_anim.gif" data-original="@Model.DropboxShareLink"
+                        }
+                        else
+                        {
+                        <img class="imagebox lazy img-polaroid" src="/Content/images/loading_anim.gif" data-original="@Model.DropboxShareLink"
                     alt="@Model.Name" />
+                        }
                     }
-                }
-                   
+
 
                 </a>
 
@@ -105,5 +137,6 @@
         Html.RenderAction("OlderFunny", "Suggestion", new { ID = @Model.ID });
     }
 </div>
- <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="470" data-num-posts="10"></div> 
- 
+<div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="470" data-num-posts="10">
+</div>
+
