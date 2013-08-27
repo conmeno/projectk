@@ -104,6 +104,10 @@ E:\githubapp\projectkk\projectk\obj\Debug\projectk.dll
 E:\githubapp\projectkk\projectk\obj\Debug\projectk.pdb
 E:\GitHubApp\projectkk\projectk\bin\Common.Logging.dll
 E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache
+E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.aaa.resources
+E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.lan2.resources
+E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.lan23.resources
+E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.csproj.GenerateResource.Cache
 D:\projectk\projectk\bin\projectk.dll
 D:\projectk\projectk\bin\projectk.pdb
 D:\projectk\projectk\bin\Antlr3.Runtime.dll
@@ -156,14 +160,7 @@ D:\projectk\projectk\bin\DotNetOpenAuth.OpenId.xml
 D:\projectk\projectk\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 D:\projectk\projectk\obj\Debug\projectk.Migrations.aaa.resources
 D:\projectk\projectk\obj\Debug\projectk.Migrations.lan2.resources
-D:\projectk\projectk\obj\Debug\projectk.csproj.GenerateResource.Cache
-D:\projectk\projectk\obj\Debug\projectk.dll
-D:\projectk\projectk\obj\Debug\projectk.pdb
 D:\projectk\projectk\obj\Debug\projectk.Migrations.lan23.resources
-E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.aaa.resources
-E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.lan2.resources
-E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.Migrations.lan23.resources
-E:\GitHubApp\projectkk\projectk\obj\Debug\projectk.csproj.GenerateResource.Cache
 D:\projectk\projectk\obj\Debug\projectk.Migrations.aabc.resources
 D:\projectk\projectk\obj\Debug\projectk.Migrations.articleimage.resources
 D:\projectk\projectk\obj\Debug\projectk.Migrations.addlikefb.resources
@@ -172,3 +169,8 @@ D:\projectk\projectk\obj\Debug\projectk.Migrations.addusername_toArticle.resourc
 D:\projectk\projectk\obj\Debug\projectk.Migrations.adddatepost.resources
 D:\projectk\projectk\obj\Debug\projectk.Migrations.require.resources
 D:\projectk\projectk\obj\Debug\projectk.Migrations.aa.resources
+D:\projectk\projectk\obj\Debug\projectk.csproj.GenerateResource.Cache
+D:\projectk\projectk\obj\Debug\projectk.dll
+D:\projectk\projectk\obj\Debug\projectk.pdb
+D:\projectk\projectk\bin\Common.Logging.dll
+D:\projectk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache

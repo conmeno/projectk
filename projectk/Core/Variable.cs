@@ -23,6 +23,7 @@ namespace Projectk
         public static string ApiSecret = "vwevab5370evd3v";
         public static string UserToken ="g2ke0vwz2eqvlx11";// "uss2v2w38xlfvrb";
         public static string UserSecret ="6llka2ekr7zzm1e";// "apz9iqaoi3oa3un";
+        public static int TimeToCalculatorPageView=5;//minute
         [ThreadStatic]
         private static Random rnd;
         public static string WebFolder()
@@ -75,11 +76,23 @@ namespace Projectk
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             foreach (Article a in articles)
             {
+                //set pageview
+                if (Pageview.A[a.ID] == null)
+                {
+                    Pageview.A[a.ID] = 1;
+
+                }
+                else
+                {
+                    Pageview.A[a.ID] = int.Parse(Pageview.A[a.ID].ToString()) + 1;
+                }
+                //end set pageview
                 sb.Append(GenerateArticle(a, currentURL, UseLocalLink));
             }
             //render loading button
             if (articles.Count > 0)
             {
+
                 sb.AppendLine("<div class=\"loading\" style=\"display: none;\">");
                 sb.AppendLine("        <img src=\"/images/load.png\" />");
                 sb.AppendLine("    </div>");
@@ -108,7 +121,8 @@ namespace Projectk
             sb.AppendLine("                        </span></a>");
             sb.AppendLine("                    </div>");
             sb.AppendLine("                    <div>");
-            sb.AppendLine("                        <span>View: " + a.PageView + "</span>&nbsp;<span>Comment: " + a.Comment + "</span>");
+            //sb.AppendLine("                        <span>View: " + a.PageView + "</span>&nbsp;<span>Comment: " + a.Comment + "</span>");
+            sb.AppendLine("                        <span>View: " + a.PageView + "</span>&nbsp;<span>Comment: <fb:comments-count href=\"" + currentURL + a.ID + "\" /></fb:comments-count></span>");
             sb.AppendLine("                    </div>");
             sb.AppendLine("                    <div class=\"fb-like\" data-href=\"" + currentURL + a.ID + "\" data-send=\"false\" data-layout=\"button_count\" data-width=\"50\" data-show-faces=\"true\">");
             sb.AppendLine("                    </div>");
@@ -144,6 +158,17 @@ namespace Projectk
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             foreach (Article a in articles)
             {
+                //set pageview
+                if (Pageview.A[a.ID] == null)
+                {
+                    Pageview.A[a.ID] = 1;
+
+                }
+                else
+                {
+                    Pageview.A[a.ID] = int.Parse(Pageview.A[a.ID].ToString()) + 1;
+                }
+                //end set pageview
                 sb.Append(GenerateVideo(a, currentURL));
             }
             //render loading button

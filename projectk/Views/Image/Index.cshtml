@@ -4,11 +4,20 @@
     ViewBag.Title = "Ảnh - " + @Model.Name;
     ViewBag.url = @Request.Url;
     ViewBag.title = @Model.Name;
-    ViewBag.image = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "") + @Model.ThumbnailURL;
-    
-    
-}
+    ViewBag.image = "http://img.youtube.com/vi/" + Model.getYoutubeID() + "/1.jpg";
+    string prevURL = "";
+    string nextURL = "";
 
+    if (ViewBag.Prev != null)
+        prevURL = "/image/" + ViewBag.Prev;
+    if (ViewBag.Next != null)
+        nextURL = "/image/" + ViewBag.Next;
+            
+                 
+ 
+}
+<input type="hidden" id="prevURL" value="@prevURL" />
+<input type="hidden" id="nextURL" value="@nextURL" />
 <div class="aitem">
     <div class="row-fluid">
 
@@ -19,28 +28,28 @@
         <div class="visible-phone" style="">
             <div style="line-height: 70px;">
                 <h3>@Model.Name </h3>
-            </div> 
+            </div>
 
 
 
             <div class="title-detail visible-phone" style="">
-                
-                    <div class="pull-left a-prev a-control">
-                        @if (@ViewBag.Prev != -1)
-                        {
-                            <a title="Bài trước" class="Next-Button" href="/image/@ViewBag.Prev"></a>
-                        }
-                    </div>
-                
-               
-                
-                    <div class="pull-right a-next a-control">
-                        @if (@ViewBag.Next != -1)
-                        {
-                            <a  class="Next-Button" title="Bài kế tiếp" href="/image/@ViewBag.Next"></a>
-                        }
-                    </div>
-                
+
+                <div class="pull-left a-prev a-control">
+                    @if (@ViewBag.Prev != -1)
+                    {
+                        <a title="Bài trước" class="Next-Button" href="/image/@ViewBag.Prev"></a>
+                    }
+                </div>
+
+
+
+                <div class="pull-right a-next a-control">
+                    @if (@ViewBag.Next != -1)
+                    {
+                        <a  class="Next-Button" title="Bài kế tiếp" href="/image/@ViewBag.Next"></a>
+                    }
+                </div>
+
             </div>
 
 
@@ -140,3 +149,26 @@
 <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="470" data-num-posts="10">
 </div>
 
+@section scripts{
+    <script type="text/javascript">
+        $(document).keypress(function (e) {
+            if (e.keyCode == 37) {
+                //window.location.href = @prevURL;
+
+                var nvalue = $('#prevURL').val();
+                if (nvalue != '') {
+                    window.location.href = nvalue;
+                }
+            }
+            if (e.keyCode == 39) {
+                //window.location.href = @nextURL;
+                //right
+                var nvalue = $('#nextURL').val();
+                if (nvalue != '') {
+                    window.location.href = nvalue;
+                }
+
+            }
+        });
+    </script>
+}

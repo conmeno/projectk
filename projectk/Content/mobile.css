@@ -1,17 +1,12 @@
-.item-info-left
+.container-fluid
 {
-    display:none;
+    padding:0!important;
 }
-.item-right
-{ 
-    max-width:100%;  
-     margin-left:0px;
-}
-.item-right .aitem-top
+.article-content
 {
-    display:inherit;
+    padding:14px 14px 14px 0!important;
 }
-.item-info-left .aitem-top
+body
 {
-    display:none;
+    padding:0!important;
 }

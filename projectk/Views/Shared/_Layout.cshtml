@@ -16,10 +16,10 @@
     <meta name="MobileOptimized" content="320">
 
 
-     <meta property="og:type" content="conmeno:photo" />
+    <meta property="og:type" content="conmeno:photo" />
     <meta property="og:url" content="@ViewBag.url" />
     <meta property="og:title" content="@ViewBag.title" />
-        <meta property="og:description" content="Click để xem hình ảnh và tham gia chém gió" />    
+    <meta property="og:description" content="Click để xem hình ảnh và tham gia chém gió" />
     <meta property="og:image" content="@ViewBag.image" />
 
 
@@ -38,13 +38,13 @@
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap/css/bootstrap-responsive.css">
     <!-- <link rel="stylesheet" media="only screen and (max-width: 1024px) and (min-width: 769px)" href="1024.css
 
-  <link rel="stylesheet" media="only screen and (max-width: 900px)" href="~/Content/table.css">
-    <link rel="stylesheet" media="only screen and (max-width: 600px)" href="~/Content/mobile.css"> -->
-  
+  <link rel="stylesheet" media="only screen and (max-width: 900px)" href="~/Content/table.css"> -->
+    <link rel="stylesheet" media="only screen and (max-width: 600px)" href="~/Content/mobile.css">
+
 </head>
-<body> 
-  @Html.Partial("_header")
-    <div class="container-fluid"> 
+<body>
+    @Html.Partial("_header")
+    <div class="container-fluid">
         <div class="row-fluid">
 
             <div class="span8">
@@ -58,10 +58,12 @@
                 <div class="suggestion">
                     <div class="well fb-box">
                         Like và chia sẻ conmeno.com lên fb của bạn là niềm hạnh phúc lớn của chúng tôi :)
-                        <div style="margin-top:15px;">
-                        <div class="fb-like-box" data-href="http://www.facebook.com/nguocdoi.funny" data-width="360"
-                            data-show-faces="true" data-stream="false" data-show-border="true" data-header="true">
-                        </div>
+                        <div style="margin-top: 15px;">
+                            <div id="likebox-wrapper">
+                                <div class="fb-like-box" data-href="http://www.facebook.com/nguocdoi.funny" data-width="360"
+                                    data-show-faces="true" data-stream="false" data-show-border="true" data-header="true">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     @{
@@ -72,7 +74,7 @@
         </div>
     </div>
 
-     @Html.Partial("_footer")
+    @Html.Partial("_footer")
     <div id="fb-root"></div>
     @*  <script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -133,14 +135,7 @@
           //alert('You liked the URL: ' + response);
       }
 );
-        $(document).keypress(function (e) {
-            if (e.keyCode == 37) {
-                alert('You pressed left arrow key!');
-            }
-            if (e.keyCode == 39) {
-                alert('You pressed right arrow key!');
-            }
-        });
+       
 
     </script>
     <script>
@@ -154,6 +149,6 @@
         ga('create', 'UA-43125404-1', 'conmeno.com');
         ga('send', 'pageview');
 
-</script>
+    </script>
 </body>
 </html>

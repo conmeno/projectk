@@ -16,7 +16,7 @@ namespace Projectk
         private static System.Timers.Timer myTimer;
         public static void IsRunning()
         {
-            myTimer = new System.Timers.Timer(1 * 10 * 1000);
+            myTimer = new System.Timers.Timer(1 * Variable.TimeToCalculatorPageView * 1000);
             myTimer.Elapsed += new System.Timers.ElapsedEventHandler(MyTimer_Elapsed);
 
             myTimer.AutoReset = true;

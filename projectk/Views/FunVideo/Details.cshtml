@@ -1,47 +1,13 @@
 ﻿@model projectk.Models.Article
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Video - " + @Model.Name;
+    ViewBag.url = @Request.Url;
+    ViewBag.title = @Model.Name;
+    ViewBag.image = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "") + @Model.ThumbnailURL;
 }
 
-@*<div class="articles">
  
-    <div class="aitem">
-        <div class="item-info-left">
-
-            <div class="aitem-top">
-                <div class="aitem-title"> @Model.Name)</div>
-                <div class="aitem-title">
-                    <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
-                            rain</span></a>
-                </div>
-                <div>
-                    <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
-                </div>
-            </div>
-        </div>
-        <div class="item-right">
-            <div class="aitem-top">
-                <div class="aitem-title"> @Model.Name</div>
-                <div class="aitem-title">
-                    <span>Post by</span>&nbsp;<a href="#"><span style="font-weight: bold;">Super
-                            rain</span></a>
-                </div>
-                <div class="pageview">
-                    <span>View: 6422</span>&nbsp;<span>Like: 6422</span>
-                </div>
-            </div>
-            <div class="item-image">
-
-                <iframe width="420" height="315" src="http://www.youtube.com/embed/@Model.getYoutubeID()" frameborder="0" allowfullscreen></iframe>
-
-            </div>
-        </div>
-        <div style="clear: both"></div>
-    </div> 
- 
-</div>*@
-
 <div class="aitem">
     <div class="row-fluid">
 

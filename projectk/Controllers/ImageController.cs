@@ -50,7 +50,7 @@ namespace projectk.Controllers
                 ViewBag.Next = Next.ID;
             Article Prev = db.Articles.Where(a => a.ID < id && a.Cat == article.Cat).FirstOrDefault();
             if (Prev != null)
-                ViewBag.Pre = Prev.ID;
+                ViewBag.Prev = Prev.ID;
             if (article == null)
             {
                 return HttpNotFound();
