@@ -118,8 +118,9 @@
         FB.Event.subscribe('edge.create',
         function (response) {
             $.ajax({
-                url: '/aj/updatelike?link=' + response, success: function (result) {
-                    $("#container1").append(result);
+                url: '/AJ/UpdateLike?link=' + response, success: function (result) {
+                    //alert(result);
+                   // $("#container1").append(result);
                 }
             });
             //alert('You liked the URL: ' + response);
@@ -128,8 +129,9 @@
         FB.Event.subscribe('edge.remove',
       function (response) {
           $.ajax({
-              url: '/aj/updateunlike?link=' + response, success: function (result) {
-                  $("#container1").append(result);
+              url: '/AJ/UpdateUnLike?link=' + response, success: function (result) {
+                  //$("#container1").append(result);
+                  //alert(result);
               }
           });
           //alert('You liked the URL: ' + response);

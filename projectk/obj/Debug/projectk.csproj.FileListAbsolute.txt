@@ -172,5 +172,3 @@ D:\projectk\projectk\obj\Debug\projectk.Migrations.aa.resources
 D:\projectk\projectk\obj\Debug\projectk.csproj.GenerateResource.Cache
 D:\projectk\projectk\obj\Debug\projectk.dll
 D:\projectk\projectk\obj\Debug\projectk.pdb
-D:\projectk\projectk\bin\Common.Logging.dll
-D:\projectk\projectk\obj\Debug\projectk.csprojResolveAssemblyReference.cache

@@ -4,13 +4,12 @@
     ViewBag.Title = "Video - " + @Model.Name;
     ViewBag.url = @Request.Url;
     ViewBag.title = @Model.Name;
-    ViewBag.image = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "") + @Model.ThumbnailURL;
+    ViewBag.image = "http://img.youtube.com/vi/" + Model.getYoutubeID() + "/1.jpg";
 }
 
  
 <div class="aitem">
     <div class="row-fluid">
-
         <div class="alert alert-info"> 
             <button type="button" class="close" data-dismiss="alert">×</button>
             Sử dụng cáo phím <- hay -> trên bàn phím của bạn để xem các bài khác
@@ -90,7 +89,9 @@
         Html.RenderAction("OlderVideo", "Suggestion", new { ID = @Model.ID });
     }
 </div>
+<div id="commentbox-wrapper">
  <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-width="470" data-num-posts="10"></div> 
+ </div>
 
   
 

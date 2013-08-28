@@ -4,7 +4,7 @@
     ViewBag.Title = "Ảnh - " + @Model.Name;
     ViewBag.url = @Request.Url;
     ViewBag.title = @Model.Name;
-    ViewBag.image = "http://img.youtube.com/vi/" + Model.getYoutubeID() + "/1.jpg";
+    ViewBag.image = Request.Url.AbsoluteUri.Replace(Request.Url.AbsolutePath, "") + @Model.ThumbnailURL;
     string prevURL = "";
     string nextURL = "";
 
