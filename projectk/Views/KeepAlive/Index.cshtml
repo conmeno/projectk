@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_noLayout.cshtml";
+}
+
+<div class="keep"></div>
+
+@section scripts{
+  <script type="text/javascript">
+      function keepalive()
+      {
+          setTimeout(function () {
+              $.ajax({
+                  url: '/keepalive/load', success: function (result) {
+                      $('.keep').text(result);
+                      keepalive();
+                  }
+              });
+          }, 1000)
+      }
+        $(document).ready(function () {
+            keepalive();
+        });
+
+    </script>
+}
