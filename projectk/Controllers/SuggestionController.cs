@@ -15,13 +15,23 @@ namespace projectk.Controllers
         [ChildActionOnly]
         public ActionResult Index()
         {
-            List<Article> listTopVideo = db.Articles.Where(a => a.Cat == (int)Cats.Video).Take(5).ToList();
-            List<Article> listTopFunny = db.Articles.Where(a => a.Cat == (int)Cats.Funny).Take(5).ToList();
+            List<Article> listTopVideo = db.Articles.Where(a => a.Cat == (int)Cats.Video).OrderByDescending(a => a.DatePost).Take(5).ToList();
+            List<Article> listTopFunny = db.Articles.Where(a => a.Cat == (int)Cats.Funny).OrderByDescending(a => a.DatePost).Take(5).ToList();
             ViewBag.listTopView = listTopVideo;
             ViewBag.listTopFunny = listTopFunny;
              
             return PartialView();
         }
+
+
+        [ChildActionOnly]
+        public ActionResult MostViewed()
+        {
+            List<Article> articles = db.Articles.OrderByDescending(a => a.PageView).Take(5).ToList();
+            ViewBag.articles = articles; 
+            return PartialView();
+        }
+
 
         [ChildActionOnly]
         public ActionResult OlderFunny(int ID)

@@ -34,15 +34,16 @@
     <div class="display-field">
         @{
           
-            if (Model.ThumbnailData != null)
-            {
+            //if (Model.ThumbnailData != null)
+            //{
 
             <a href="/funny/details/@Model.ID">
-                <img alt="@Model.Name" src="data:image/jpg;base64,@Convert.ToBase64String(Model.ThumbnailData)" />
+                <img alt="@Model.Name" src="@Model.ThumbnailURL" />
+
             </a> 
                 
                 
-            }
+            //}
         }
 
     </div>

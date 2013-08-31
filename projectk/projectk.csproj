@@ -383,6 +383,8 @@
     <Content Include="Views\Image\Index.cshtml" />
     <Content Include="Views\KeepAlive\Index.cshtml" />
     <Content Include="Views\Shared\_noLayout.cshtml" />
+    <Content Include="Views\UpdateLink\GenerateThumbnail.cshtml" />
+    <Content Include="Views\Suggestion\MostViewed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

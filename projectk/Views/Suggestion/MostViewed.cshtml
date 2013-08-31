@@ -1,0 +1,45 @@
+﻿@{List<projectk.Models.Article> articles = (List<projectk.Models.Article>)ViewBag.articles;
+  
+}
+    @{
+        ViewBag.Title = "MostViewed";
+    }
+
+ 
+    <div>
+        <h4>Xem nhiều nhất</h4>
+    </div>
+@foreach (var item in articles)
+{
+    <div class="si-item ">
+
+        <div class="si-image img-polaroid">
+            <a href="/funvideo/@item.ID">
+                @if (item.Cat == (int)projectk.Models.Cats.Video)
+                {
+                    <img alt="video" src="http://img.youtube.com/vi/@item.getYoutubeID()/1.jpg" />
+                }
+                else
+                {
+                    <img alt="video" src="@item.ThumbnailURL" />
+                }
+            </a>
+        </div>
+        <div class="si-title">
+            <div>
+
+
+                @if (item.Cat == (int)projectk.Models.Cats.Video)
+                {
+                    <a href="/funvideo/@item.ID">@item.Name</a>
+                }
+                else
+                {
+                    <a href="/image/@item.ID">@item.Name</a>
+                }
+
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+}

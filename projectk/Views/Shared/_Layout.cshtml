@@ -14,9 +14,10 @@
     <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'>
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
-
-
-    <meta property="og:type" content="conmeno:photo" />
+     <meta property="og:site_name" content="conmeno.com" />
+    <meta property="fb:app_id" content="152607184915546" />
+    <link rel="image_src" href="@ViewBag.image" />
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="@ViewBag.url" />
     <meta property="og:title" content="@ViewBag.title" />
     <meta property="og:description" content="Click để xem hình ảnh và tham gia chém gió" />
@@ -67,6 +68,8 @@
                         </div>
                     </div>
                     @{
+                        Html.RenderAction("MostViewed", "Suggestion");
+                        
                         Html.RenderAction("Index", "Suggestion");
                     }
                 </div>

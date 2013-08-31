@@ -39,8 +39,8 @@ namespace projectk.Controllers
 
         public ActionResult Create(int id=0)
         {
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Hotgirl");
+            //if (!User.Identity.IsAuthenticated)
+            //    return RedirectToAction("Index", "Hotgirl");
             //ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name");
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName");
             return View();
@@ -52,8 +52,8 @@ namespace projectk.Controllers
         [HttpPost]
         public ActionResult Create(Article article)
         {
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Hotgirl");
+            //if (!User.Identity.IsAuthenticated)
+            //    return RedirectToAction("Index", "Hotgirl");
             if (ModelState.IsValid)
             {
                 int cat = int.Parse(Request.Form["imageType"].ToString()); ;
@@ -93,7 +93,7 @@ namespace projectk.Controllers
 
                     ofile.SaveAs(localURL1);
                     var image = System.Drawing.Image.FromFile(localURL1);
-
+                   
                     Spring.IO.FileResource file = new Spring.IO.FileResource(localURL1);
 
                    
@@ -116,16 +116,19 @@ namespace projectk.Controllers
 
                     if (temp != null) article.DropboxShareLink = temp.Result.Url;
                     article.DropboxShareLinkExpire = DateTime.Now.AddHours(3);
-
-                    var a1 = _client.DownloadThumbnailAsync(article.ExternalURL, ThumbnailFormat.Jpeg, ThumbnailSize.Medium).Result;
-                    if (a1.Content.Count()>0)
-                    {
-                        MemoryStream ms = new MemoryStream(a1.Content);
-                        Image returnImage = Image.FromStream(ms);
-                        returnImage.Save(ThumbnailURL);
-                        article.ThumbnailURL = ThumbnailURL.Replace(Variable.WebFolder(), "");
-                    }
-                    article.ThumbnailData = a1.Content;
+                    Size thumbnailSize = GetThumbnailSize(image);
+                    var thumImg = image.GetThumbnailImage(thumbnailSize.Width, thumbnailSize.Height, () => false, IntPtr.Zero);
+                    thumImg.Save(ThumbnailURL);
+                    article.ThumbnailURL = ThumbnailURL.Replace(Variable.WebFolder(), "");
+                    //var a1 = _client.DownloadThumbnailAsync(article.ExternalURL, ThumbnailFormat.Jpeg, ThumbnailSize.ExtraLarge).Result;
+                    //if (a1.Content.Count()>0)
+                    //{
+                    //    MemoryStream ms = new MemoryStream(a1.Content);
+                    //    Image returnImage = Image.FromStream(ms);
+                    //    returnImage.Save(ThumbnailURL);
+                    //    article.ThumbnailURL = ThumbnailURL.Replace(Variable.WebFolder(), "");
+                    //}
+                    //article.ThumbnailData = a1.Content;
 
 
                 }
@@ -155,14 +158,36 @@ namespace projectk.Controllers
             ViewBag.UserID = new SelectList(db.UserProfiles, "UserId", "UserName", article.UserID);
             return View(article);
         }
+        public Size GetThumbnailSize(Image original)
+        {
+            // Maximum size of any dimension.
+            const int maxPixels = 200;
 
+            // Width and height.
+            int originalWidth = original.Width;
+            int originalHeight = original.Height;
+
+            // Compute best factor to scale entire image based on larger dimension.
+            double factor;
+            if (originalWidth > originalHeight)
+            {
+                factor = (double)maxPixels / originalWidth;
+            }
+            else
+            {
+                factor = (double)maxPixels / originalHeight;
+            }
+
+            // Return thumbnail size.
+            return new Size((int)(originalWidth * factor), (int)(originalHeight * factor));
+        }
         //
         // GET: /Article/Create
 
         public ActionResult Check(int type=1)
         {
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Hotgirl");
+            //if (!User.Identity.IsAuthenticated)
+            //    return RedirectToAction("Index", "Hotgirl");
             Cats temp = (Cats)type;
             var articles = db.Articles.Where(a => a.Cat == (int)temp).OrderByDescending(a => a.DatePost).Take(100).Include(a => a.UserProfile).ToList();
             
@@ -175,8 +200,8 @@ namespace projectk.Controllers
 
         public ActionResult Delete(long id = 0)
         {
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Hotgirl");
+            //if (!User.Identity.IsAuthenticated)
+            //    return RedirectToAction("Index", "Hotgirl");
             Article article = db.Articles.Find(id);
             if (article == null)
             {
@@ -191,8 +216,8 @@ namespace projectk.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(long id)
         {
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("Index", "Hotgirl");
+            //if (!User.Identity.IsAuthenticated)
+            //    return RedirectToAction("Index", "Hotgirl");
             Article article = db.Articles.Find(id);
             db.Articles.Remove(article);
             db.SaveChanges();
