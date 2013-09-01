@@ -388,7 +388,7 @@ margin:1em 0;
 
     .header h2.big
     {
-        background: url("images/logo1.png") no-repeat scroll 0 0 transparent;
+        background: url("/images/logo2.png") no-repeat scroll 0 0 transparent;
         cursor: pointer;
         display: block;
         height: 52px;
@@ -407,7 +407,7 @@ margin:1em 0;
 
     .header h2.small
     {
-        background: url("images/small-logo1.png") no-repeat scroll 0 0 transparent;
+        background: url("/images/small-logo2.png") no-repeat scroll 0 0 transparent;
         cursor: pointer;
         display: none;
         height: 36px;

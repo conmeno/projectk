@@ -82,7 +82,7 @@ namespace projectk.Controllers
                             fileName += "funny/";
                         else
                             fileName += "hotgirl/";
-                        string ThumbnailURL = Variable.WebFolder() + fileName + "thumbnail/" + (aa++) + ".jpg";
+                        string ThumbnailURL = Variable.WebFolder() + fileName + "thumbnail/" + DateTime.Now.ToString("yyyy.MM.dd.hh.mm.ss.ffff") +".jpg";
                         MemoryStream ms = new MemoryStream(a1.Content);
                         Image returnImage = Image.FromStream(ms);
                         if (returnImage != null)

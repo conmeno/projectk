@@ -40,7 +40,7 @@ namespace Projectk
                     o.PageView += int.Parse(entry.Value.ToString());
                     //update like for user
                     long numofLike = db.Articles.Where(a => a.UserName == o.UserName).Sum(a => a.Like);
-                    if (numofLike == 0) numofLike = 10;
+                    //if (numofLike == 0) numofLike = 10;
                     UserProfile u = db.UserProfiles.Where(a => a.UserName == o.UserName).FirstOrDefault();
                     if (u != null)
                         u.TotalLike = unchecked((int)numofLike);
