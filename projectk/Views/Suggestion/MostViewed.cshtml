@@ -14,16 +14,20 @@
     <div class="si-item ">
 
         <div class="si-image img-polaroid">
-            <a href="/funvideo/@item.ID">
+         
                 @if (item.Cat == (int)projectk.Models.Cats.Video)
                 {
+                       <a href="/funvideo/@item.ID">
                     <img alt="video" src="http://img.youtube.com/vi/@item.getYoutubeID()/1.jpg" />
+                    </a>
                 }
                 else
                 {
+                   <a href="/image/@item.ID">
                     <img alt="video" src="@item.ThumbnailURL" />
+                    </a>
                 }
-            </a>
+            
         </div>
         <div class="si-title">
             <div>

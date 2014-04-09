@@ -15,9 +15,9 @@ namespace Projectk
 {
     public class Variable
     {
-        public static int NumberOfArticleLoaded=10;
+        public static int NumberOfArticleLoaded=25;
         public static bool AutoApprove = true;
-        public static bool UseLocalURL = false;
+        public static bool UseLocalURL = true;
         public static bool UseLocalURLFirstPage = true;
         public static string ApiKey = "x9n1ufyyyj00odt";
         public static string ApiSecret = "vwevab5370evd3v";

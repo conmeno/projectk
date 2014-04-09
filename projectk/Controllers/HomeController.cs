@@ -18,7 +18,7 @@ namespace projectk.Controllers
         {
            // Redirect("/funny");
 
-            return RedirectToAction("Index","Funny");
+            return RedirectToAction("Index","Hotgirl");
         }
  
     }
